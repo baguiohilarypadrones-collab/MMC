@@ -138,7 +138,7 @@ body::before {
   margin: 0 auto;
 }
 
-   .card {
+ .card {
   width: 500px;
   margin: 0 20px;
   background: rgba(255, 255, 255, 0.15); /* transparent glass */
@@ -198,70 +198,48 @@ body::before {
 
 @media (max-width: 768px) {
 
+  /* 🔥 The ONLY scroll container */
   .viewport {
     width: 100%;
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    padding: 16px;
   }
 
+  .track {
+    display: flex;
+    gap: 16px;
+    transform: none !important; /* disable JS movement */
+  }
+
+  .card {
+    flex: 0 0 85vw;
+    scroll-snap-align: center;
+  }
+
+  /* hide arrows completely */
+  .arrow {
+    display: none !important;
+    pointer-events: none;
+  }
+
+  /* keep layout stable */
   body {
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
     overflow-x: hidden;
     background-attachment: scroll;
   }
 
-.container {
-    width: 100%;
-    max-width: 1200px; /* Limits width on desktop */
-    margin: 0 auto; /* Centers the content */
-    display: flex;
-    justify-content: center;
-}
-
   .wrapper {
     width: 100%;
     max-width: 100%;
-    padding-left: 50px;
-    padding-right: 16px;
+    padding: 0;
     margin: 0 auto;
-  }
-
-.track {
-  display: flex;
-  gap: 20px;
-  box-sizing: border-box;
-}
-
-.track {
-  justify-content: center;
-}
-
-  /* Grid view */
-  .track.grid-view {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
-
-  /* Carousel cards */
-  .card {
-    width: 90vw;
-    margin: 0;
-    flex-shrink: 0; /* ⭐ VERY IMPORTANT */
-  }
-
-  .card img {
-    height: 280px;
-  }
-
-  /* Arrows hidden on phone */
-  .arrow {
-    display: none !important;
-    visibility: hidden;
-    opacity: 0 !important;
-    pointer-events: none !important;
   }
 }
 
@@ -348,6 +326,9 @@ body::before {
   opacity: 1;
 }
 
+.carousel::-webkit-scrollbar {
+  display: none;
+}
 
   </style>
 </head>
@@ -380,6 +361,7 @@ body::before {
   <!-- 👁 VIEWPORT -->
   <div class="viewport">
     <div class="track" id="track">
+
 <div class="card locked" data-id="M1" data-rating="10">
         <h2>A Wimp’s Strategy Guide to Conquer the Tower</h2>
         <h3>Chapter 12</h3>
@@ -1882,7 +1864,7 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
 
       </div>
 
-
+    
     </div>
   </div>
 
