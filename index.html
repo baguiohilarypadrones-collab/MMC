@@ -207,12 +207,15 @@ body::before {
 
   /* scrolling container */
   .viewport {
+    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    
+    padding: 0 16px;
   }
 
   /* keep same structure */
@@ -224,8 +227,8 @@ body::before {
 
   /* SAME CARD LOOK — just responsive */
   .card {
-    width: 70px;          /* desktop size */
-    max-width: 70vw;       /* fit phone */
+    width: 80px;          /* desktop size */
+    max-width: 80vw;       /* fit phone */
     margin: 0 auto;
     scroll-snap-align: center;
     flex-shrink: 0;
@@ -235,10 +238,14 @@ body::before {
   .arrow {
     display: none !important;
     pointer-events: none;
+    opacity: 0 !important;
   }
 
   body {
+    margin: 0;
+    padding-top: 40px;
     overflow-x: hidden;
+    overflow-y: auto;
     background-attachment: scroll;
   }
 }
