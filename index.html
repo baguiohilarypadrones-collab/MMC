@@ -194,6 +194,10 @@ body::before {
     .left { left: -60px; }
     .right { right: -60px; }
 
+.viewport {
+  touch-action: pan-x;
+}
+
 @media (max-width: 768px) {
 
   .viewport {
@@ -1942,15 +1946,19 @@ function isMobile() {
 <script>
 let index = 0;
 const track = document.getElementById("track");
+const viewport = document.querySelector(".viewport");
 
 function isMobile() {
-  return window.innerWidth <= 768;
+  return window.matchMedia("(max-width: 768px)").matches;
 }
 
 function update() {
-  if (isMobile()) return; // ❌ NO JS movement on phone
+  if (isMobile()) {
+    // 🔥 HARD RESET FOR MOBILE
+    track.style.transform = "none";
+    return;
+  }
 
-  const viewport = document.querySelector(".viewport");
   const card = track.children[index];
   if (!card) return;
 
@@ -1962,7 +1970,7 @@ function update() {
 }
 
 function next() {
-  if (isMobile()) return; // ❌ arrows do nothing on phone
+  if (isMobile()) return; // ❌ no JS movement on phone
   if (index < track.children.length - 1) {
     index++;
     update();
@@ -1977,13 +1985,9 @@ function prev() {
   }
 }
 
-window.addEventListener("resize", () => {
-  if (isMobile()) {
-    track.style.transform = "none";
-  } else {
-    update();
-  }
-});
+// 🔁 Always re-evaluate when screen changes
+window.addEventListener("resize", update);
+window.addEventListener("load", update);
 </script>
 
 <script>
