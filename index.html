@@ -65,19 +65,19 @@ body::before {
       gap: 25px;
     }
 
-   .viewport {
+  .viewport {
   width: 100%;
-  overflow-x: auto;    /* ✅ swipe works */
-  overflow-y: visible; /* ✅ grid scroll works */
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden; /* desktop uses arrows */
 }
 
 
-    .track {
-  display: flex;
-  gap: 20px;
-  transition: transform 0.4s ease;
-}
+   .track {
+      box-sizing: border-box;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+      transition: transform 0.4s ease;
+    }
 
 
     /* ===== GRID VIEW ===== */
@@ -140,7 +140,7 @@ body::before {
 
  .card {
   width: 500px;
-  margin: 0 20px;
+  margin: 0;
   background: rgba(255, 255, 255, 0.15); /* transparent glass */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -243,6 +243,8 @@ body::before {
   }
 }
 
+/*--------------------------------*/
+
 .search-box {
   text-align: center;
   margin-bottom: 15px;
@@ -324,10 +326,6 @@ body::before {
 .locked .stars span {
   pointer-events: none;
   opacity: 1;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
 }
 
   </style>
