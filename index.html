@@ -198,8 +198,23 @@ body::before {
 
 @media (max-width: 768px) {
 
-  /* scroll container */
+  /* Page stays normal */
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-attachment: scroll;
+  }
+
+  /* Center content */
+  .wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* THE ONLY SCROLL CONTAINER */
   .viewport {
+    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -207,28 +222,30 @@ body::before {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 
-    scrollbar-width: none; /* Firefox */
+    padding: 12px;
+
+    outline: 2px solid red;
   }
 
-  /* hide scrollbar (Chrome/Safari) */
-  .viewport::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* track just lays out cards */
+  /* Track NEVER moves on mobile */
   .track {
     display: flex;
-    gap: 16px;
-    transform: none !important; /* JS OFF */
+    gap: 14px;
+    transform: none !important;
   }
 
-  /* card size (adjust as you like) */
+  /* Smaller cards on phone */
   .card {
-    flex: 0 0 70vw;      /* 👈 controls size */
+    flex: 0 0 70vw;          /* 👈 CHANGE SIZE HERE */
+    max-width: 70vw;
     scroll-snap-align: center;
   }
 
-  /* arrows are visually + functionally dead */
+  .card img {
+    height: 260px;
+  }
+
+  /* Kill arrows completely */
   .arrow {
     display: none !important;
     pointer-events: none !important;
@@ -1980,6 +1997,7 @@ function prev() {
     update();
   }
 }
+
 
 // 🔁 Always re-evaluate when screen changes
 window.addEventListener("resize", update);
