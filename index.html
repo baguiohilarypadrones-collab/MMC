@@ -9,16 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding-top: 40px;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding-top: 40px;
+  min-height: 100vh;
 
-  background-image: url("pics/Backgroundpic.jpg"); /* your image */
+  overflow-y: auto;   /* ✅ vertical scroll */
+  overflow-x: hidden; /* ✅ no sideways page scroll */
+
+  background-image: url("pics/Backgroundpic.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
 
 body::before {
   content: "";
@@ -59,11 +64,11 @@ body::before {
       gap: 25px;
     }
 
-     .viewport {
+   .viewport {
   width: 100%;
-  overflow-x: hidden;              /* allow swipe */
-  scroll-snap-type: x mandatory; /* snap cards */
-  scroll-behavior: smooth;
+  overflow-x: auto;    /* ✅ swipe works */
+  overflow-y: visible; /* ✅ grid scroll works */
+  -webkit-overflow-scrolling: touch;
 }
 
 
@@ -73,11 +78,6 @@ body::before {
   transition: transform 0.4s ease;
 }
 
-
-.card {
-  scroll-snap-align: center; /* ALWAYS center */
-  flex: 0 0 auto;
-}
 
     /* ===== GRID VIEW ===== */
     .track.grid-view {
@@ -194,24 +194,14 @@ body::before {
     .left { left: -60px; }
     .right { right: -60px; }
 
-.viewport {
-  touch-action: pan-x;
-}
 
 @media (max-width: 768px) {
 
   .viewport {
     width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
-    padding: 0 20px;
-  }
-
-  .track {
-    display: flex;
-    gap: 20px;
-    transform: none !important; /* 🚨 CRITICAL */
   }
 
   body {
@@ -222,6 +212,11 @@ body::before {
     max-width: 100%;
     padding: 0 10px;
   }
+
+.track {
+  display: flex;
+  gap: 20px;
+}
 
   /* Grid view */
   .track.grid-view {
