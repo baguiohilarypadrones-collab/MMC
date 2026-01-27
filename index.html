@@ -6,6 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -197,6 +198,7 @@ body::before {
 
 .viewport {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     padding: 0 20px;
   }
@@ -257,9 +259,19 @@ body::before {
   font-weight: 700;
   text-align: center;
   color: #ffffff;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   letter-spacing: 1px;
   text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.subtitle {
+  font-family: 'Shadows Into Light', cursive;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 35px;
+  letter-spacing: 0.5px;
 }
 
 .stars span {
@@ -316,6 +328,7 @@ body::before {
 <body>
 
 <h1 class="main-title">My Manhwa Collections</h1>
+<h2 class="subtitle">The ranking is based on my personal preference</h2>
 
 <div class="wrapper">
   <div class="arrow left" onclick="prev()">&#10094;</div>
@@ -1932,11 +1945,8 @@ function isMobile() {
 }
 
 function update() {
-  // 🚫 Never use transform on phone
-  if (isMobile()) {
-    track.style.transform = "none";
-    return;
-  }
+  // 🚫 No JS centering on phone (swipe only)
+  if (isMobile()) return;
 
   const viewport = document.querySelector(".viewport");
   const card = track.children[index];
@@ -1950,6 +1960,8 @@ function update() {
 }
 
 function next() {
+  if (isMobile()) return;
+
   if (index < track.children.length - 1) {
     index++;
     update();
@@ -1957,16 +1969,23 @@ function next() {
 }
 
 function prev() {
+  if (isMobile()) return;
+
   if (index > 0) {
     index--;
     update();
   }
 }
 
-// 🔁 Re-center ONLY when switching desktop/mobile
-window.addEventListener("resize", update);
+// 🔁 Handle resize properly
+window.addEventListener("resize", () => {
+  if (isMobile()) {
+    track.style.transform = "none";
+  } else {
+    update();
+  }
+});
 </script>
-
 
 <script>
 function searchCards() {
@@ -2026,4 +2045,3 @@ window.addEventListener("load", loadRatings);
 
 </body>
 </html>
-
