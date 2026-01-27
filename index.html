@@ -197,11 +197,18 @@ body::before {
 @media (max-width: 768px) {
 
 .viewport {
+    width: 100%;
+    overflow-y: hidden;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     padding: 0 20px;
   }
+
+.track {
+  display: flex;
+  gap: 20px;
+}
 
 .track {
     transform: none !important; /* 🚨 CRITICAL */
@@ -1945,8 +1952,7 @@ function isMobile() {
 }
 
 function update() {
-  // 🚫 No JS centering on phone (swipe only)
-  if (isMobile()) return;
+  if (isMobile()) return; // ❌ NO JS movement on phone
 
   const viewport = document.querySelector(".viewport");
   const card = track.children[index];
@@ -1960,8 +1966,7 @@ function update() {
 }
 
 function next() {
-  if (isMobile()) return;
-
+  if (isMobile()) return; // ❌ arrows do nothing on phone
   if (index < track.children.length - 1) {
     index++;
     update();
@@ -1970,14 +1975,12 @@ function next() {
 
 function prev() {
   if (isMobile()) return;
-
   if (index > 0) {
     index--;
     update();
   }
 }
 
-// 🔁 Handle resize properly
 window.addEventListener("resize", () => {
   if (isMobile()) {
     track.style.transform = "none";
