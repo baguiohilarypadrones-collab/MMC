@@ -196,25 +196,21 @@ body::before {
 
 @media (max-width: 768px) {
 
-.viewport {
+  .viewport {
     width: 100%;
-    overflow-y: hidden;
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
     padding: 0 20px;
   }
 
-.track {
-  display: flex;
-  gap: 20px;
-}
-
-.track {
+  .track {
+    display: flex;
+    gap: 20px;
     transform: none !important; /* 🚨 CRITICAL */
   }
 
- body {
+  body {
     background-attachment: scroll;
   }
 
@@ -223,26 +219,26 @@ body::before {
     padding: 0 10px;
   }
 
-  /* Grid view: fewer columns */
+  /* Grid view */
   .track.grid-view {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 
-  /* Carousel card smaller */
+  /* Carousel cards */
   .card {
     width: 90vw;
     margin: 0 10px;
+    flex-shrink: 0; /* ⭐ VERY IMPORTANT */
   }
 
   .card img {
     height: 280px;
   }
 
-  /* Arrows easier to tap */
+  /* Arrows hidden on phone */
   .arrow {
-  display: none; /* swipe only on phone */
-}
-
+    display: none;
+  }
 }
 
 .search-box {
