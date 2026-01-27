@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One Card Carousel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
@@ -206,11 +207,20 @@ body::before {
 
   body {
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     overflow-x: hidden;
     background-attachment: scroll;
   }
+
+.container {
+    width: 100%;
+    max-width: 1200px; /* Limits width on desktop */
+    margin: 0 auto; /* Centers the content */
+    display: flex;
+    justify-content: center;
+}
 
   .wrapper {
     width: 100%;
