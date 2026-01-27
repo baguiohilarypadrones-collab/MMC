@@ -12,7 +12,7 @@
       margin: 0;
       padding-top: 40px;
 
-  background-image: url("pics/Backgroundpic.jpg"); /* your image */
+  background-image: url("pics/backgroundpic.jpg"); /* your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -60,7 +60,7 @@ body::before {
 
      .viewport {
   width: 100%;
-  overflow-x: auto;              /* allow swipe */
+  overflow-x: hidden;              /* allow swipe */
   scroll-snap-type: x mandatory; /* snap cards */
   scroll-behavior: smooth;
 }
@@ -136,20 +136,6 @@ body::before {
   margin: 0 auto;
 }
 
-    .stars {
-      margin-top: 10px;
-    }
-
-    .stars span {
-      font-size: 20px;
-      cursor: pointer;
-      color: #ccc;
-    }
-
-    .stars span.active {
-      color: gold;
-    }
-
    .card {
   width: 500px;
   margin: 0 20px;
@@ -161,7 +147,6 @@ body::before {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   text-align: center;
   flex-shrink: 0;
-  color: white;
   border: 1px solid rgba(255,255,255,0.2);
 }
 
@@ -211,7 +196,13 @@ body::before {
 @media (max-width: 768px) {
 
 .viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     padding: 0 20px;
+  }
+
+.track {
+    transform: none !important; /* 🚨 CRITICAL */
   }
 
  body {
@@ -245,10 +236,6 @@ body::before {
 
 }
 
-.stars span {
-  padding: 4px;
-}
-
 .search-box {
   text-align: center;
   margin-bottom: 15px;
@@ -275,26 +262,53 @@ body::before {
   text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-.lock-btn {
-  margin-top: 8px;
-  padding: 5px 10px;
-  font-size: 12px;
+.stars span {
+  font-size: 20px;
   cursor: pointer;
-  border-radius: 6px;
-  border: none;
-  background: rgba(255,255,255,0.2);
-  color: white;
+  color: #ccc;
+  padding: 4px;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
+/* ⭐ ACTIVE STARS — MUST COME AFTER */
+.stars span.active {
+  color: gold !important;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+}
+
+/* 🔒 LOCKED STARS (keep gold visible) */
 .locked .stars span {
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.85; /* NOT too low */
 }
 
-.locked .lock-btn {
-  opacity: 0.5;
-  cursor: default;
+/* ⭐ STAR RATING — FINAL */
+.stars {
+  margin-top: 10px;
 }
+
+.stars span {
+  font-size: 22px;
+  cursor: pointer;
+  color: #999;
+  padding: 4px;
+  opacity: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* ⭐ ACTIVE (GOLD) */
+.stars span.active {
+  color: gold !important;
+  opacity: 1 !important;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+}
+
+/* 🔒 LOCKED (do NOT kill color) */
+.locked .stars span {
+  pointer-events: none;
+  opacity: 1;
+}
+
 
   </style>
 </head>
@@ -324,12 +338,12 @@ body::before {
   <div class="viewport">
     <div class="track" id="track">
 
-<div class="card" data-id="M1" data-rating="0">
+<div class="card locked" data-id="M1" data-rating="10">
         <h2>A Wimp’s Strategy Guide to Conquer the Tower</h2>
         <h3>Chapter 12</h3>
         <img src="pics\A Wimp’s Strategy Guide to Conquer the Tower pic.webp">
 
-  <div class="stars" onclick="event.stopPropagation()">
+  <div class="stars">
     <span onclick="rate(this,1)">★</span>
     <span onclick="rate(this,2)">★</span>
     <span onclick="rate(this,3)">★</span>
@@ -341,8 +355,6 @@ body::before {
     <span onclick="rate(this,9)">★</span>
     <span onclick="rate(this,10)">★</span>
   </div>
-
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
 
 
         <p>By the Studio that brought you 'S-Class Hunter Heals with Monsters'
@@ -368,15 +380,13 @@ One day, mysterious black towers rise across the world, triggering awakenings in
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>In a world where magic co-exists with the rule of nobles, Adrian Lawrence seemed to have gotten lucky in life as the second son of a viscount. Despite this, Adrian is an outcast in a home controlled by his scheming stepmother and half-brother, who are set on ousting him. Little do they know that Adrian plays the game Chronicle Online, where he possesses great powers that can also be used in reality! With heirship to the viscounty up for grabs, can Adrian use his powers to level up his real life?</p>
 
       </div>
 
-<div class="card" data-id="M3" data-rating="0">
+<div class="card locked" data-id="M3" data-rating="10">
         <h2>Return of the First Generation: The Strongest in History Reincarnates as His Descendant 1000 Years Later</h2>
-	<h3>Chapter 17</h3>
+	<h3>Chapter 23</h3>
         <img src="pics\Return of the First Generation The Strongest in History Reincarnates as His Descendant 1000 Years Later pic.jpg">
 
   <div class="stars" onclick="event.stopPropagation()">
@@ -392,14 +402,12 @@ One day, mysterious black towers rise across the world, triggering awakenings in
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>
 Gilfas Eldragon, the first head of the Eldragon family who became the strongest simply through his pursuit of strength, ate a fruit rumored to grant immortality and protected by the divine dragon, in order to pursue martial arts forever. However, contrary to the rumor, Gilfas’s body grew older, and he finally passed away, watched over by his sonor so it seemed. When he woke up, Gilfas had been reincamated as a baby in the Eldragon family a thousand years in the future, given the new name of Sieg Eldragon. Furthermore, with enemies from a world known as (Chaos) unknown to Sieg, the Eldragon family had adopted a strict law of the jungle philosophy. As everything transformed into a world he did not know, Sieg was ecstatic. “This time I will finally be able to see the end of martial arts!”</p>
 
       </div>
 
-<div class="card" data-id="M4" data-rating="0">
+<div class="card locked" data-id="M4" data-rating="6">
         <h2>Dukedom’s Legendary Prodigy</h2>
 	<h3>Chapter 27</h3>
         <img src="pics\M4pic.jpg">
@@ -417,8 +425,6 @@ Gilfas Eldragon, the first head of the Eldragon family who became the strongest 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Han Sung, an SSS-class monster hunter from Earth, was summoned to another world where he had to devote his entire life as the Empire’s hunting dog.
 
 After being betrayed and losing his life, he is reincarnated as Dale, the eldest son of the Sachsen ducal family and heir to ‘Lord Black,’ the continent’s greatest dark mage who reigns supreme at the pinnacle of the Black Tower.
@@ -433,7 +439,7 @@ Where is the limit of his talent? His unstoppable journey begins now!
 
       </div>
 
-<div class="card" data-id="M5" data-rating="0">
+<div class="card locked" data-id="M5" data-rating="8">
         <h2>S-Rank Hunter's Healing Journey With Monsters</h2>
 	<h3>Chapter 23</h3>
         <img src="pics\M5pic.webp">
@@ -451,15 +457,13 @@ Where is the limit of his talent? His unstoppable journey begins now!
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>A deceased S-rank hunter builds a house inside the gate and lives there.
 
 He raises monsters and cultivates demonic plants. This time, he wants to live life on his own terms.</p>
 
       </div>
 
-<div class="card" data-id="M6" data-rating="0">
+<div class="card locked" data-id="M6" data-rating="9">
         <h2>Return of the Apocalypse-Class Death Knight</h2>
 	<h3>Chapter 53</h3>
         <img src="pics\M6pic.webp">
@@ -476,8 +480,6 @@ He raises monsters and cultivates demonic plants. This time, he wants to live li
     <span onclick="rate(this,9)">★</span>
     <span onclick="rate(this,10)">★</span>
   </div>
-
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
 
         <p>Damian Haxen was a man born with a talent destined to go down in history. However, he was transformed into a Death Knight by a dark mage, Archlich Dorgo, and was forced to live like a slave. By the archlich’s command, he slaughtered his family with his own hands and brought ruin to every kingdom.
 
@@ -496,7 +498,7 @@ He would purge all traces of the filthy dark mage and make him taste hell first!
       </div>
 
 
-<div class="card" data-id="M7" data-rating="0">
+<div class="card locked" data-id="M7" data-rating="10">
         <h2>The Mad Dog of the Duke’s Estate</h2>
 	<h3>Chapter 39</h3>
         <img src="pics\M7pic.webp">
@@ -514,13 +516,11 @@ He would purge all traces of the filthy dark mage and make him taste hell first!
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>“I lived as a chained dog. In this life, I’ll live as a mad dog.” He once swung his blade for a deranged king—only to meet death at the hands of his dearest friend. But when he opens his eyes again, he finds himself reborn… as that very friend’s youngest grandson. No more loyalty. No more chains. No more destiny. This time, he’ll tear apart the leash that bound him and live only for himself. The debt of his past life is already paid—now begins a reckless rampage under the banner of freedom.</p>
 
       </div>
 
-<div class="card" data-id="M8" data-rating="0">
+<div class="card locked" data-id="M8" data-rating="10">
         <h2>Breakers</h2>
 	<h3>Chapter 34</h3>
         <img src="pics\M8pic.jpg">
@@ -538,8 +538,6 @@ He would purge all traces of the filthy dark mage and make him taste hell first!
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Joo In-gong was dragged into the remake of a game he was playing called 'Knight Saga:Re'.
 
 However, something wasn't right. The only playable characters should be Loch of the human side and Zephyr of the demon side. Instead, he awakens in the body of Shutra— the ninth prince of the Demon Realm, a character who actually didn't exist in the game’s story.
@@ -550,7 +548,7 @@ Yet, with every twist of the plot, he garners more attention...</p>
 
       </div>
 
-<div class="card" data-id="M9" data-rating="0">
+<div class="card locked" data-id="M9" data-rating="8">
         <h2>Barbarian’s Adventure in a Fantasy World</h2>
 	<h3>Chapter 43</h3>
         <img src="pics\M9pic.jpg">
@@ -568,13 +566,11 @@ Yet, with every twist of the plot, he garners more attention...</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>It follows Ketal, a modern human reincarnated into a harsh, frozen wasteland. He must survive dangerous monsters to escape into a, colorful fantasy world of elves and magic, navigating this new world with childlike wonder while terrifying natives with his raw strength. </p>
 
       </div>
 
-<div class="card" data-id="M10" data-rating="0">
+<div class="card locked" data-id="M10" data-rating="10">
         <h2>The Legendary Hero is an Academy Honors Student</h2>
 	<h3>Chapter 51</h3>
         <img src="pics\M10pic.webp">
@@ -592,8 +588,6 @@ Yet, with every twist of the plot, he garners more attention...</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>There were five heroes who fought against Erebos, the primordial evil that drove the world to the brink of destruction. [The Brave] Aron. [Divine Blacksmith] Dweno. [Poet of the Stars] Luna. [King of Wisdom] Lysinias.
 
 And lastly, me [Hero of Beginning] Kyle.
@@ -610,7 +604,7 @@ Let’s go there and find out why.</p>
 
       </div>
 
-<div class="card" data-id="M11" data-rating="0">
+<div class="card locked" data-id="M11" data-rating="9">
         <h2>The Pig-Slaughtering Blade That Pierces All Realms</h2>
 	<h3>Chapter 20</h3>
         <img src="pics\M11pic.webp">
@@ -628,13 +622,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Ye Chuan—a mental patient—sees all living creatures in the world as pigs. On the day he changes professions, he awakens a life-class occupation: Butcher. His teachers and classmates are gravely disappointed, and even his childhood sweetheart leaves him. However, the Butcher profession grants him extra damage against pigs and halves the damage he receives from them. Since he sees everyone as pigs, he uses a single butcher’s knife to rise up and become a god!</p>
 
       </div>
 
-<div class="card" data-id="M12" data-rating="0">
+<div class="card locked" data-id="M12" data-rating="10">
         <h2>Reincarnated as a Genius Prodigy of a Prestigious Family</h2>
 	<h3>Chapter 67</h3>
         <img src="pics\M12pic.jpeg">
@@ -652,13 +644,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>His talent was forged on the battlefield, but before he could fully develop it, he died. However, when he opened his eyes again, he realized he had been reborn as Dane Sogres, the youngest son of a prestigious count. The talent he now possessed… was not limited to just one field?! A talent in spearmanship, assassination, magic, summoning, and even swordsmanship—which he had not been able to develop fully before! He can finally nurture his endless talent in the embrace of the happy family he had always longed for. “Spearmanship! Dane must absolutely learn spearmanship!” “Are you saying that because you really don’t know how useful learning stealth and assassination skills could be?” “Magic is the future, Father, Mother!” “For my younger brother… summoning would also be really nice…” …Mm, this is a happy family, right?</p>
 
       </div>
 
-<div class="card" data-id="M13" data-rating="0">
+<div class="card locked" data-id="M13" data-rating="9">
         <h2>The Male Lead's Little Lion Daughter</h2>
 	<h3>Chapter 127</h3>
         <img src="pics\M13pic.webp">
@@ -676,13 +666,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The handsome Duke Voreoti is the most terrifying man in the empire, with the coldest of demeanors and a gaze that can kill. But one day, he suddenly says that he wants to… adopt a child?! And that child is me?! After finding me at a shady orphanage, he whisked me away to his snowy palace without a second thought. Now I’m learning all the ways of the feared Voreoti family from his knights. However, things get dicey when the Duke becomes suspicious of my origins. With these fangs and jet black hair, perhaps we are more than just kindred spirits…</p>
 
       </div>
 
-<div class="card" data-id="M14" data-rating="0">
+<div class="card locked" data-id="M14" data-rating="9">
         <h2>Life of a Magic Academy Mage</h2>
 	<h3>Chapter 122</h3>
         <img src="pics\M14pic.webp">
@@ -700,13 +688,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Life as a magic academy mage. Graduate student Lee Han was born as the youngest son in another world's famous family of mages. He swore he would never go to another place with the word "academy" in it. However, the magic academy known as Einrogard completely ignored what he had promised himself. Being self-sufficient is a must; monsters may appear, and the professors are all total nutjobs! This is the beginning of a pitiful academy life that you have never seen before."Will I be able to... graduate safely?"</p>
 
       </div>
 
-<div class="card" data-id="M15" data-rating="0">
+<div class="card locked" data-id="M15" data-rating="10">
         <h2>How to Survive as a Terminally-Ill Dragon</h2>
 	<h3>Chapter 52</h3>
         <img src="pics\M15pic.jpg">
@@ -724,13 +710,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>After suffering from an illness that cut his life short, Royce wakes up to find himself as a character from the story he read until his last moments. As a dragon hatchling, he believes his long life is just beginning. That is, until Royce realizes he's the son of the dragon who goes berserk due to his untimely death! Now, Royce is looking to race against the clock, even if his every move leads to a near-death experience. Will he be able to change his fate, or will he get stopped in his tracks?</p>
 
       </div>
 
-<div class="card" data-id="M16" data-rating="0">
+<div class="card locked" data-id="M16" data-rating="9">
         <h2>The Black Leopard Family's Snow Leopard Baby</h2>
 	<h3>Chapter 38</h3>
         <img src="pics\M16pic.jpg">
@@ -748,13 +732,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The child of a black leopard and a snow leopard shapeshifter, 7-year-old Tiel escapes her abusive family to seek refuge with the father she never knew. All she wants is safety, but her father, the feared Duke Asterian, has other plans... to give his long-lost daughter a loving family and a wonderful home! Now, Tiel is set on protecting her family from the evil forces who want to take her away. Can she fight these foes to save her new home? Or will Tiel lose her loved ones once and for all?</p>
 
       </div>
 
-<div class="card" data-id="M17" data-rating="0">
+<div class="card locked" data-id="M17" data-rating="8">
         <h2> I’m the Only One Who Can Open the Status Window ~ In a World Where I’m the Only One Who Can See Statuses, I Can Choose All the Cheat Skills and S-Rank Items I Want~</h2>
 	<h3>Chapter 4</h3>
 	<h4>MANGA</h4>
@@ -773,13 +755,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>In this world, when people turn 15, they are granted a skill from the heavens. I, Hiraku Mattoh, was born into a family of Sword Saints and was hailed as a prodigy from a young age. Everyone was certain I would inherit the same title. However, at my skill appraisal ceremony, I received "Unlocker"—a seemingly worthless ability that could only "open what is closed." Disappointed, my family branded it a trash skill and exiled me. Left adrift, I soon discovered its true power. By unlocking my status window, I could freely acquire skills, obtain item drops, and grow stronger without limit.</p>
 
       </div>
 
-<div class="card" data-id="M18" data-rating="0">
+<div class="card locked" data-id="M18" data-rating="9">
         <h2>Global Beast Tamer꞉ I Can See the Path of Evolution</h2>
 	<h3>Chapter 25</h3>
         <img src="pics\M18pic.png">
@@ -797,13 +777,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>After traveling through time, I got the weakest little snowball as my pet, which couldn’t even evolve? Do I really have to be a waste for the rest of my life? Ding! The System lights up! What! I actually saw the hidden evolution route! Who said it was the weakest! Evolve! Ice Queen!</p>
 
       </div>
 
-<div class="card" data-id="M19" data-rating="0">
+<div class="card locked" data-id="M19" data-rating="7">
         <h2>Lord of Summoning! When Anomalies Descend Upon The Human World</h2>
 	<h3>Chapter 12</h3>
         <img src="pics\M19pic.jpg">
@@ -821,13 +799,11 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>As the apocalypse descends, monsters from the game shatter the dimensional barrier and rampage across the world, driving Blue Star’s human civilization to the brink of extinction. Just as the world collapses into chaos, time suddenly rewinds for him—back to the very moment the game first appeared. This time, he’s determined to uncover the mastermind behind it all, protect his home, and ensure the tragedy never repeats. And so begins a race against time… a game of revenge.</p>
 
       </div>
 
-<div class="card" data-id="M20" data-rating="0">
+<div class="card locked" data-id="M20" data-rating="9">
         <h2>The Surviving Player Becomes Unstoppable in His Second Death Game</h2>
 	<h3>Chapter 24</h3>
         <img src="pics\M20pic.png">
@@ -844,8 +820,6 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,9)">★</span>
     <span onclick="rate(this,10)">★</span>
   </div>
-
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
 
         <p>20 years ago, the world flipped on its head.
 
@@ -872,7 +846,7 @@ The second act of the game begins now.</p>
 
       </div>
 
-<div class="card" data-id="M21" data-rating="0">
+<div class="card locked" data-id="M21" data-rating="7">
         <h2>Player Elimination Plan! When Anomalies Descend Upon The Human World</h2>
 	<h3>Chapter 50</h3>
         <img src="pics\M21pic.webp">
@@ -890,13 +864,11 @@ The second act of the game begins now.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The apocalypse prophecy has come true. A dark celestial body draws near, turning the entire Blue Star into a doomsday game. All of humanity has been reduced to NPCs—helpless prey for players from beyond the stars. As the world mutates and players run rampant, despair consumes mankind… Until Yun Qi awakens a hidden class, gaining the power to strike back against the players.</p>
 
       </div>
 
-<div class="card" data-id="M22" data-rating="0">
+<div class="card locked" data-id="M22" data-rating="10">
         <h2>Return of the Back Alley Wizard</h2>
 	<h3>Chapter 16</h3>
         <img src="pics\M22pic.jpg">
@@ -914,8 +886,6 @@ The second act of the game begins now.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>
 『One day, a wyvern took flight. And when I saw it, I decided to retire.』
 
@@ -929,7 +899,7 @@ He had returned to the days when he was still a street rat in the Gray Zone!</p>
 
       </div>
 
-<div class="card" data-id="M23" data-rating="0">
+<div class="card locked" data-id="M23" data-rating="10">
         <h2>Start by signing in and obtaining the Ancient Divine Body</h2>
 	<h3>Chapter 136</h3>
         <img src="pics\M23pic.webp">
@@ -947,13 +917,11 @@ He had returned to the days when he was still a street rat in the Gray Zone!</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Jun Xiaoyao traversed a fantasy world, becoming the divine scion of an ancient and powerful clan. With an invincible background and astonishing talent, he also acquired a sign-in system. Starting by signing in, he obtained a complete Grand Ancient Divine Body. With the system’s assistance, he embarked on a journey step by step towards the pinnacle of the world!</p>
 
       </div>
 
-<div class="card" data-id="M24" data-rating="0">
+<div class="card locked" data-id="M24" data-rating="8">
         <h2>The Akashic Record Which Only I Can Read</h2>
 	<h3>Chapter 55</h3>
         <img src="pics\M24pic.jpg">
@@ -971,8 +939,6 @@ He had returned to the days when he was still a street rat in the Gray Zone!</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>
 “I, who know all the world’s secrets, will change this doomed future!”
 
@@ -984,7 +950,7 @@ With a second chance at life and armed with the wisdom of both past and future, 
 
       </div>
 
-<div class="card" data-id="M25" data-rating="0">
+<div class="card locked" data-id="M25" data-rating="8">
         <h2>Reincarnated as the Grand Duke’s Third Son</h2>
 	<h3>Chapter 8</h3>
         <img src="pics\M25pic.png">
@@ -1002,14 +968,12 @@ With a second chance at life and armed with the wisdom of both past and future, 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>
 He died as a mercenary, held back his entire life by low-born blood. When he opens his eyes again, he finds himself reborn as the third son of a Grand Duke. A noble lineage, a powerful family, and the talent he never had. Everything he once dreamed of is finally his. Determined to rise to the very top, he sets out on a bold new path. The extraordinary noble life of a former mercenary captain turned Grand Duke’s son is about to begin.</p>
 
       </div>
 
-<div class="card" data-id="M26" data-rating="0">
+<div class="card locked" data-id="M26" data-rating="7">
         <h2>The Ultimate Conqueror of the Catacombs</h2>
 	<h3>Chapter 11</h3>
         <img src="pics\M26pic.jpeg">
@@ -1027,14 +991,12 @@ He died as a mercenary, held back his entire life by low-born blood. When he ope
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>
 The Catacombs are labyrinths connected to suddenly appearing gates, where only players awakened with special skills can fight the enemies within to protect humanity. Sota Sezaki, born to player parents, fails to awaken and is scorned as a weirdo because he can see spirits. After entering a gate with his childhood friend, he is nearly killed by the strongest boss, the Queen Spider, and finally awakens a unique skill that lets him inherit the abilities of the dead by resolving their lingering regrets. Guided by the wandering soul of his fallen father, a legendary fire mage, Sota challenges the Catacombs to become the strongest player.</p>
 
       </div>
 
-<div class="card" data-id="M27" data-rating="0">
+<div class="card locked" data-id="M27" data-rating="7">
         <h2>Aiming For Maximal Volume in the Apocalypse</h2>
 	<h3>Chapter 33</h3>
         <img src="pics\M27pic.jpg">
@@ -1052,13 +1014,11 @@ The Catacombs are labyrinths connected to suddenly appearing gates, where only p
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Ten years after humanity’s fall, Earth lies under demonian rule. After losing his sister and his life, Yoon is offered one last chance by an angel statue. Sent back in time with a leveling system, he must reach Lv. 99 to save her and change Earth’s fate. Yoon fights, not for the world, but for her. One brother’s journey to save his sister may be humanity’s last hope.</p>
 
       </div>
 
-<div class="card" data-id="M28" data-rating="0">
+<div class="card locked" data-id="M28" data-rating="7">
         <h2>The Illegitimate Who Devours Weapons</h2>
 	<h3>Chapter 28</h3>
         <img src="pics\M28pic.webp">
@@ -1076,8 +1036,6 @@ The Catacombs are labyrinths connected to suddenly appearing gates, where only p
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The peak of strength in South Korea is the Esteemed Martial Lee Clan. In that martial clan, Lee Cheol was looked down on and chased out because of his status as an illegitimate child.
 
 In order to survive, he lived in shadows, but he was chased down and killed because of his family's schemes. He was then granted a second chance—regression.
@@ -1094,7 +1052,7 @@ But in order to protect himself and his surroundings—in order to protect every
 
       </div>
 
-<div class="card" data-id="M29" data-rating="0">
+<div class="card" data-id="M29" data-rating="7">
         <h2>Artifact-Devouring Player</h2>
 	<h3>Chapter 16</h3>
         <img src="pics\M29pic.webp">
@@ -1112,8 +1070,6 @@ But in order to protect himself and his surroundings—in order to protect every
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>My method in getting stronger is very simple—eating.
 
 I just need to eat artifacts.
@@ -1122,7 +1078,7 @@ I've regressed, so I'll be able to eat as much as I want now, right?</p>
 
       </div>
 
-<div class="card" data-id="M30" data-rating="0">
+<div class="card locked" data-id="M30" data-rating="8">
         <h2>All My Alter Egos Are Tycoons</h2>
 	<h3>Chapter 36</h3>
         <img src="pics\M30pic.webp">
@@ -1140,8 +1096,6 @@ I've regressed, so I'll be able to eat as much as I want now, right?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>A young man, Han Sunghyun, loses his family in an indiscriminate attack by superhumans. While living a reclusive life due to the trauma of the incident, one day, he awakens the ability to control avatars in his place!
 
 “What?! I can send avatars to hunt in dangerous otherworlds while I stay safely at home, just focusing on strengthening my powers?!”
@@ -1150,7 +1104,7 @@ As his avatars grow rapidly, crossing dimensions, races, and professions, Han Su
 
       </div>
 
-<div class="card" data-id="M31" data-rating="0">
+<div class="card" data-id="M31" data-rating="8">
         <h2>The Magic Genius of the Marquis House</h2>
 	<h3>Chapter 31</h3>
         <img src="pics\M31pic.png">
@@ -1168,8 +1122,6 @@ As his avatars grow rapidly, crossing dimensions, races, and professions, Han Su
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>"To stay alive… I have no choice but to become a genius. From today, I’ll do my best, so please support me."
 Lee Hyun-woo finds himself possessing Kyle Seltarion, an extra character from a game where he used to reign as the world’s number one player.
 Considering the game’s storyline, he soon faces the imminent death of Kyle, who, on top of being on death's door, can't use magic or aura and has a terrible reputation. How did he end up in the body of such a character?
@@ -1179,7 +1131,7 @@ To overcome this situation, he needs to gather allies and boost his reputation! 
 
       </div>
 
-<div class="card" data-id="M32" data-rating="0">
+<div class="card locked" data-id="M32" data-rating="8">
         <h2>The Great Mage of the Hero's Party Reincarnate</h2>
 	<h3>Chapter 77</h3>
         <img src="pics\M32pic.jpg">
@@ -1197,15 +1149,13 @@ To overcome this situation, he needs to gather allies and boost his reputation! 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>At age 13, the genius wizard Rin embarked on a journey with Lista and the hero party to defeat the great evil known as “the Abyss,” which sought to plunge the world into chaos. But as the battle grew more intense, Rin’s body succumbed to the dark poison of the Abyss, putting his life in grave danger.
 
 With the words “I’ll come back,” Rin’s soul entered a forced dormancy, only to reawaken 300 years later as a noble boy. Starting his second life in a peaceful world, Rin discovers that on one side of the world, the destined forces of darkness are beginning to stir once more</p>
 
       </div>
 
-<div class="card" data-id="M33" data-rating="0">
+<div class="card locked" data-id="M33" data-rating="10">
         <h2>Solo Leveling</h2>
 	<h3>Completed</h3>
         <img src="pics\M33pic.png">
@@ -1223,13 +1173,11 @@ With the words “I’ll come back,” Rin’s soul entered a forced dormancy, o
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>In a world where hunters, human warriors who possess magical abilities, must battle deadly monsters to protect mankind from certain annihilation, a notoriously weak hunter named Sung Jinwoo finds himself in a seemingly endless struggle for survival. One day, after narrowly surviving an overwhelmingly powerful dungeon that nearly wipes out his entire party, a mysterious program called the System chooses him as its sole player and in turn, gives him the extremely rare ability to level up in strength, possibly beyond any known limits. Follow Jinwoo's journey as he fights against all kinds of enemies, both man and monster, to discover the secrets of the dungeons and the true source of his powers.</p>
 
       </div>
 
-<div class="card" data-id="M34" data-rating="0">
+<div class="card locked" data-id="M34" data-rating="10">
         <h2>The Frozen Player Returns</h2>
 	<h3>Completed</h3>
         <img src="pics\M34pic.png">
@@ -1247,15 +1195,13 @@ With the words “I’ll come back,” Rin’s soul entered a forced dormancy, o
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>When Seo Junho and his companions sacrificed themselves to defeat the Frost Queen, they thought they were restoring peace to Earth. But after 25 years of being frozen solid, Junho thaws out only to find that nine more floors appeared in his absence, only one of which has been cleared!
 
 As the only one who holds the key to clearing the next floor and defrosting his friends, Junho must step up once again. But has this hero been in hibernation too long to take on the world’s fearsome new foes?</p>
 
       </div>
 
-<div class="card" data-id="M35" data-rating="0">
+<div class="card locked" data-id="M35" data-rating="9">
         <h2>Relife Player</h2>
 	<h3>Chapter 66</h3>
         <img src="pics\M35pic.jpg">
@@ -1273,13 +1219,11 @@ As the only one who holds the key to clearing the next floor and defrosting his 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>After 30% of Korea's population was massacred by monsters, Players were the people's last hope. In a battle against those monsters, a Player named Noh Eunha was on the verge of death, but he was miraculously sent back to when he was a baby! Now that he knows what's to come, he's building up the mana he lacked in his past life while trying to convince his parents not to make the same choices that led to their deaths. But how can a 6-year-old Eunha convince his parents that he knows best?</p>
 
       </div>
 
-<div class="card" data-id="M36" data-rating="0">
+<div class="card locked" data-id="M36" data-rating="7">
         <h2>Bogus Skill 'Fruitmaster' ~About that time I became able to eat unlimited numbers of Skill Fruits (that kill you)</h2>
 	<h3>Chapter 21</h3>
 	<h4>MANGA/ANIME</h4>
@@ -1298,13 +1242,11 @@ As the only one who holds the key to clearing the next floor and defrosting his 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Light was a boy who dreamed of becoming an adventurer. He went to the temple with his childhood friend to get a skill fruit. While his childhood friend got the rare Sword Saint skill, Light obtained the Nut Master skill which only improves farming ability. Light is forced to abandon his dream of becoming an adventurer to start working as a farmer. Although warned to never eat a second skill fruit because he will get poisoned and died, Light's unique skill allows him to eat as many skill fruits as he wants to obtain multiple skills.</p>
 
       </div>
 
-<div class="card" data-id="M37" data-rating="0">
+<div class="card" data-id="M37" data-rating="8">
         <h2>The Legendary Moonlight Sculptor</h2>
 	<h3>Chapter 101</h3>
         <img src="pics\M37pic.jpg">
@@ -1322,13 +1264,11 @@ As the only one who holds the key to clearing the next floor and defrosting his 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The man forsaken by the world, the man a slave to money and the man known as the legendary God of War in the highly popular MMORPG Continent of Magic. With the coming of age, he decides to say goodbye, but the feeble attempt to earn a little something for his time and effort ripples into an effect none could ever have imagined. Through a series of coincidences, his legendary avatar is sold for 3 billion 90 million won ($2.7 million), bringing great joy to him, only to plunge him into despair at losing almost all of it to vicious loan sharks. With revelation of money through gaming, he rises from the abyss with new found resolve and steps forward into the new age of games led by the first ever Virtual Reality MMORPG, Royal Road. This is the legend of Lee Hyun on his path to becoming Emperor with only his family loving heart, his boundless desire for money, his unexpected mind, his diligently forged body and the talent of hard work backing him. This is the legend of the lowest becoming the strongest. This is the legend of WEED.</p>
 
       </div>
 
-<div class="card" data-id="M38" data-rating="0">
+<div class="card" data-id="M38" data-rating="7">
         <h2>Reborn As The Heavenly Demon</h2>
 	<h3>Chapter 60</h3>
         <img src="pics\M38pic.webp">
@@ -1346,15 +1286,13 @@ As the only one who holds the key to clearing the next floor and defrosting his 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Cheon Hajin, popularly called as the Iron-Blooded Alliance Leader, wakes up in the body of “Byeok Lidan”—the disgrace of his family! His hobby is gambling, and he has been locked in a dark warehouse for a long time. Overnight, Cheon Hajin went from being the greatest expert of Jianghu to the worst possible trash.
 
 Let's start from the scratch and accomplish everything I could not achieve in my previous life.</p>
 
       </div>
 
-<div class="card" data-id="M39" data-rating="0">
+<div class="card locked" data-id="M39" data-rating="9">
         <h2>Whispers of telepathy</h2>
 	<h3>Chapter 13</h3>
         <img src="pics\M39pic.jpg">
@@ -1372,13 +1310,11 @@ Let's start from the scratch and accomplish everything I could not achieve in my
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>After being unfairly crushed to death, Jiujiu ends up in the underworld, bickering with Yama. In a bid to silence her endless rambling, he reincarnates her into a novel—as a princess. But not just any princess—she’s an exiled royal trapped in the infamous Cold Palace! One day, thanks to the scheming heroine of the novel, Jiujiu’s biological father—the tyrant emperor—flies into a rage and prepares to beat her to death! Burning with fury and injustice, Jiujiu cries out in her heart: “With a cruel, ruthless tyrant completely blind to right and wrong, it’s no wonder the Western Chu Kingdom will fall in ten years! It’s a miracle it could even last that long!” To her surprise, the emperor suddenly freezes—he can hear her thoughts! With her mind exposed, has Jiujiu just sealed her fate—or changed her destiny forever?!</p>
 
       </div>
 
-<div class="card" data-id="M40" data-rating="0">
+<div class="card" data-id="M40" data-rating="7">
         <h2>Emperor of Solo Play</h2>
 	<h3>Chapter 30</h3>
         <img src="pics\M40pic.webp">
@@ -1396,8 +1332,6 @@ Let's start from the scratch and accomplish everything I could not achieve in my
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The launch of the virtual reality game Warlord in the year 2035 changed the world.
 
 Ahn Jaehyun was one of many who sought to change his fate within it.
@@ -1414,7 +1348,7 @@ And so begins his thrilling, ruthless, solo-kill gaming life!</p>
 
       </div>
 
-<div class="card" data-id="M41" data-rating="0">
+<div class="card locked" data-id="M41" data-rating="8">
         <h2>Eat Before You Go</h2>
 	<h3>Chapter 22</h3>
         <img src="pics\M41pic.jpg">
@@ -1432,8 +1366,6 @@ And so begins his thrilling, ruthless, solo-kill gaming life!</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Kang Cheol-ho was once the mightiest warrior— summoned to another world, where he fought and defeated the Demon King after decades of war.
 Now, 30 years later, he finally returns to Earth… only to find it in the middle of a new crisis: the age of monster raids.
 But Cheol-ho is tired. He’s had enough of bloodshed, battles, and glory.
@@ -1443,7 +1375,7 @@ A gentle, heartwarming story about food, healing, and second chances.</p>
 
       </div>
 
-<div class="card" data-id="M42" data-rating="0">
+<div class="card locked" data-id="M42" data-rating="8">
         <h2>Devil Summoner, I am the Abyss Lord</h2>
 	<h3>Chapter 32</h3>
         <img src="pics\M42pic.jpg">
@@ -1461,13 +1393,11 @@ A gentle, heartwarming story about food, healing, and second chances.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Lin Tianhao, who has transmigrated to another world, attends the Job Change Ceremony and ends up taking on a “sewer-tier” job — Summoner. Just as everyone is mocking him, believing his future is doomed, he suddenly awakens a system and gains the skill [Demonic Sacrifice]! Who says the Summoner class is trash? I have the strongest SSS-rank talent</p>
 
       </div>
 
-<div class="card" data-id="M43" data-rating="0">
+<div class="card" data-id="M43" data-rating="8">
         <h2>The Dark Swordsman Returns</h2>
 	<h3>Chapter 22</h3>
         <img src="pics\M43pic.jpg">
@@ -1484,8 +1414,6 @@ A gentle, heartwarming story about food, healing, and second chances.</p>
     <span onclick="rate(this,9)">★</span>
     <span onclick="rate(this,10)">★</span>
   </div>
-
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
 
         <p>On a battlefield at the brink of annihilation, unknown soldier Gray Lee had his chest pierced through—and he awaited death.
 
@@ -1511,7 +1439,7 @@ With the power to transcend time and his memories of the future, Gray sets out t
 
       </div>
 
-<div class="card" data-id="M44" data-rating="0">
+<div class="card locked" data-id="M44" data-rating="9">
         <h2>The Player Hides His Past</h2>
 	<h3>Chapter 54</h3>
         <img src="pics\M44pic.webp">
@@ -1529,13 +1457,11 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The virtual reality game “History of the Archana Continent” became part of reality, and “players” who were synchronized with humans appeared to protect the world. Lee Hoyeol, who was an ordinary salaryman, took over the body of the character he created in middle school, "Grandfell Claudi Arpeus Romeo.” Under normal circumstances, it would have been an absolute failure of a career, but Grandfell, whose occupation is a “demon hunter,” becomes extremely proud in front of demons! The only demon hunter in this world, Grandfell (= Lee Hoyeol) starts to make a move!</p>
 
       </div>
 
-<div class="card" data-id="M45" data-rating="0">
+<div class="card locked" data-id="M45" data-rating="8">
         <h2>The Perfect Hybrid</h2>
 	<h3>Chapter 91</h3>
         <img src="pics\M45pic.webp">
@@ -1553,13 +1479,11 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Earth had been invaded by creatures from another dimension, and it has been a few years since peace was restored, thanks to the help of various supernatural humans that revealed themselves during this invasion. Gwangik Yu, our protagonist, was born between two supernatural parents. His father is an immortal while his mother is a transformer with exceptional physical abilities along with the power to transform into beasts. Neither parent, however, is aware of each spouse’s power and both want Gwangik to follow in their footsteps.</p>
 
       </div>
 
-<div class="card" data-id="M46" data-rating="0">
+<div class="card locked" data-id="M46" data-rating="7">
         <h2>The Constellation That Returned From Hell</h2>
 	<h3>Chapter 45</h3>
         <img src="pics\M46pic.webp">
@@ -1577,13 +1501,11 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Yeonseung Choi, the first human ever to become a celestial! He goes off to train in the Abyss to stop other celestials from swallowing Earth whole. Will he be able to protect Earth…?</p>
 
       </div>
 
-<div class="card" data-id="M47" data-rating="0">
+<div class="card" data-id="M47" data-rating="6">
         <h2>Warrior High School - Dungeon Raid Department</h2>
 	<h3>Chapter 46</h3>
         <img src="pics\M47pic.webp">
@@ -1601,13 +1523,11 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>An Earth in the 21st century that has fused with another world. An era of "dungeons" teeming with monsters and the "adventurers" that raid them.Also, the most elite educational facility in South Korea that fosters these adventurers: "Warrior High School."Although he was once considered the greatest adventurers in Asia, he has been accused with false chargers and, while dungeon smuggling in order to pay for his sick father's medical treatments, Yoo Jaryong comes across one teen."You there, get in Warrior High School."This is a story about a young man who's lost his dream, hiding his identity, finding himself once again.</p>
 
       </div>
 
-<div class="card" data-id="M48" data-rating="0">
+<div class="card locked" data-id="M48" data-rating="7">
         <h2>I'm Not That Kind of Talent</h2>
 	<h3>Chapter 76</h3>
         <img src="pics\M48pic.webp">
@@ -1625,13 +1545,11 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>A talented individual who is respected by many and welcomed anywhere? Not at all! A bloodthirsty battle fanatic who knows no defeat? Couldn’t be further from the truth! In reality, Deon Hardt is a sickly human who coughs up blood from receiving the tiniest bit of stress and gets sunburns from standing in the sun for ten minutes. But due to an unfortunate misunderstanding, he becomes “Demon Arut,” the notorious 0th corps commander of the demon army and the demon king’s joker. Caught in a war between humans and demonkind, Deon must find a way to survive!</p>
 
       </div>
 
-<div class="card" data-id="M49" data-rating="0">
+<div class="card" data-id="M49" data-rating="7">
         <h2>The Book of Abyss</h2>
 	<h3>Chapter 40</h3>
         <img src="pics\M49pic.png">
@@ -1649,13 +1567,11 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>One day, after finishing a novel with an apocalyptic theme, Chang Ting found that the world was quietly transforming, as if the events from the novel were unfolding in reality. From the mysterious disappearance of skyscrapers to the appearance of monsters at fixed times and locations, everything was developing according to the script of the novel. Chang Ting realized that in order to survive, he needed to acquire the special abilities mentioned in the novel. Using his advance knowledge of the plot, he waited patiently at the location where the first Abyssal Seeds were supposed to appear. When the time came, he successfully gained the exclusive talents described in the novel, becoming one of the first individuals with the ability to confront the challenges of the world. The apocalypse was inevitable, but Chang Ting, armed with the knowledge from the novels he had read, was ready to face the impending conclusion. As the plot he had encountered in novels approached its climax, the origin of the Abyssal Seeds was about to be revealed, unraveling all the secrets surrounding the impending apocalypse!</p>
 
       </div>
 
-<div class="card" data-id="M50" data-rating="0">
+<div class="card locked" data-id="M50" data-rating="8">
         <h2>I Came Back as a Martial Genius</h2>
 	<h3>Chapter 70</h3>
         <img src="pics\M50pic.jpg">
@@ -1673,8 +1589,6 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Demons came pouring from a portal that appeared out of nowhere and caused the Cataclysm. But all hope is not lost thanks to the Awakeners, people who can fight these demons.
 
 Lee Jun, a D-rank Awakener, is one of them. He fought demons heroically, but as someone who inherited nothing from his family, he could only go so far.
@@ -1683,7 +1597,7 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
 
       </div>
 
-<div class="card" data-id="M51" data-rating="0">
+<div class="card" data-id="M51" data-rating="7">
         <h2>The Lone Necromancer</h2>
 	<h3>Chapter 85</h3>
         <img src="pics\M51pic.webp">
@@ -1701,13 +1615,11 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Seongwu is a former special forces soldier who has returned to college after completing his national service. His ordinary life as a student is shattered during class one day when he and his fellow students are faced with a mysterious prompt asking them to “select a role.” Seongwu chooses the necromancer, a rare ability that grants him the power to control the undead. With the campus and outside world seemingly on the brink of collapse, Seongwu must use his newfound powers to battle fearsome monsters and help save his fellow students. But will they make it out alive?</p>
 
       </div>
 
-<div class="card" data-id="M52" data-rating="0">
+<div class="card locked" data-id="M52" data-rating="8">
         <h2>Stuck in the Tower</h2>
 	<h3>Chapter 77</h3>
         <img src="pics\M52pic.webp">
@@ -1725,13 +1637,11 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>A world where gates open and monsters come out to play— Hyunsoo longs to enter the tower and take on the role a sa hunter. But in reality, he works as a porter and meat shield of E Class Hunters who are worse than gangsters. Moreover, he was taken advantage by this hunters to the point where he was about to meet death. As soon as he thought that he was dead, he was summoned to the tower, was revived back from the dead, and began climbing up the tower to become a hunter that he had been longing to be. Depending on how much coins one has, the tower offers them the chance to challenge it. Hyunsoo looks at the number of coins he has…. [You have an infinite number of coins!] “Then I’ll awaken myself in the 100th floor and go home!!!” Hyunsoo, who is stucked in the tower, begins his conquer!</p>
 
       </div>
 
-<div class="card" data-id="M53" data-rating="0">
+<div class="card" data-id="M53" data-rating="7">
         <h2>I Got Lucky and Pulled a 10th Rank Summon</h2>
 	<h3>Chapter 43</h3>
         <img src="pics\M53pic.webp">
@@ -1749,13 +1659,11 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>In the most realistic VR game “Last Savior”. Every player will get a chance to summon a Follower Spirit. The Follower Spirits are ranked from 1 – 9. And Obviously, everyone wants a rank-9 spirit. However, the one that I pulled has an unheard-of rank… [What on earth is going on?] “Yeah…” I don’t get it either. 10-Star Player Strengthened by Drawing Card</p>
 
       </div>
 
-<div class="card" data-id="M54" data-rating="0">
+<div class="card locked" data-id="M54" data-rating="8">
         <h2>Monster Pet Evolution</h2>
 	<h3>Chapter 183</h3>
         <img src="pics\M54pic.webp">
@@ -1773,13 +1681,11 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The world experienced a cataclysm and monsters are now roaming the Earth. Born out of a necessity to subjugate these monsters, this new era saw the rise of a new profession. Monster Trainers – individuals who conquer, cultivate, and train these monsters. Thus begins the story of Gao Peng. An ambitious young man with dreams of his own, who gets launched right into the golden age of monster cultivation. Gao Peng: “Even if it’s a loach, I’ll be able to evolve it into a dragon that can soar to the heavens!”</p>
 
       </div>
 
-<div class="card" data-id="M55" data-rating="0">
+<div class="card" data-id="M55" data-rating="7">
         <h2>I Just Want to Game in Peace</h2>
 	<h3>Chapter 129</h3>
         <img src="pics\M55pic.jpg">
@@ -1797,13 +1703,11 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Dimensional storms have descended and many extradimensional areas have appeared on Earth. All kinds of mysterious extradimensional lives are born in these extradimensional areas. In order to become strong, humans started to enter these dangerous areas to hunt and kill extradimensional creatures. But I, Zhou Wen, have made these extradimensional areas into instance dungeons in my mobile game. By levelling up my game character, I will be levelling up my strength in reality. When others are risking their lives, I’m here getting stronger by gaming.</p>
 
       </div>
 
-<div class="card" data-id="M56" data-rating="0">
+<div class="card locked" data-id="M56" data-rating="10">
         <h2>Accidentally Summoned (Oops, sorry.)</h2>
 	<h3>Chapter 60</h3>
         <img src="pics\M56pic.webp">
@@ -1821,13 +1725,11 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>After a god screws up and accidentally takes high schooler Shou's life, he offers him reincarnation with a gift to make up for it. Shou asks to retain all his old memories for the new life. Shou is reborn as Will, a noble's son in a world where magic use is common and involves knowledge of kanji characters. With all his memories, he's a brilliant toddler, and when he experiments with magic, he finds that he has an amazing talent for it! What's more, though he was smart but unloved in his old life, in his new life he has a mother and a father who both love him deeply. His future as Will is looking very bright!</p>
 
       </div>
 
-<div class="card" data-id="M57" data-rating="0">
+<div class="card locked" data-id="M57" data-rating="9">
         <h2>Chronicles of an Aristocrat Reborn in Another World</h2>
 	<h3>Chapter 00</h3>
         <img src="pics\M57pic.jpg">
@@ -1845,8 +1747,6 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>The main character, Shiina Kazuya is killed by a stranger while trying to protect his childhood friend’s younger sister. He was reborn as Cain von Silford, the third son of an Aristocrat, in a world of magic and swords.
 Cain will grow up surrounded by Gods who don’t know self-restraint, the nobles of the Kingdom, and young women.
 
@@ -1854,7 +1754,7 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
 
       </div>
 
-<div class="card" data-id="M58" data-rating="0">
+<div class="card locked" data-id="M58" data-rating="10">
         <h2>The Reincarnated Prince Wants to be Lazy</h2>
 	<h3>Chapter 27</h3>
         <img src="pics\M58pic.jpg">
@@ -1872,13 +1772,11 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Haruto is an ordinary Japanese student who is tired of constant work and study. After getting hit by truck, he is reincarnated as Phil Graceheart, the youngest child in a royal family. When Phil is three years old, he gets a head injury that causes him to remember his former life. Armed with the knowledge of his past self, he is now on a mission to live a completely relaxing and carefree life.</p>
 
       </div>
 
-<div class="card" data-id="M59" data-rating="0">
+<div class="card locked" data-id="M59" data-rating="10">
         <h2>Immortal, Invincible</h2>
 	<h3>Chapter 160</h3>
         <img src="pics\M59pic.webp">
@@ -1895,8 +1793,6 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,9)">★</span>
     <span onclick="rate(this,10)">★</span>
   </div>
-
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
 
         <p>rom a thieving child to one who would shake the world. Rising to the title of Immortal Master, one of the Godly Twelve Stars, but ultimately betrayed. Now, he has been given a chance to change that, and create a better future- for both him, and the world.</p>
 
@@ -1919,8 +1815,6 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,10)">★</span>
   </div>
 
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
-
         <p>Reincarnated king in a magic world.</p>
 
       </div>
@@ -1941,8 +1835,6 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,9)">★</span>
     <span onclick="rate(this,10)">★</span>
   </div>
-
-<button class="lock-btn" onclick="lockRating(this)">🔒 Lock rating</button>
 
         <p>Reincarnated king in a magic world.</p>
 
@@ -1994,22 +1886,22 @@ function setCarousel() {
 <script>
 function rate(star, rating) {
   const card = star.closest(".card");
-  if (card.classList.contains("locked")) return;  // ← ADD THIS LINE
+  if (card.classList.contains("locked")) return;
 
   const id = card.dataset.id;
 
   card.dataset.rating = rating;
-
-  // Save rating
   localStorage.setItem("rating-" + id, rating);
 
-  // Update stars visually
+  applyStars(card, rating);
+  sortCards();
+}
+
+function applyStars(card, rating) {
   const stars = card.querySelectorAll(".stars span");
   stars.forEach((s, i) => {
     s.classList.toggle("active", i < rating);
   });
-
-  sortCards();
 }
 
 function sortCards() {
@@ -2017,43 +1909,17 @@ function sortCards() {
   const cards = Array.from(track.children);
 
   cards.sort((a, b) => {
-    return b.dataset.rating - a.dataset.rating;
+    return (b.dataset.rating || 0) - (a.dataset.rating || 0);
   });
 
   cards.forEach(card => track.appendChild(card));
 }
+</script>
 
-function loadRatings() {
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach(card => {
-    const id = card.dataset.id;
-    const savedRating = localStorage.getItem("rating-" + id);
-
-    if (savedRating) {
-      card.dataset.rating = savedRating;
-
-      const stars = card.querySelectorAll(".stars span");
-      stars.forEach((s, i) => {
-        s.classList.toggle("active", i < savedRating);
-      });
-    }
-  // 🔒 ADD THIS PART
-    const locked = localStorage.getItem("locked-" + id);
-    if (locked) {
-      card.classList.add("locked");
-      const btn = card.querySelector(".lock-btn");
-      if (btn) {
-        btn.textContent = "🔒 Locked";
-        btn.disabled = true;
-      }
-    }
-  });
-
-  sortCards();
+<script>
+function isMobile() {
+  return window.innerWidth <= 768;
 }
-
-window.onload = loadRatings;
 </script>
 
 
@@ -2061,7 +1927,17 @@ window.onload = loadRatings;
 let index = 0;
 const track = document.getElementById("track");
 
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
 function update() {
+  // 🚫 Never use transform on phone
+  if (isMobile()) {
+    track.style.transform = "none";
+    return;
+  }
+
   const viewport = document.querySelector(".viewport");
   const card = track.children[index];
   if (!card) return;
@@ -2069,7 +1945,8 @@ function update() {
   const viewportCenter = viewport.offsetWidth / 2;
   const cardCenter = card.offsetLeft + card.offsetWidth / 2;
 
-  track.style.transform = `translateX(${viewportCenter - cardCenter}px)`;
+  track.style.transform =
+    `translateX(${viewportCenter - cardCenter}px)`;
 }
 
 function next() {
@@ -2086,8 +1963,10 @@ function prev() {
   }
 }
 
+// 🔁 Re-center ONLY when switching desktop/mobile
 window.addEventListener("resize", update);
 </script>
+
 
 <script>
 function searchCards() {
@@ -2117,19 +1996,21 @@ function searchCards() {
 </script>
 
 <script>
-function lockRating(button) {
-  const card = button.closest(".card");
-  const id = card.dataset.id;
+function loadRatings() {
+  document.querySelectorAll(".card").forEach(card => {
+    const id = card.dataset.id;
+    const savedRating = localStorage.getItem("rating-" + id);
 
-  card.classList.add("locked");
-  localStorage.setItem("locked-" + id, "true");
-
-  button.textContent = "🔒 Locked";
-  button.disabled = true;
+    if (savedRating) {
+      card.dataset.rating = savedRating;
+      applyStars(card, savedRating);
+    }
+  });
 }
+
+window.addEventListener("load", loadRatings);
 </script>
 
 
 </body>
 </html>
-
