@@ -198,58 +198,42 @@ body::before {
 
 @media (max-width: 768px) {
 
-  /* same layout width as desktop */
-  .wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  /* scrolling container */
+  /* scroll container */
   .viewport {
-    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    
-    padding: 0 16px;
+
+    scrollbar-width: none; /* Firefox */
   }
 
-  /* keep same structure */
+  /* hide scrollbar (Chrome/Safari) */
+  .viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* track just lays out cards */
   .track {
     display: flex;
-    gap: 20px;
-    transform: none !important;
+    gap: 16px;
+    transform: none !important; /* JS OFF */
   }
 
-  /* SAME CARD LOOK — just responsive */
+  /* card size (adjust as you like) */
   .card {
-    width: 120px;          /* desktop size */
-    max-width: 120px;       /* fit phone */
-    margin: 0 auto;
+    flex: 0 0 70vw;      /* 👈 controls size */
     scroll-snap-align: center;
-    flex-shrink: 0;
   }
 
-  /* remove arrows */
+  /* arrows are visually + functionally dead */
   .arrow {
     display: none !important;
-    pointer-events: none;
-    opacity: 0 !important;
-  }
-
-  body {
-    margin: 0;
-    padding-top: 40px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-attachment: scroll;
+    pointer-events: none !important;
   }
 }
-
 /*--------------------------------*/
 
 .search-box {
