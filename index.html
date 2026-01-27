@@ -236,7 +236,8 @@ body::before {
 
   /* Arrows hidden on phone */
   .arrow {
-    display: none;
+    display: none !important;
+    pointer-events: none !important;
   }
 }
 
@@ -1950,7 +1951,6 @@ function isMobile() {
 function update() {
   if (isMobile()) {
     // 🔥 HARD RESET FOR MOBILE
-    track.style.transform = "none";
     return;
   }
 
@@ -1965,7 +1965,7 @@ function update() {
 }
 
 function next() {
-  if (isMobile()) return; // ❌ no JS movement on phone
+  if (isMobile()) return; // 🚫 mobile = no arrows
   if (index < track.children.length - 1) {
     index++;
     update();
