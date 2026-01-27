@@ -12,7 +12,7 @@
       margin: 0;
       padding-top: 40px;
 
-  background-image: url("pics/Backgroundpic.jpg"); /* your image */
+  background-image: url("pics/backgroundpic.jpg"); /* your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1999,13 +1999,25 @@ function searchCards() {
 function loadRatings() {
   document.querySelectorAll(".card").forEach(card => {
     const id = card.dataset.id;
-    const savedRating = localStorage.getItem("rating-" + id);
 
-    if (savedRating) {
-      card.dataset.rating = savedRating;
-      applyStars(card, savedRating);
-    }
+    // ⭐ default rating from HTML
+    const htmlRating = parseInt(card.dataset.rating || 0);
+
+    // 💾 saved user rating
+    const savedRating = parseInt(
+      localStorage.getItem("rating-" + id)
+    );
+
+    // 🎯 decide which rating to use
+    const finalRating = !isNaN(savedRating)
+      ? savedRating
+      : htmlRating;
+
+    card.dataset.rating = finalRating;
+    applyStars(card, finalRating);
   });
+
+  sortCards(); // ⭐ now sorting works
 }
 
 window.addEventListener("load", loadRatings);
@@ -2014,4 +2026,3 @@ window.addEventListener("load", loadRatings);
 
 </body>
 </html>
-
