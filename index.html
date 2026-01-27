@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One Card Carousel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
@@ -197,48 +198,48 @@ body::before {
 
 @media (max-width: 768px) {
 
-  /* 🔥 The ONLY scroll container */
-  .viewport {
+  /* same layout width as desktop */
+  .wrapper {
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* scrolling container */
+  .viewport {
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-
-    padding: 16px;
   }
 
+  /* keep same structure */
   .track {
     display: flex;
-    gap: 16px;
-    transform: none !important; /* disable JS movement */
+    gap: 20px;
+    transform: none !important;
   }
 
+  /* SAME CARD LOOK — just responsive */
   .card {
-    flex: 0 0 85vw;
+    width: 500px;          /* desktop size */
+    max-width: 85vw;       /* fit phone */
+    margin: 0 auto;
     scroll-snap-align: center;
+    flex-shrink: 0;
   }
 
-  /* hide arrows completely */
+  /* remove arrows */
   .arrow {
     display: none !important;
     pointer-events: none;
   }
 
-  /* keep layout stable */
   body {
-    margin: 0;
     overflow-x: hidden;
     background-attachment: scroll;
-  }
-
-  .wrapper {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    margin: 0 auto;
   }
 }
 
