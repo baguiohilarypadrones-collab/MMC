@@ -252,29 +252,40 @@ body::before {
   opacity: 1;
 }
 
-@media (max-width: 768px) {
-  .viewport {
-    width: 100%;
-    overflow-x: auto;              /* ✅ allow horizontal scroll */
-    -webkit-overflow-scrolling: touch; /* ✅ smooth iOS scrolling */
-    scroll-snap-type: x mandatory; /* optional: snap cards */
-  }
+/* ✅ Always show horizontal scrollbar under carousel */
+.viewport {
+  overflow-x: auto;                 /* allow horizontal scroll */
+  overflow-y: hidden;               /* no vertical scroll */
+  -webkit-overflow-scrolling: touch;/* smooth iOS scrolling */
+  scroll-snap-type: x mandatory;    /* optional: snap cards */
+  padding-bottom: 12px;             /* space for scrollbar */
+}
 
-  .track {
-    display: flex;
-    gap: 16px;                     /* spacing between cards */
-    transform: none !important;    /* disable JS translate on mobile */
-  }
+/* style scrollbar */
+.viewport::-webkit-scrollbar {
+  height: 8px;                      /* scrollbar thickness */
+}
 
-  .card {
-    flex: 0 0 85%;                 /* card width relative to viewport */
-    scroll-snap-align: center;     /* snap each card to center */
-  }
+.viewport::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
 
-  /* hide arrows on mobile */
-  .arrow {
-    display: none !important;
-  }
+.viewport::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.5);
+  border-radius: 10px;
+}
+
+/* cards stay side by side */
+.track {
+  display: flex;
+  gap: 20px;
+  transform: none !important;       /* disable JS translate */
+}
+
+.card {
+  flex: 0 0 280px;                  /* fixed card width */
+  scroll-snap-align: start;         /* snap each card */
 }
 
 </style>
@@ -2019,23 +2030,24 @@ function goToCarouselCard(carouselNumber, cardIndex) {
 
   requestAnimationFrame(() => {
     const carousel = document.getElementById("carousel" + carouselNumber);
-    const track = carousel.querySelector(".track");
-    const cards = track.children;
+    const viewport = carousel.querySelector(".viewport");
+    const cards = viewport.querySelectorAll(".card");
 
     if (!cards.length) return;
 
-    const cardWidth = cards[0].offsetWidth + 20;
+    const targetCard = cards[cardIndex];
 
-    const viewport = carousel.querySelector(".viewport");
+    // ✅ get the card’s position relative to the viewport
+    const cardLeft = targetCard.offsetLeft;
+    const cardWidth = targetCard.offsetWidth;
     const viewportWidth = viewport.offsetWidth;
 
-const offset =
-  cardIndex * cardWidth - (viewportWidth / 2 - cardWidth / 2);
+    // ✅ scroll so the card is centered
+    const scrollPosition = cardLeft - (viewportWidth / 2 - cardWidth / 2);
 
-track.style.transform = `translateX(${-offset}px)`;
+    viewport.scrollTo({ left: scrollPosition, behavior: "smooth" });
   });
 }
-
 
 </script>
 
@@ -2193,7 +2205,25 @@ function rate(star, rating) {
 window.addEventListener("DOMContentLoaded", loadRatings);
 </script>
 
+<script>
+document.querySelectorAll(".carousel").forEach(carousel => {
+  const viewport = carousel.querySelector(".viewport");
+  const cards = carousel.querySelectorAll(".card");
+  const left = carousel.querySelector(".arrow.left");
+  const right = carousel.querySelector(".arrow.right");
 
+  // card width + gap
+  const cardWidth = cards[0].offsetWidth + 20;
+
+  left.addEventListener("click", () => {
+    viewport.scrollBy({ left: -cardWidth, behavior: "smooth" });
+  });
+
+  right.addEventListener("click", () => {
+    viewport.scrollBy({ left: cardWidth, behavior: "smooth" });
+  });
+});
+</script>
 
 </body>
 </html>
