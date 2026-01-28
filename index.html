@@ -1923,30 +1923,28 @@ function enableGridClick() {
     // Only in grid view
     if (!track.classList.contains("grid-view")) return;
 
-   if (isMobile()) return; // 🚫 mobile uses native scroll
+    // Switch back to carousel
+    setCarousel();
 
-// Switch back to carousel
-setCarousel();
+    const cards = Array.from(track.children);
+    const targetIndex = cards.indexOf(card);
 
-const cards = Array.from(track.children);
-const targetIndex = cards.indexOf(card);
+    if (isMobile()) {
+      // 📱 MOBILE: native scroll to tapped card
+      const viewport = document.querySelector(".viewport");
+      const targetCard = cards[targetIndex];
 
-if (isMobile()) {
-  // 📱 MOBILE: scroll to the exact card
-  const viewport = document.querySelector(".viewport");
-  const targetCard = cards[targetIndex];
-
-  viewport.scrollTo({
-    left: targetCard.offsetLeft - (viewport.offsetWidth - targetCard.offsetWidth) / 2,
-    behavior: "smooth"
-  });
-
-} else {
-  // 🖥 DESKTOP: keep existing behavior
-  index = targetIndex;
-  update();
-}
-
+      viewport.scrollTo({
+        left:
+          targetCard.offsetLeft -
+          (viewport.offsetWidth - targetCard.offsetWidth) / 2,
+        behavior: "smooth"
+      });
+    } else {
+      // 🖥 DESKTOP: original behavior
+      index = targetIndex;
+      update();
+    }
   });
 }
 
