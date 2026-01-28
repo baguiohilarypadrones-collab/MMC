@@ -1925,9 +1925,27 @@ function enableGridClick() {
 
    if (isMobile()) return; // 🚫 mobile uses native scroll
 
+// Switch back to carousel
 setCarousel();
-index = Array.from(track.children).indexOf(card);
-update();
+
+const cards = Array.from(track.children);
+const targetIndex = cards.indexOf(card);
+
+if (isMobile()) {
+  // 📱 MOBILE: scroll to the exact card
+  const viewport = document.querySelector(".viewport");
+  const targetCard = cards[targetIndex];
+
+  viewport.scrollTo({
+    left: targetCard.offsetLeft - (viewport.offsetWidth - targetCard.offsetWidth) / 2,
+    behavior: "smooth"
+  });
+
+} else {
+  // 🖥 DESKTOP: keep existing behavior
+  index = targetIndex;
+  update();
+}
 
   });
 }
@@ -2001,10 +2019,8 @@ function isMobile() {
 
 function update() {
   if (isMobile()) {
-    // 🚫 NEVER move carousel on mobile
-    track.style.transform = "none";
-    return;
-  }
+  return; // 🚫 do NOT touch transform on mobile
+}
 
   const card = track.children[index];
   if (!card) return;
@@ -2124,7 +2140,7 @@ window.addEventListener("load", loadRatings);
 
 <script>
 /* ===== MOBILE LAYOUT SCALE (EDIT THIS VALUE) ===== */
-const MOBILE_SCALE = 2.00; // 🔧 change this (1 = normal)
+const MOBILE_SCALE = 1.2; // 🔧 change this (1 = normal)
 
 /* =============================================== */
 
