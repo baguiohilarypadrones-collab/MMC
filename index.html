@@ -66,7 +66,8 @@ body::before {
 
   .viewport {
   width: 100%;
-  overflow: hidden; /* desktop uses arrows */
+  overflow-x: auto; /* desktop uses arrows */
+  overflow-y: visible;
 }
 
    .track {
@@ -1855,8 +1856,9 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
 
       </div>
 
-<div class="card" data-id="M60" data-rating="0">
-        <h2>TBATE</h2>
+<div class="card locked" data-id="M60" data-rating="8">
+        <h2>The Game that I Came from</h2>
+        <h3>Chapter 191</h3>
         <img src="tbate.jpg">
 
   <div class="stars" onclick="event.stopPropagation()">
@@ -2062,15 +2064,11 @@ function loadRatings() {
   document.querySelectorAll(".card").forEach(card => {
     const id = card.dataset.id;
 
-    // ⭐ default rating from HTML
     const htmlRating = parseInt(card.dataset.rating || 0);
-
-    // 💾 saved user rating
     const savedRating = parseInt(
       localStorage.getItem("rating-" + id)
     );
 
-    // 🎯 decide which rating to use
     const finalRating = !isNaN(savedRating)
       ? savedRating
       : htmlRating;
@@ -2079,10 +2077,45 @@ function loadRatings() {
     applyStars(card, finalRating);
   });
 
-  sortCards(); // ⭐ now sorting works
+  if (!isMobile()) {
+    sortCards(); // ✅ desktop only
+  }
 }
 
 window.addEventListener("load", loadRatings);
+</script>
+
+<script>
+(function () {
+  const viewport = document.querySelector(".viewport");
+  if (!viewport) return;
+
+  let startX = 0;
+  let scrollStart = 0;
+  let isDragging = false;
+
+  viewport.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) return;
+
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    scrollStart = viewport.scrollLeft;
+  }, { passive: true });
+
+  viewport.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+
+    const x = e.touches[0].clientX;
+    const dx = startX - x;
+
+    viewport.scrollLeft = scrollStart + dx;
+  }, { passive: true });
+
+  viewport.addEventListener("touchend", () => {
+    isDragging = false;
+  }, { passive: true });
+
+})();
 </script>
 
 
