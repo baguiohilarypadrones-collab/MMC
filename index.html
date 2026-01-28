@@ -73,6 +73,22 @@ body::before {
   overflow: hidden;
 }
 
+/* Visible horizontal scrollbar */
+.viewport::-webkit-scrollbar {
+  height: 6px;
+}
+
+.viewport::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
+
+.viewport::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.5);
+  border-radius: 10px;
+}
+
+
 .track {
   display: flex;
   gap: 20px;
