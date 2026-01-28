@@ -199,10 +199,11 @@ body::before {
 
   .viewport {
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
 
     scroll-snap-type: x mandatory;
+    touch-action: pan-y pan-x; 
     padding: 16px;
 
     width: 100%;
@@ -212,8 +213,7 @@ body::before {
   .track {
     display: flex;
     gap: 16px;
-    transform: scale(1.05);
-    transform-origin: center;
+    transform: none;
   }
 
   .card {
@@ -222,6 +222,12 @@ body::before {
 
     margin: 0;
   }
+
+html, body {
+  height: auto;
+  overflow-y: auto;
+  overscroll-behavior: auto;
+}
 
   .arrow {
     display: none !important;
