@@ -197,57 +197,29 @@ body::before {
 
 @media (max-width: 768px) {
 
-  /* Page stays normal */
-  body {
-    margin: 0;
-    overflow-x: hidden;
-    background-attachment: scroll;
-  }
-
-  /* Center content */
-  .wrapper {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  /* THE ONLY SCROLL CONTAINER */
   .viewport {
-    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-
-    padding: 12px;
-
-    outline: 2px solid red;
+    padding: 16px;
   }
 
-  /* Track NEVER moves on mobile */
   .track {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     transform: none !important;
   }
 
-  /* Smaller cards on phone */
   .card {
-    flex: 0 0 70vw;          /* 👈 CHANGE SIZE HERE */
-    max-width: 70vw;
+    flex: 0 0 75vw;     /* 👈 CARD SIZE (change this!) */
     scroll-snap-align: center;
   }
 
-  .card img {
-    height: 260px;
-  }
-
-  /* Kill arrows completely */
   .arrow {
     display: none !important;
-    pointer-events: none !important;
+    pointer-events: none;
   }
 }
 /*--------------------------------*/
@@ -1967,7 +1939,8 @@ function isMobile() {
 
 function update() {
   if (isMobile()) {
-    // 🔥 HARD RESET FOR MOBILE
+    // 🚫 NEVER move carousel on mobile
+    track.style.transform = "none";
     return;
   }
 
@@ -1982,7 +1955,7 @@ function update() {
 }
 
 function next() {
-  if (isMobile()) return; // 🚫 mobile = no arrows
+  if (isMobile()) return;
   if (index < track.children.length - 1) {
     index++;
     update();
@@ -1997,8 +1970,6 @@ function prev() {
   }
 }
 
-
-// 🔁 Always re-evaluate when screen changes
 window.addEventListener("resize", update);
 window.addEventListener("load", update);
 </script>
