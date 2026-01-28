@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>One Card Carousel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Simple Dual Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 <style>
-    body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding-top: 40px;
-  min-height: 100vh;
-
-  overflow-y: auto;   /* ✅ vertical scroll */
-  overflow-x: hidden; /* ✅ no sideways page scroll */
-
+body {
+  font-family: 'Delius', cursive;
+  color: white;
   background-image: url("pics/Backgroundpic.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
 
 body::before {
   content: "";
@@ -33,122 +26,73 @@ body::before {
   z-index: -1;
 }
 
-    .main-title {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
 
-    .wrapper {
-      position: relative;
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-
-    .view-buttons {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .view-buttons button {
-      padding: 6px 12px;
-      margin: 0 5px;
-      cursor: pointer;
-    }
-
-    .track.grid-view {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 25px;
-    }
-
-  .viewport {
-  width: 100%;
-  overflow-x: auto; /* desktop uses arrows */
-  overflow-y: visible;
+.main-title {
+  font-family: 'Bad Script', cursive;
+  font-size: 44px;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-   .track {
-      box-sizing: border-box;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-      transition: transform 0.4s ease;
-    }
-
-
-    /* ===== GRID VIEW ===== */
-    .track.grid-view {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 30px;
-      transform: none !important;
-    }
-
-     .track.grid-view .card {
-       width: 100%;
-       margin: 0;
-       padding: 10px;
-    }
-
-     .track.grid-view .card img {
-       height: 180px;
-       object-fit: cover;
-    }
-
-     .track.grid-view h2 {
-      font-size: 14px;
-    }
-
-     .track.grid-view h3 {
-      font-size: 12px;
-    } 
-
-    .track.grid-view p {
-      font-size: 12px;
-      line-height: 1.3;
-    }
-
-/* Make grid use full width */
-.grid-mode .wrapper {
-  max-width: 100%;
-  padding: 0 20px;
+.subtitle {
+  font-family: 'Shadows Into Light', cursive;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 35px;
+  letter-spacing: 0.5px;
 }
 
-/* Disable viewport clipping in grid */
-.grid-mode .viewport {
-  overflow: visible;
+.search-box {
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-
-    .wrapper.grid-mode .arrow {
-      display: none;
-    }
-
-.track.grid-view {
-  width: 100%;
-  box-sizing: border-box;
+.search-box input {
+  width: 280px;
+  max-width: 90%;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
 }
 
-.grid-mode .track {
-  max-width: 1400px;
-  margin: 0 auto;
+.carousel {
+  max-width: 1100px;
+  margin: 40px auto;
+  position: relative;
 }
 
- .card {
-  width: 500px;
-  margin: 0;
-  background: rgba(255, 255, 255, 0.15); /* transparent glass */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.viewport {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease;
+}
+
+.card {
+  order: unset !important;
+  flex: 0 0 300px;
+  background: rgba(255,255,255,0.15);
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   text-align: center;
-  flex-shrink: 0;
-  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .card h2 {
@@ -172,181 +116,122 @@ body::before {
   line-height: 1.5;
 }
 
-    .card img {
-      width: 100%;
-      height: 450px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
 
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 40px;
-      cursor: pointer;
-      background: white;
-      border-radius: 50%;
-      padding: 8px 14px;
-      user-select: none;
-    }
-
-    .left { left: -60px; }
-    .right { right: -60px; }
-
-:root {
-  --mobile-scale: 1;
-}
-
-@media (max-width: 768px) {
-
-  .viewport {
-  width: 100%;
-  margin: 0 auto;
-  padding: 16px 16px 28px;   /* 👈 extra bottom for scrollbar */
-
-  overflow-x: scroll;       /* ⭐ force scrollbar */
-  overflow-y: visible;
-
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
-
-  scroll-snap-type: x mandatory;
-}
-
-/* Visible horizontal scrollbar */
-.viewport::-webkit-scrollbar {
-  height: 6px;
-}
-
-.viewport::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.15);
-  border-radius: 10px;
-}
-
-.viewport::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.5);
-  border-radius: 10px;
-}
-
-  .track {
-    display: flex;
-    gap: calc(20px * var(--mobile-scale));
-    transform: none !important;
-  }
-
-  .card {
-    flex: 0 0 calc(90vw * var(--mobile-scale));
-    scroll-snap-align: center;
-
-    margin: 0;
-
-    pointer-events: none;
-    user-select: none;
-  }
-
-html, body {
-  height: auto;
-  overflow-y: auto;
-  overscroll-behavior: auto;
-}
-
-  .arrow {
-    display: none !important;
-    pointer-events: none;
-  }
-
-  .arrow,
-  .left,
-  .right {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    position: static !important;
-  }
-
- .wrapper {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;     /* ⭐ centers horizontally */
-    padding: 0 16px;    /* ⭐ equal left & right spacing */
-    box-sizing: border-box;
-  }
-
-
-/* Images must not steal touch */
-.card img {
-  pointer-events: none;
-  -webkit-user-drag: none;
-}
-
-}
-/*--------------------------------*/
-
-.search-box {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.search-box input {
-  width: 280px;
-  max-width: 90%;
-  padding: 8px 12px;
-  font-size: 16px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  outline: none;
-}
-
-.main-title {
-  font-family: 'Bad Script', cursive;
-  font-size: 44px;
-  font-weight: 700;
-  text-align: center;
-  color: #ffffff;
-  margin-bottom: 5px;
-  letter-spacing: 1px;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
-.subtitle {
-  font-family: 'Shadows Into Light', cursive;
-  text-align: center;
-  font-size: 25px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 35px;
-  letter-spacing: 0.5px;
-}
-
-.stars span {
-  font-size: 20px;
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  color: black;
+  font-size: 28px;
+  padding: 8px 14px;
+  border-radius: 50%;
   cursor: pointer;
-  color: #ccc;
-  padding: 4px;
-  transition: color 0.2s ease, transform 0.2s ease;
+  user-select: none;
 }
 
-/* ⭐ ACTIVE STARS — MUST COME AFTER */
-.stars span.active {
-  color: gold !important;
-  text-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+.arrow.left { left: -50px; }
+.arrow.right { right: -50px; }
+
+.controls {
+  text-align: center;
+  margin-top: 20px;
 }
 
-/* 🔒 LOCKED STARS (keep gold visible) */
-.locked .stars span {
-  pointer-events: none;
-  opacity: 0.85; /* NOT too low */
+.controls button {
+  padding: 10px 18px;
+  margin: 5px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-/* ⭐ STAR RATING — FINAL */
+.controls button.active {
+  background: white;
+  color: black;
+}
+
+#grid {
+  display: none;
+  max-width: 1100px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+#grid.active {
+  display: grid;
+}
+
+#gridControls .grid-btn.active {
+  background: white;
+  color: black;
+}
+
+#gridControls {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#gridControls .grid-btn {
+  padding: 10px 18px;
+  margin: 0 6px; /* spacing between buttons */
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+#gridControls .grid-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ===== CARD ZOOM OVERLAY ===== */
+#cardZoom {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#cardZoom.active {
+  display: flex;
+}
+
+#cardZoom .zoom-card {
+  max-width: 90vw;
+  max-height: 90vh;
+  background: rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 20px;
+
+  /* 🔧 THIS IS THE FIX */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#cardZoom img {
+  max-height: 50vh;   /* prevents image from pushing content off screen */
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
 .stars {
   margin-top: 10px;
 }
 
 .stars span {
-  font-size: 22px;
+  font-size: 21px;
   cursor: pointer;
   color: #999;
   padding: 4px;
@@ -361,23 +246,19 @@ html, body {
   text-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
 }
 
-/* 🔒 LOCKED (do NOT kill color) */
+/* 🔒 LOCKED (keep gold, disable clicks) */
 .locked .stars span {
   pointer-events: none;
   opacity: 1;
 }
 
-.track {
-  will-change: auto;
-}
-
-  </style>
+</style>
 </head>
 
 <body>
 
 <h1 class="main-title">My Manhwa Collections</h1>
-<h2 class="subtitle">The ranking is based on my personal preference</h2>
+<h3 class="subtitle">The ranking is based on my personal preference</h2>
 
 <div class="search-box">
   <input
@@ -388,22 +269,24 @@ html, body {
   >
 </div>
 
-<div class="view-buttons">
-  <button onclick="setCarousel()">Carousel View</button>
-  <button onclick="setGrid()">List View</button>
+
+<div class="controls">
+  <button id="carouselBtn" onclick="showCarouselView()">Carousel View</button>
+  <button id="gridBtn" onclick="showGridView()">Grid View</button>
 </div>
 
-<!-- ✅ WRAPPER MUST CONTAIN EVERYTHING -->
-<div class="wrapper">
+  <div id="gridControls">
+    <span>Grid Source:</span>
+    <button class="grid-btn" onclick="setGridSource(1)">Carousel 1</button>
+    <button class="grid-btn" onclick="setGridSource(2)">Carousel 2</button>
+  </div>
 
-  <!-- ⬅️ LEFT ARROW -->
-  <div class="arrow left" onclick="prev()">&#10094;</div>
-
-  <!-- 👁 VIEWPORT -->
+<h2 style="text-align:center;">Carousel 1</h2>
+<section class="carousel" id="carousel1">
+  <div class="arrow left">‹</div>
   <div class="viewport">
-    <div class="track" id="track">
-
-<div class="card locked" data-id="M1" data-rating="10">
+    <div class="track">
+      <div class="card locked" data-id="M1" data-rating="10">
         <h2>A Wimp’s Strategy Guide to Conquer the Tower</h2>
         <h3>Chapter 12</h3>
         <img src="pics\A Wimp’s Strategy Guide to Conquer the Tower pic.webp">
@@ -420,7 +303,6 @@ html, body {
     <span onclick="rate(this,9)">★</span>
     <span onclick="rate(this,10)">★</span>
   </div>
-
 
         <p>By the Studio that brought you 'S-Class Hunter Heals with Monsters'
 One day, mysterious black towers rise across the world, triggering awakenings in a small number of humans. For Bong Juhyeok, a timid and insecure part-time worker, it seems completely irrelevant to his life. Exhausted from another shift, he is about to eat instant noodles when an unexpected message appears announcing his awakening. Startled and confused, he is suddenly thrust into a reality where his ordinary life may finally change, raising the question of whether this awakening is a chance at a true turnaround or just the beginning of even greater chaos.</p>
@@ -1885,276 +1767,314 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
 
       </div>
 
-<div class="card" data-id="M61" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
- <div class="card" data-id="M62" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
-  <div class="card" data-id="M63" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
- <div class="card" data-id="M64" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
-<div class="card" data-id="M65" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
-<div class="card" data-id="M66" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
-<div class="card" data-id="M67" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
-<div class="card" data-id="M68" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
-<div class="card" data-id="M69" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
-<div class="card" data-id="M70" data-rating="0">
-        <h2>TBATE</h2>
-        <img src="tbate.jpg">
-
-  <div class="stars" onclick="event.stopPropagation()">
-    <span onclick="rate(this,1)">★</span>
-    <span onclick="rate(this,2)">★</span>
-    <span onclick="rate(this,3)">★</span>
-    <span onclick="rate(this,4)">★</span>
-    <span onclick="rate(this,5)">★</span>
-    <span onclick="rate(this,6)">★</span>
-    <span onclick="rate(this,7)">★</span>
-    <span onclick="rate(this,8)">★</span>
-    <span onclick="rate(this,9)">★</span>
-    <span onclick="rate(this,10)">★</span>
-  </div>
-
-        <p>Reincarnated king in a magic world.</p>
-
-      </div>
-
 
     </div>
   </div>
+  <div class="arrow right">›</div>
+</section>
 
-  <!-- ➡️ RIGHT ARROW -->
-  <div class="arrow right" onclick="next()">&#10095;</div>
+<h2 style="text-align:center;">Carousel 2</h2>
+<section class="carousel" id="carousel2">
+  <div class="arrow left">‹</div>
+  <div class="viewport">
+    <div class="track">
+      <div class="card" data-id="M70" data-rating="0">
+        <h2>TBATE</h2>
+        <img src="tbate.jpg">
 
+  <div class="stars" onclick="event.stopPropagation()">
+    <span onclick="rate(this,1)">★</span>
+    <span onclick="rate(this,2)">★</span>
+    <span onclick="rate(this,3)">★</span>
+    <span onclick="rate(this,4)">★</span>
+    <span onclick="rate(this,5)">★</span>
+    <span onclick="rate(this,6)">★</span>
+    <span onclick="rate(this,7)">★</span>
+    <span onclick="rate(this,8)">★</span>
+    <span onclick="rate(this,9)">★</span>
+    <span onclick="rate(this,10)">★</span>
+  </div>
+
+        <p>Reincarnated king in a magic world.</p>
+
+      </div>
+
+      <div class="card"><img src="https://picsum.photos/300/200?6"><p>Item B</p></div>
+      <div class="card"><img src="https://picsum.photos/300/200?7"><p>Item C</p></div>
+      <div class="card"><img src="https://picsum.photos/300/200?8"><p>Item D</p></div>
+    </div>
+  </div>
+  <div class="arrow right">›</div>
+</section>
+
+<h2 id="gridTitle" style="text-align:center; display:none;"></h2>
+
+<section id="grid"></section>
+
+<div id="cardZoom" onclick="closeZoom()">
+  <div class="zoom-card" onclick="event.stopPropagation()"></div>
 </div>
 
 <script>
-function enableGridClick() {
-  const track = document.getElementById("track");
+document.querySelectorAll(".carousel").forEach(carousel => {
+  const track = carousel.querySelector(".track");
+  const cards = track.children;
+  const left = carousel.querySelector(".arrow.left");
+  const right = carousel.querySelector(".arrow.right");
 
-  track.addEventListener("click", (e) => {
-    const card = e.target.closest(".card");
-    if (!card) return;
+  let index = 0;
 
-    // Only in grid view
-    if (!track.classList.contains("grid-view")) return;
+ let cardWidth = 0;
 
-    // Switch back to carousel
-    setCarousel();
+function calculateWidth() {
+  cardWidth = cards[0].getBoundingClientRect().width + 20;
+}
 
-    const cards = Array.from(track.children);
-    const targetIndex = cards.indexOf(card);
+function update() {
+  track.style.transform = `translateX(${-index * cardWidth}px)`;
+}
 
-    if (isMobile()) {
-      // 📱 MOBILE: native scroll to tapped card
-      const viewport = document.querySelector(".viewport");
-      const targetCard = cards[targetIndex];
+// calculate once initially
+calculateWidth();
 
-      viewport.scrollTo({
-        left:
-          targetCard.offsetLeft -
-          (viewport.offsetWidth - targetCard.offsetWidth) / 2,
-        behavior: "smooth"
-      });
-    } else {
-      // 🖥 DESKTOP: original behavior
-      index = targetIndex;
+// recalc on resize
+window.addEventListener("resize", () => {
+  calculateWidth();
+  update();
+});
+
+
+  left.addEventListener("click", () => {
+    if (index > 0) {
+      index--;
       update();
     }
   });
+
+  right.addEventListener("click", () => {
+    if (index < cards.length - 1) {
+      index++;
+      update();
+    }
+  });
+});
+
+function refreshCarousel(carousel) {
+  requestAnimationFrame(() => {
+    const cards = carousel.querySelectorAll(".card");
+    if (!cards.length) return;
+
+    // trigger layout
+    cards[0].getBoundingClientRect();
+    window.dispatchEvent(new Event("resize"));
+  });
 }
 
-window.addEventListener("load", enableGridClick);
+
 </script>
 
 <script>
-function setGrid() {
-  document.getElementById("track").classList.add("grid-view");
-  document.querySelector(".wrapper").classList.add("grid-mode");
+let currentCarousel = 1;
+
+/* ===== VIEW TOGGLES ===== */
+function showCarouselView() {
+  const grid = document.getElementById("grid");
+
+  // hide grid
+  grid.classList.remove("active");
+  grid.innerHTML = ""; // ✅ removes ONLY the cloned grid items
+  document.getElementById("gridControls").style.display = "none";
+
+  // show ALL carousels again
+  document.querySelectorAll(".carousel").forEach(c => {
+    c.style.display = "block";
+
+  // 🔥 SHOW ALL H2 TITLES AGAIN
+  document.querySelectorAll("h2").forEach(h2 => {
+    h2.style.display = "block";
+  });
+  });
+
+// 🔥 HIDE GRID TITLE
+  document.getElementById("gridTitle").style.display = "none";
+
+  document.getElementById("gridBtn").classList.remove("active");
+  document.getElementById("carouselBtn").classList.add("active");
+
+
+  window.dispatchEvent(new Event("resize"));
 }
 
-function setCarousel() {
-  document.getElementById("track").classList.remove("grid-view");
-  document.querySelector(".wrapper").classList.remove("grid-mode");
-  index = 0;
-  update();
+function showGridView() {
+  // hide all carousels
+  document.querySelectorAll(".carousel").forEach(c => c.style.display = "none");
+
+  // 🔥 HIDE ALL H2 TITLES
+  document.querySelectorAll("h2").forEach(h2 => {
+    h2.style.display = "none";
+  });
+
+// 🔥 SHOW GRID TITLE
+  const gridTitle = document.getElementById("gridTitle");
+  gridTitle.style.display = "block";
+  gridTitle.textContent = `Carousel ${currentCarousel}`;
+
+
+  // show grid + buttons
+  document.getElementById("grid").classList.add("active");
+  document.getElementById("gridControls").style.display = "flex";
+
+  document.getElementById("carouselBtn").classList.remove("active");
+  document.getElementById("gridBtn").classList.add("active");
+
+  renderGrid(currentCarousel);
 }
+
+/* ===== GRID SOURCE ===== */
+function setGridSource(n) {
+  currentCarousel = n;
+
+  document.getElementById("gridTitle").textContent = `Carousel ${n}`;
+
+  document.querySelectorAll("#gridControls .grid-btn")
+    .forEach(b => b.classList.remove("active"));
+
+  document.querySelector(`#gridControls .grid-btn:nth-child(${n + 1})`)
+    .classList.add("active");
+
+  renderGrid(n);
+}
+
+/* ===== INITIAL STATE ===== */
+// start with ALL carousels visible
+document.querySelectorAll(".carousel").forEach(c => c.style.display = "block");
+
+refreshCarousel(
+  document.getElementById("carousel" + currentCarousel)
+);
+
+/* ===== GRID RENDER ===== */
+function renderGrid(n) {
+  const grid = document.getElementById("grid");
+  grid.innerHTML = "";
+
+  const source = document.querySelector(`#carousel${n} .track`);
+  if (!source) return;
+
+  const cards = source.querySelectorAll(".card");
+
+  cards.forEach((card, index) => {
+    const clone = card.cloneNode(true);
+
+    // ⭐ READ rating from localStorage (source of truth)
+    const id = card.dataset.id;
+    const rating = parseInt(
+      localStorage.getItem("rating-" + id) || card.dataset.rating || 0
+    );
+
+    const stars = clone.querySelectorAll(".stars span");
+    stars.forEach((s, i) => {
+      s.classList.toggle("active", i < rating);
+      s.onclick = null; // grid = read-only
+    });
+
+    clone.addEventListener("click", () => {
+      goToCarouselCard(n, index);
+    });
+
+    grid.appendChild(clone);
+  });
+}
+
+function goToCarouselCard(carouselNumber, cardIndex) {
+  currentCarousel = carouselNumber;
+
+  // switch back to carousel view
+  showCarouselView();
+
+  requestAnimationFrame(() => {
+    const carousel = document.getElementById("carousel" + carouselNumber);
+    const track = carousel.querySelector(".track");
+    const cards = track.children;
+
+    if (!cards.length) return;
+
+    const cardWidth = cards[0].offsetWidth + 20;
+
+    const viewport = carousel.querySelector(".viewport");
+    const viewportWidth = viewport.offsetWidth;
+
+const offset =
+  cardIndex * cardWidth - (viewportWidth / 2 - cardWidth / 2);
+
+track.style.transform = `translateX(${-offset}px)`;
+  });
+}
+
+
+</script>
+
+<script>
+function searchCards() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+
+  // search only visible cards (grid OR carousel)
+  const cards = Array.from(
+    document.querySelectorAll(
+      ".carousel:not([style*='display: none']) .card, #grid.active .card"
+    )
+  );
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(query) ? "" : "none";
+  });
+}
+</script>
+
+<script>
+function enableCardZoom() {
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+      const zoom = document.getElementById("cardZoom");
+      const container = zoom.querySelector(".zoom-card");
+
+      container.innerHTML = card.innerHTML; // clone content
+      zoom.classList.add("active");
+    });
+  });
+}
+
+function closeZoom() {
+  document.getElementById("cardZoom").classList.remove("active");
+}
+
+/* run once on load */
+enableCardZoom();
+</script>
+
+<script>
+function loadRatings() {
+  document.querySelectorAll(".card").forEach(card => {
+    const id = card.dataset.id;
+
+    const htmlRating = parseInt(card.dataset.rating || 0);
+    const savedRating = parseInt(localStorage.getItem("rating-" + id));
+
+    const finalRating = !isNaN(savedRating)
+      ? savedRating
+      : htmlRating;
+
+    card.dataset.rating = finalRating;
+    applyStars(card, finalRating);
+  });
+
+  if (!isMobile()) {
+    sortAllCarouselsByRating();
+  }
+}
+
+window.addEventListener("DOMContentLoaded", loadRatings);
 </script>
 
 <script>
@@ -2169,11 +2089,14 @@ function rate(star, rating) {
 
   applyStars(card, rating);
 
+  // ⭐ SORT RIGHT AFTER RATING
   if (!isMobile()) {
-    sortCards(); // 🚫 never reorder DOM on mobile
+    sortAllCarouselsByRating();
   }
 }
+</script>
 
+<script>
 function applyStars(card, rating) {
   const stars = card.querySelectorAll(".stars span");
   stars.forEach((s, i) => {
@@ -2181,168 +2104,71 @@ function applyStars(card, rating) {
   });
 }
 
-function sortCards() {
-  if (isMobile()) return; // 🚫 DO NOT touch DOM on mobile
+function sortAllCarouselsByRating() {
+  document.querySelectorAll(".carousel").forEach(carousel => {
+    const track = carousel.querySelector(".track");
+    if (!track) return;
 
-  const track = document.getElementById("track");
-  const cards = Array.from(track.children);
+    const cards = Array.from(track.children);
 
-  cards.sort((a, b) => {
-    return (b.dataset.rating || 0) - (a.dataset.rating || 0);
+    // sort by rating (highest first)
+    cards.sort((a, b) => {
+      return (parseInt(b.dataset.rating || 0, 10)) -
+             (parseInt(a.dataset.rating || 0, 10));
+    });
+
+    // clear track
+    track.innerHTML = "";
+
+    // re‑append in sorted order
+    cards.forEach(card => {
+      track.appendChild(card);
+      applyStars(card, parseInt(card.dataset.rating || 0, 10));
+    });
+
+    // reset carousel position
+    track.style.transform = "translateX(0px)";
   });
 
-  cards.forEach(card => track.appendChild(card));
-}
-</script>
-
-
-<script>
-let index = 0;
-const track = document.getElementById("track");
-const viewport = document.querySelector(".viewport");
-
-track.style.willChange = "auto";
-
-function isMobile() {
-  return window.matchMedia("(max-width: 768px)").matches;
-}
-
-function update() {
-  if (isMobile()) {
-  return; // 🚫 do NOT touch transform on mobile
-}
-
-  const card = track.children[index];
-  if (!card) return;
-
-  const viewportCenter = viewport.offsetWidth / 2;
-  const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-
-  track.style.transform =
-    `translateX(${viewportCenter - cardCenter}px)`;
-}
-
-function next() {
-  if (isMobile()) return;
-  if (index < track.children.length - 1) {
-    index++;
-    update();
-  }
-}
-
-function prev() {
-  if (isMobile()) return;
-  if (index > 0) {
-    index--;
-    update();
-  }
-}
-
-window.addEventListener("resize", update);
-window.addEventListener("load", update);
-</script>
-
-<script>
-function searchCards() {
-  const query = document.getElementById("searchInput").value.toLowerCase();
-  const cards = Array.from(document.querySelectorAll(".card"));
-
-  let firstMatchIndex = -1;
-
-  cards.forEach((card, i) => {
-    const title = card.querySelector("h2")?.innerText.toLowerCase() || "";
-
-    const match = title.includes(query);
-    card.style.display = match ? "" : "none";
-
-    if (match && firstMatchIndex === -1) {
-      firstMatchIndex = i;
-    }
+  // force layout update
+  requestAnimationFrame(() => {
+    window.dispatchEvent(new Event("resize"));
   });
-
-  // If in carousel mode, jump to first match
-  const track = document.getElementById("track");
-  if (!track.classList.contains("grid-view") && firstMatchIndex !== -1) {
-    index = firstMatchIndex;
-    update();
-  }
 }
-</script>
 
-<script>
 function loadRatings() {
   document.querySelectorAll(".card").forEach(card => {
     const id = card.dataset.id;
+    const htmlRating = parseInt(card.dataset.rating || 0, 10);
+    const savedRating = parseInt(localStorage.getItem("rating-" + id), 10);
 
-    const htmlRating = parseInt(card.dataset.rating || 0);
-    const savedRating = parseInt(
-      localStorage.getItem("rating-" + id)
-    );
-
-    const finalRating = !isNaN(savedRating)
-      ? savedRating
-      : htmlRating;
-
+    const finalRating = !isNaN(savedRating) ? savedRating : htmlRating;
     card.dataset.rating = finalRating;
     applyStars(card, finalRating);
   });
 
-  if (!isMobile()) {
-    sortCards(); // ✅ desktop only
-  }
+  // ✅ always sort after loading ratings
+  sortAllCarouselsByRating();
 }
 
-window.addEventListener("load", loadRatings);
-</script>
+function rate(star, rating) {
+  const card = star.closest(".card");
+  if (card.classList.contains("locked")) return;
 
-<script>
-(function () {
-  const viewport = document.querySelector(".viewport");
-  if (!viewport) return;
+  const id = card.dataset.id;
+  card.dataset.rating = rating;
+  localStorage.setItem("rating-" + id, rating);
 
-  let startX = 0;
-  let scrollStart = 0;
-  let isDragging = false;
+  applyStars(card, rating);
 
-  viewport.addEventListener("touchstart", (e) => {
-    if (e.touches.length !== 1) return;
-
-    isDragging = true;
-    startX = e.touches[0].clientX;
-    scrollStart = viewport.scrollLeft;
-  }, { passive: true });
-
-  viewport.addEventListener("touchmove", (e) => {
-    if (!isDragging) return;
-
-    const x = e.touches[0].clientX;
-    const dx = startX - x;
-
-    viewport.scrollLeft = scrollStart + dx;
-  }, { passive: true });
-
-  viewport.addEventListener("touchend", () => {
-    isDragging = false;
-  }, { passive: true });
-
-})();
-</script>
-
-<script>
-const MOBILE_SCALE = 1.2; // 🔧 change THIS number only
-
-function applyMobileScale() {
-  if (!window.matchMedia("(max-width: 768px)").matches) return;
-
-  document.documentElement.style.setProperty(
-    "--mobile-scale",
-    MOBILE_SCALE
-  );
+  // ✅ sort immediately after rating
+  sortAllCarouselsByRating();
 }
 
-window.addEventListener("load", applyMobileScale);
-window.addEventListener("resize", applyMobileScale);
+window.addEventListener("DOMContentLoaded", loadRatings);
 </script>
+
+
 
 </body>
 </html>
