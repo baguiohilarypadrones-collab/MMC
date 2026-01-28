@@ -70,11 +70,17 @@ body::before {
 }
 
 
+html, body {
+  overflow-y: auto;
+}
+
    .track {
+      flex-wrap: nowrap;
       box-sizing: border-box;
       padding: 0;
       display: flex;
       gap: 20px;
+      transform: none; /* kill transforms */
       transition: transform 0.4s ease;
     }
 
@@ -137,6 +143,16 @@ body::before {
   margin: 0 auto;
 }
 
+.viewport {
+  overflow-x: auto;
+  overflow-y: visible;
+
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+
+  touch-action: pan-y;
+}
+
  .card {
   width: 500px;
   margin: 0;
@@ -149,6 +165,9 @@ body::before {
   text-align: center;
   flex-shrink: 0;
   border: 1px solid rgba(255,255,255,0.2);
+
+  flex: 0 0 90vw;
+  scroll-snap-align: center;
 }
 
 .card h2 {
@@ -177,6 +196,9 @@ body::before {
       height: 450px;
       object-fit: contain;
       border-radius: 8px;
+      pointer-events: none;
+      user-select: none;
+     -webkit-user-drag: none;
     }
 
     .arrow {
