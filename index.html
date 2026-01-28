@@ -203,7 +203,7 @@ body::before {
     -webkit-overflow-scrolling: touch;
 
     scroll-snap-type: x mandatory;
-    touch-action: pan-y pan-x; 
+    touch-action: pan-y ; 
     padding: 16px;
 
     width: 100%;
@@ -213,7 +213,7 @@ body::before {
   .track {
     display: flex;
     gap: 16px;
-    transform: none;
+    transform: none !important;
   }
 
   .card {
@@ -221,6 +221,9 @@ body::before {
     scroll-snap-align: center;
 
     margin: 0;
+
+    pointer-events: none;
+    user-select: none;
   }
 
 html, body {
