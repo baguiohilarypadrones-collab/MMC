@@ -1917,13 +1917,12 @@ function enableGridClick() {
     // Only in grid view
     if (!track.classList.contains("grid-view")) return;
 
-    // Switch back to carousel
-    setCarousel();
+   if (isMobile()) return; // 🚫 mobile uses native scroll
 
-    // Find the card's CURRENT index
-    index = Array.from(track.children).indexOf(card);
+setCarousel();
+index = Array.from(track.children).indexOf(card);
+update();
 
-    update();
   });
 }
 
@@ -1955,7 +1954,10 @@ function rate(star, rating) {
   localStorage.setItem("rating-" + id, rating);
 
   applyStars(card, rating);
-  sortCards();
+
+  if (!isMobile()) {
+    sortCards(); // 🚫 never reorder DOM on mobile
+  }
 }
 
 function applyStars(card, rating) {
@@ -1966,6 +1968,8 @@ function applyStars(card, rating) {
 }
 
 function sortCards() {
+  if (isMobile()) return; // 🚫 DO NOT touch DOM on mobile
+
   const track = document.getElementById("track");
   const cards = Array.from(track.children);
 
@@ -1977,17 +1981,13 @@ function sortCards() {
 }
 </script>
 
-<script>
-function isMobile() {
-  return window.innerWidth <= 768;
-}
-</script>
-
 
 <script>
 let index = 0;
 const track = document.getElementById("track");
 const viewport = document.querySelector(".viewport");
+
+track.style.willChange = "auto";
 
 function isMobile() {
   return window.matchMedia("(max-width: 768px)").matches;
