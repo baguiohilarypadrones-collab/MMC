@@ -197,17 +197,33 @@ body::before {
 @media (max-width: 768px) {
 
   .viewport {
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 16px 28px;   /* 👈 extra bottom for scrollbar */
 
-    scroll-snap-type: x mandatory;
-    touch-action: pan-y ; 
-    padding: 16px;
+  overflow-x: scroll;       /* ⭐ force scrollbar */
+  overflow-y: visible;
 
-    width: 100%;
-    margin: 0 auto;
-  }
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+
+  scroll-snap-type: x mandatory;
+}
+
+/* Visible horizontal scrollbar */
+.viewport::-webkit-scrollbar {
+  height: 6px;
+}
+
+.viewport::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
+
+.viewport::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.5);
+  border-radius: 10px;
+}
 
   .track {
     display: flex;
@@ -253,6 +269,13 @@ html, body {
     padding: 0 16px;    /* ⭐ equal left & right spacing */
     box-sizing: border-box;
   }
+
+
+/* Images must not steal touch */
+.card img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
 
 }
 /*--------------------------------*/
