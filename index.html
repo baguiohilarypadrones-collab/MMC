@@ -204,23 +204,48 @@ body::before {
 
     scroll-snap-type: x mandatory;
     padding: 16px;
+
+    width: 100%;
+    margin: 0 auto;
   }
 
   .track {
     display: flex;
     gap: 16px;
-    transform: none !important;
+    transform: scale(1.05);
+    transform-origin: center;
   }
 
   .card {
-    flex: 0 0 75vw;     /* 👈 CARD SIZE (change this!) */
+    flex: 0 0 90vw;     /* 👈 CARD SIZE (change this!) */
     scroll-snap-align: center;
+
+    margin: 0;
   }
 
   .arrow {
     display: none !important;
     pointer-events: none;
   }
+
+  .arrow,
+  .left,
+  .right {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: static !important;
+  }
+
+ .wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;     /* ⭐ centers horizontally */
+    padding: 0 16px;    /* ⭐ equal left & right spacing */
+    box-sizing: border-box;
+  }
+
 }
 /*--------------------------------*/
 
