@@ -364,6 +364,10 @@ html, body {
   opacity: 1;
 }
 
+.track {
+  will-change: auto;
+}
+
   </style>
 </head>
 
@@ -2118,6 +2122,26 @@ window.addEventListener("load", loadRatings);
 })();
 </script>
 
+<script>
+/* ===== MOBILE LAYOUT SCALE (EDIT THIS VALUE) ===== */
+const MOBILE_SCALE = 2.00; // 🔧 change this (1 = normal)
+
+/* =============================================== */
+
+function applyMobileScale() {
+  if (!window.matchMedia("(max-width: 768px)").matches) return;
+
+  const track = document.getElementById("track");
+  if (!track) return;
+
+  track.style.transform = `scale(${MOBILE_SCALE})`;
+  track.style.transformOrigin = "left center";
+}
+
+/* Apply once page is ready */
+window.addEventListener("load", applyMobileScale);
+window.addEventListener("resize", applyMobileScale);
+</script>
 
 </body>
 </html>
