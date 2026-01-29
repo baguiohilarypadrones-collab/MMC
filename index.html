@@ -363,9 +363,26 @@ body::before {
     max-width: 100%;
   }
 
-  /* Keep mobile menu working */
+  /* Show mobile menu button */
   #menuBtn {
+    display: flex;
+    align-items: center;
     z-index: 10000;
+  }
+
+  /* Hide desktop nav links */
+  .nav-links,
+  .desktop-nav {
+    display: none;
+  }
+
+  /* Ensure side panel overlays content */
+  #sidePanel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 9999;
   }
 }
 
