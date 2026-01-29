@@ -26,6 +26,55 @@ body::before {
   z-index: -1;
 }
 
+/* Left top button */
+.top-left-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: white;
+  color: black;
+  border: none;
+  padding: 10px 16px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.side-panel {
+  height: 100%;
+  width: 0; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 999;
+  color: white;
+}
+
+.side-panel a {
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+}
+
+.side-panel a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
 
 .main-title {
   font-family: 'Bad Script', cursive;
@@ -310,6 +359,19 @@ body::before {
 </head>
 
 <body>
+<button id="menuBtn" class="top-left-btn">☰ Menu</button>
+
+<div id="sidePanel" class="side-panel">
+  <h3>Navigation</h3>
+<ul>
+  <li><a href="#carousel1">Carousel 1</a></li>
+  <li><a href="#carousel2">Carousel 2</a></li>
+  <li><a href="#grid">Grid View</a></li>
+</ul>
+
+
+  </ul>
+</div>
 
 <h1 class="main-title">My Manhwa Collections</h1>
 <h3 class="subtitle">The ranking is based on my personal preference</h2>
@@ -2710,6 +2772,67 @@ document.querySelectorAll(".carousel").forEach(carousel => {
   });
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const sidePanel = document.getElementById("sidePanel");
+  const menuBtn = document.getElementById("menuBtn");
+
+  menuBtn.addEventListener("click", () => {
+    if (sidePanel.style.width === "250px") {
+      sidePanel.style.width = "0";   // close
+    } else {
+      sidePanel.style.width = "250px"; // open
+    }
+  });
+});
+</script>
+
+<script>
+  // Menu toggle
+  const menuBtn = document.getElementById("menuBtn");
+  const sidePanel = document.getElementById("sidePanel");
+
+  menuBtn.onclick = () => {
+    sidePanel.style.width = "260px";
+  };
+
+  function closeMenu() {
+    sidePanel.style.width = "0";
+  }
+
+  function goTo(targetId) {
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 300);
+  }
+
+  // Unified nav behavior
+  sidePanel.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+
+      const href = link.getAttribute("href");
+      closeMenu();
+
+      // Carousel links → force carousel view
+      if (href === "#carousel1" || href === "#carousel2") {
+        showCarouselView();
+        goTo(href);
+      }
+
+      // Grid link → force grid view
+      else if (href === "#grid") {
+        showGridView();
+        goTo(href);
+      }
+    });
+  });
+</script>
+
 
 </body>
 </html>
