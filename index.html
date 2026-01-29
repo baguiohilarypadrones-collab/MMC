@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=0.9">
 <title>Simple Dual Carousel</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
@@ -440,26 +439,18 @@ body::before {
     max-width: 100%;
   }
 
-  /* Hide desktop nav links */
-  .nav-links,
-  .desktop-nav {
-    display: none;
-  }
-
-  /* Ensure side panel overlays content */
-  #sidePanel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 9999;
-  }
-
 .arrow.right {
     display: none;
   }
 
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 
 </style>
 </head>
