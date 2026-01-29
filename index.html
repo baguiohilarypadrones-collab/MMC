@@ -357,25 +357,34 @@ body::before {
 }
 
 @media (max-width: 850px) {
+  /* Keep menu visible */
   #menuBtn {
     z-index: 10000;
   }
 
-html, body {
+  /* Prevent horizontal overflow */
+  html, body {
     overflow-x: hidden;
     max-width: 100%;
   }
 
-/* Reduce overall content width */
-  .detail-container,
-  .card,
-  .content {
-    max-width: 92%;
-    margin-left: auto;
-    margin-right: auto;
+  /* Desktop-like centered layout */
+  .page,
+  .main,
+  .container,
+  .detail-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
   }
 
-  /* Scale down the main image */
+  /* Secondary content blocks */
+  .card,
+  .content {
+    width: 100%;
+  }
+
+  /* Images scale properly */
   img {
     max-width: 100%;
     height: auto;
