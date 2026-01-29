@@ -477,13 +477,10 @@ html, body {
 <div id="sidePanel" class="side-panel">
   <h3>Navigation</h3>
 <ul>
-  <li><a href="#carousel1">Carousel 1</a></li>
-  <li><a href="#carousel2">Carousel 2</a></li>
+  <li><a href="#carousel1">My Favorites</a></li>
+  <li><a href="#carousel2">My Non-Favorites</a></li>
   <li><a href="#grid">Grid View</a></li>
 </ul>
-
-
-  </ul>
 </div>
 
 <h1 class="main-title">My Manhwa Collections</h1>
@@ -507,11 +504,11 @@ html, body {
 
   <div id="gridControls">
     <span>Grid Source:</span>
-    <button class="grid-btn" onclick="setGridSource(1)">Carousel 1</button>
-    <button class="grid-btn" onclick="setGridSource(2)">Carousel 2</button>
+    <button class="grid-btn" onclick="setGridSource(1)">Favorites</button>
+    <button class="grid-btn" onclick="setGridSource(2)">Non-Favorites</button>
   </div>
 
-<h2 style="text-align:center;">Carousel 1</h2>
+<h2 style="text-align:center;">Favorites</h2>
 <section class="carousel" id="carousel1">
   <div class="arrow left">‹</div>
   <div class="viewport">
@@ -2242,7 +2239,7 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
   <div class="arrow right">›</div>
 </section>
 
-<h2 style="text-align:center;">Carousel 2</h2>
+<h2 style="text-align:center;">Non-Favorites</h2>
 <section class="carousel" id="carousel2">
   <div class="arrow left">‹</div>
   <div class="viewport">
@@ -2993,7 +2990,6 @@ function toggleClearBtn() {
   btn.style.display = input.length > 0 ? "block" : "none";
 }
 </script>
-
 
 </body>
 </html>
