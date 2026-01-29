@@ -51,21 +51,26 @@ body::before {
   background: rgba(0,0,0,0.9);
   overflow-x: hidden;
   transition: 0.3s;
-  padding-top: 60px;
+  padding-top: 70px;
   z-index: 999;
   color: white;
 }
 
 .side-panel a {
-  padding: 10px 20px;
+  padding: 28px 35px;
+  line-height: 1.6;  
   text-decoration: none;
-  font-size: 18px;
+  font-size: 25px;
   color: white;
   display: block;
+  
+  border-radius: 8px;          /* rounded corners */
+  background: rgba(255,255,255,0.1); /* subtle background */
+  margin: 8px 0;               /* spacing between buttons */
 }
 
 .side-panel a:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.3);
 }
 
 .close-btn {
@@ -79,7 +84,7 @@ body::before {
 
 .main-title {
   font-family: 'Bad Script', cursive;
-  font-size: 44px;
+  font-size: 70px;
   font-weight: 700;
   text-align: center;
   color: #ffffff;
@@ -91,7 +96,7 @@ body::before {
 .subtitle {
   font-family: 'Shadows Into Light', cursive;
   text-align: center;
-  font-size: 25px;
+  font-size: 50px;
   font-weight: 400;
   color: rgba(255,255,255,0.85);
   margin-bottom: 35px;
@@ -106,24 +111,24 @@ body::before {
 }
 
 .search-box input {
-  width: 280px;
-  max-width: 90%;
-  padding: 8px 12px 8px 12px; /* space for button */
-  font-size: 16px;
-  border-radius: 20px;
+  width: 600px;
+  max-width: 100%;
+  padding: 30px 40px 30px 40px; /* space for button */
+  font-size: 30px;
+  border-radius: 300px;
   border: 1px solid #ccc;
   outline: none;
 }
 
 .search-box button {
   position: absolute;
-  right: 49%;                 /* anchor to center */
+  right: 41%;                 /* anchor to center */
   margin-right: -130px;       /* half input width + offset */
   top: 50%;
   transform: translateY(-50%);
   border: none;
   background: transparent;
-  font-size: 18px;
+  font-size: 30px;
   cursor: pointer;
   display: none;
 }
@@ -208,9 +213,10 @@ body::before {
 }
 
 .controls button {
-  padding: 10px 18px;
-  margin: 5px;
-  border-radius: 20px;
+  padding: 30px 38px;
+  font-size: 28px;
+  margin: 8px;
+  border-radius: 30px;
   border: none;
   cursor: pointer;
   font-weight: bold;
@@ -260,9 +266,10 @@ body::before {
 }
 
 #gridControls .grid-btn {
-  padding: 10px 18px;
-  margin: 0 6px; /* spacing between buttons */
-  border-radius: 20px;
+  padding: 30px 38px;
+  font-size: 28px;
+  margin: 0 10px; /* spacing between buttons */
+  border-radius: 30px;
   border: none;
   cursor: pointer;
   font-weight: bold;
