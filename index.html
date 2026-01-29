@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.9">
 <title>Simple Dual Carousel</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
@@ -293,6 +294,40 @@ body::before {
   border-radius: 12px;
 }
 
+#cardZoom p {
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Headings inside card zoom overlay */
+#cardZoom h3 {
+  font-size: 22px;
+  margin: 8px 0;
+  text-align: center;
+}
+
+#cardZoom h4 {
+  font-size: 18px;
+  margin: 6px 0;
+  text-align: center;
+}
+
+#cardZoom h5 {
+  font-size: 16px;
+  margin: 4px 0;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* Center stars inside overlay */
+#cardZoom .stars {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+
 .stars {
   margin-top: 10px;
 }
@@ -357,17 +392,52 @@ body::before {
 
 @media (max-width: 850px) {
 
-    /* Prevent phone stretching */
-  html, body {
-    overflow-x: hidden;
-    max-width: 100%;
-  }
-
-  /* Show mobile menu button */
+/* Show mobile menu button */
   #menuBtn {
     display: flex;
     align-items: center;
     z-index: 10000;
+  }
+
+ #cardZoom p {
+    font-size: 17px;
+  }
+
+/* Headings inside card zoom overlay */
+#cardZoom h3 {
+  font-size: 22px;
+  margin: 8px 0;
+  text-align: center;
+}
+
+#cardZoom h4 {
+  font-size: 18px;
+  margin: 6px 0;
+  text-align: center;
+}
+
+#cardZoom h5 {
+  font-size: 16px;
+  margin: 4px 0;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* Center stars inside overlay */
+#cardZoom .stars {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+#cardZoom p {
+    font-size: 17px;
+  }
+
+    /* Prevent phone stretching */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   /* Hide desktop nav links */
@@ -384,6 +454,11 @@ body::before {
     height: 100vh;
     z-index: 9999;
   }
+
+.arrow.right {
+    display: none;
+  }
+
 }
 
 </style>
@@ -433,6 +508,7 @@ body::before {
   <div class="arrow left">‹</div>
   <div class="viewport">
     <div class="track">
+
       <div class="card locked" data-id="M1" data-rating="10">
         <h3>A Wimp’s Strategy Guide to Conquer the Tower</h3>
         <h4>Chapter 12 / Ongoing</h4>
@@ -1893,7 +1969,7 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>rom a thieving child to one who would shake the world. Rising to the title of Immortal Master, one of the Godly Twelve Stars, but ultimately betrayed. Now, he has been given a chance to change that, and create a better future- for both him, and the world.</p>
+        <p>From a thieving child to one who would shake the world. Rising to the title of Immortal Master, one of the Godly Twelve Stars, but ultimately betrayed. Now, he has been given a chance to change that, and create a better future- for both him, and the world.</p>
 
       </div>
 
