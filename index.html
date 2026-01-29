@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1200">
 <title>Simple Dual Carousel</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
@@ -358,33 +357,10 @@ body::before {
 
 @media (max-width: 850px) {
 
-  /* Use desktop width and centering */
-  .page,
-  .main,
-  .container,
-  .detail-container {
-    width: 100%;
-    max-width: 1100px;   /* desktop width */
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* Prevent phone stretching */
+    /* Prevent phone stretching */
   html, body {
     overflow-x: hidden;
-  }
-
-  /* Keep desktop alignment */
-  .content,
-  .card {
-    width: auto;
-    max-width: none;
-  }
-
-  /* Images behave like desktop */
-  img {
     max-width: 100%;
-    height: auto;
   }
 
   /* Keep mobile menu working */
