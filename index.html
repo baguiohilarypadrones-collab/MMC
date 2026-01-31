@@ -23,6 +23,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
+  background: url("bg.jpg") center / cover no-repeat;
   background: rgba(0,0,0,0.45); /* darkness level */
   z-index: -1;
 }
@@ -162,6 +163,81 @@ body::before {
   padding: 15px;
   text-align: center;
 }
+
+.card-link {
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 18px; /* 👈 ADD THIS */
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255,255,255,0.85);
+  text-decoration: underline;
+}
+
+.card-link:hover {
+  color: #fff;
+}
+
+.card-desc {
+  display: none;
+  margin-top: 10px;
+}
+
+.card-desc.show {
+  display: block;
+}
+
+.toggle-desc {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 6px;
+  margin-bottom: 8px; /* 👈 ADD THIS */
+}
+
+.toggle-desc:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.card-desc {
+  display: none;
+}
+
+.card-desc.show {
+  display: block;
+}
+
+.sentence-lines span {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+  margin-bottom: 13px; /* 👈 ADD THIS */
+}
+
+.genre {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.genre:hover {
+  background: rgba(255,255,255,0.35);
+}
+
 
 .card img {
   width: 100%;
@@ -374,6 +450,7 @@ body::before {
 
 .stars {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .stars span {
@@ -561,8 +638,32 @@ html, body {
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>By the Studio that brought you 'S-Class Hunter Heals with Monsters'
-One day, mysterious black towers rise across the world, triggering awakenings in a small number of humans. For Bong Juhyeok, a timid and insecure part-time worker, it seems completely irrelevant to his life. Exhausted from another shift, he is about to eat instant noodles when an unexpected message appears announcing his awakening. Startled and confused, he is suddenly thrust into a reality where his ordinary life may finally change, raising the question of whether this awakening is a chance at a true turnaround or just the beginning of even greater chaos.</p>
+<a href="https://en-thunderscans.com/comics/a-wimps-strategy-guide-to-conquer-the-tower/"
+     target="_blank"
+     class="card-link"
+     onclick="event.stopPropagation()">
+     Click here to Start Reading
+  </a>
+
+<div class="genres" onclick="event.stopPropagation()">
+  <span class="genre">Action</span>
+  <span class="genre">Long Strip</span>
+  <span class="genre">Comedy</span>
+  <span class="genre">Adventure</span>
+  <span class="genre">Drama</span>
+  <span class="genre">Fantasy</span>
+  <span class="genre">Web Comic</span>
+</div>
+
+
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+<p class="card-desc">
+  By the Studio that brought you 'S-Class Hunter Heals with Monsters'
+One day, mysterious black towers rise across the world, triggering awakenings in a small number of humans. For Bong Juhyeok, a timid and insecure part-time worker, it seems completely irrelevant to his life. Exhausted from another shift, he is about to eat instant noodles when an unexpected message appears announcing his awakening. Startled and confused, he is suddenly thrust into a reality where his ordinary life may finally change, raising the question of whether this awakening is a chance at a true turnaround or just the beginning of even greater chaos.
+</p>
 
   </div>
 
@@ -584,7 +685,13 @@ One day, mysterious black towers rise across the world, triggering awakenings in
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>In a world where magic co-exists with the rule of nobles, Adrian Lawrence seemed to have gotten lucky in life as the second son of a viscount. Despite this, Adrian is an outcast in a home controlled by his scheming stepmother and half-brother, who are set on ousting him. Little do they know that Adrian plays the game Chronicle Online, where he possesses great powers that can also be used in reality! With heirship to the viscounty up for grabs, can Adrian use his powers to level up his real life?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+In a world where magic co-exists with the rule of nobles, Adrian Lawrence seemed to have gotten lucky in life as the second son of a viscount. Despite this, Adrian is an outcast in a home controlled by his scheming stepmother and half-brother, who are set on ousting him. Little do they know that Adrian plays the game Chronicle Online, where he possesses great powers that can also be used in reality! With heirship to the viscounty up for grabs, can Adrian use his powers to level up his real life?
+</p>
 
       </div>
 
@@ -606,7 +713,11 @@ One day, mysterious black towers rise across the world, triggering awakenings in
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
 Gilfas Eldragon, the first head of the Eldragon family who became the strongest simply through his pursuit of strength, ate a fruit rumored to grant immortality and protected by the divine dragon, in order to pursue martial arts forever. However, contrary to the rumor, Gilfas’s body grew older, and he finally passed away, watched over by his sonor so it seemed. When he woke up, Gilfas had been reincamated as a baby in the Eldragon family a thousand years in the future, given the new name of Sieg Eldragon. Furthermore, with enemies from a world known as (Chaos) unknown to Sieg, the Eldragon family had adopted a strict law of the jungle philosophy. As everything transformed into a world he did not know, Sieg was ecstatic. “This time I will finally be able to see the end of martial arts!”</p>
 
       </div>
@@ -629,16 +740,20 @@ Gilfas Eldragon, the first head of the Eldragon family who became the strongest 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Han Sung, an SSS-class monster hunter from Earth, was summoned to another world where he had to devote his entire life as the Empire’s hunting dog.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-After being betrayed and losing his life, he is reincarnated as Dale, the eldest son of the Sachsen ducal family and heir to ‘Lord Black,’ the continent’s greatest dark mage who reigns supreme at the pinnacle of the Black Tower.
+        <p class="card-desc sentence-lines">
+<span>Han Sung, an SSS-class monster hunter from Earth, was summoned to another world where he had to devote his entire life as the Empire’s hunting dog.</span>
 
-“I will bring down the Empire with my own hands.”
+<span>After being betrayed and losing his life, he is reincarnated as Dale, the eldest son of the Sachsen ducal family and heir to ‘Lord Black,’ the continent’s greatest dark mage who reigns supreme at the pinnacle of the Black Tower.</span>
 
-Wielding sword, magic, and necromancy, Dale emerges as a genius prodigy, drawing on the knowledge and abilities from his previous life.
+<span>“I will bring down the Empire with my own hands.”</span>
 
-Where is the limit of his talent? His unstoppable journey begins now!
+<span>Wielding sword, magic, and necromancy, Dale emerges as a genius prodigy, drawing on the knowledge and abilities from his previous life.</span>
 
+<span>Where is the limit of his talent? His unstoppable journey begins now!</span>
 </p>
 
       </div>
@@ -661,9 +776,15 @@ Where is the limit of his talent? His unstoppable journey begins now!
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>A deceased S-rank hunter builds a house inside the gate and lives there.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-He raises monsters and cultivates demonic plants. This time, he wants to live life on his own terms.</p>
+        <p class="card-desc sentence-lines">
+<span>A deceased S-rank hunter builds a house inside the gate and lives there.</span>
+
+<span>He raises monsters and cultivates demonic plants. This time, he wants to live life on his own terms.</span>
+</p>
 
       </div>
 
@@ -685,19 +806,25 @@ He raises monsters and cultivates demonic plants. This time, he wants to live li
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Damian Haxen was a man born with a talent destined to go down in history. However, he was transformed into a Death Knight by a dark mage, Archlich Dorgo, and was forced to live like a slave. By the archlich’s command, he slaughtered his family with his own hands and brought ruin to every kingdom.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Just as the entire world was about to fall under the archlich’s control, Damian regained his consciousness, but it was already too late.
+        <p class="card-desc sentence-lines">
+<span>Damian Haxen was a man born with a talent destined to go down in history. However, he was transformed into a Death Knight by a dark mage, Archlich Dorgo, and was forced to live like a slave. By the archlich’s command, he slaughtered his family with his own hands and brought ruin to every kingdom.</span>
 
-Right when he was ready to give up everything, a miracle happened.
+<span>Just as the entire world was about to fall under the archlich’s control, Damian regained his consciousness, but it was already too late.</span>
 
-Regression.
+<span>Right when he was ready to give up everything, a miracle happened.</span>
 
-Now back to the time before it all began, his goal was clear.
+<span>Regression.</span>
 
-“This time, I’ll live only for my family’s happiness and future. Of course...”
+<span>Now back to the time before it all began, his goal was clear.</span>
 
-He would purge all traces of the filthy dark mage and make him taste hell first!</p>
+<span>“This time, I’ll live only for my family’s happiness and future. Of course...”</span>
+
+<span>He would purge all traces of the filthy dark mage and make him taste hell first!</span>
+</p>
 
       </div>
 
@@ -720,7 +847,12 @@ He would purge all traces of the filthy dark mage and make him taste hell first!
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>“I lived as a chained dog. In this life, I’ll live as a mad dog.” He once swung his blade for a deranged king—only to meet death at the hands of his dearest friend. But when he opens his eyes again, he finds himself reborn… as that very friend’s youngest grandson. No more loyalty. No more chains. No more destiny. This time, he’ll tear apart the leash that bound him and live only for himself. The debt of his past life is already paid—now begins a reckless rampage under the banner of freedom.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+“I lived as a chained dog. In this life, I’ll live as a mad dog.” He once swung his blade for a deranged king—only to meet death at the hands of his dearest friend. But when he opens his eyes again, he finds himself reborn… as that very friend’s youngest grandson. No more loyalty. No more chains. No more destiny. This time, he’ll tear apart the leash that bound him and live only for himself. The debt of his past life is already paid—now begins a reckless rampage under the banner of freedom.</p>
 
       </div>
 
@@ -742,13 +874,19 @@ He would purge all traces of the filthy dark mage and make him taste hell first!
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Joo In-gong was dragged into the remake of a game he was playing called 'Knight Saga:Re'.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-However, something wasn't right. The only playable characters should be Loch of the human side and Zephyr of the demon side. Instead, he awakens in the body of Shutra— the ninth prince of the Demon Realm, a character who actually didn't exist in the game’s story.
+        <p class="card-desc sentence-lines">
+<span>Joo In-gong was dragged into the remake of a game he was playing called 'Knight Saga:Re'.</span>
 
-Granted two mysterious powers, "Protagonist Setting Adjustment" and "Power of Conquest," Joo In-gong now must alter the game's plot to survive against Zephyr.
+<span>However, something wasn't right. The only playable characters should be Loch of the human side and Zephyr of the demon side. Instead, he awakens in the body of Shutra— the ninth prince of the Demon Realm, a character who actually didn't exist in the game’s story.</span>
 
-Yet, with every twist of the plot, he garners more attention...</p>
+<span>Granted two mysterious powers, "Protagonist Setting Adjustment" and "Power of Conquest," Joo In-gong now must alter the game's plot to survive against Zephyr.</span>
+
+<span>Yet, with every twist of the plot, he garners more attention...</span>
+</p>
 
       </div>
 
@@ -770,7 +908,13 @@ Yet, with every twist of the plot, he garners more attention...</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>It follows Ketal, a modern human reincarnated into a harsh, frozen wasteland. He must survive dangerous monsters to escape into a, colorful fantasy world of elves and magic, navigating this new world with childlike wonder while terrifying natives with his raw strength. </p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+It follows Ketal, a modern human reincarnated into a harsh, frozen wasteland. He must survive dangerous monsters to escape into a, colorful fantasy world of elves and magic, navigating this new world with childlike wonder while terrifying natives with his raw strength.
+</p>
 
       </div>
 
@@ -792,19 +936,25 @@ Yet, with every twist of the plot, he garners more attention...</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>There were five heroes who fought against Erebos, the primordial evil that drove the world to the brink of destruction. [The Brave] Aron. [Divine Blacksmith] Dweno. [Poet of the Stars] Luna. [King of Wisdom] Lysinias.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-And lastly, me [Hero of Beginning] Kyle.
+        <p class="card-desc sentence-lines">
+<span>There were five heroes who fought against Erebos, the primordial evil that drove the world to the brink of destruction. [The Brave] Aron. [Divine Blacksmith] Dweno. [Poet of the Stars] Luna. [King of Wisdom] Lysinias.</span>
 
-When I was reincarnated 5000 years later, everyone was praised as a Legendary hero.
+<span>And lastly, me [Hero of Beginning] Kyle.</span>
+
+<span>When I was reincarnated 5000 years later, everyone was praised as a Legendary hero.</span>
 
 “Except me.”
 
-A gift from God that records the achievements of heroes.
+<span>A gift from God that records the achievements of heroes.</span>
 
-The Hero Academy with Hero Records.
+<span>The Hero Academy with Hero Records.</span>
 
-Let’s go there and find out why.</p>
+<span>Let’s go there and find out why.</span>
+</p>
 
       </div>
 
@@ -826,7 +976,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Ye Chuan—a mental patient—sees all living creatures in the world as pigs. On the day he changes professions, he awakens a life-class occupation: Butcher. His teachers and classmates are gravely disappointed, and even his childhood sweetheart leaves him. However, the Butcher profession grants him extra damage against pigs and halves the damage he receives from them. Since he sees everyone as pigs, he uses a single butcher’s knife to rise up and become a god!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Ye Chuan—a mental patient—sees all living creatures in the world as pigs. On the day he changes professions, he awakens a life-class occupation: Butcher. His teachers and classmates are gravely disappointed, and even his childhood sweetheart leaves him. However, the Butcher profession grants him extra damage against pigs and halves the damage he receives from them. Since he sees everyone as pigs, he uses a single butcher’s knife to rise up and become a god!
+</p>
 
       </div>
 
@@ -848,7 +1004,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>His talent was forged on the battlefield, but before he could fully develop it, he died. However, when he opened his eyes again, he realized he had been reborn as Dane Sogres, the youngest son of a prestigious count. The talent he now possessed… was not limited to just one field?! A talent in spearmanship, assassination, magic, summoning, and even swordsmanship—which he had not been able to develop fully before! He can finally nurture his endless talent in the embrace of the happy family he had always longed for. “Spearmanship! Dane must absolutely learn spearmanship!” “Are you saying that because you really don’t know how useful learning stealth and assassination skills could be?” “Magic is the future, Father, Mother!” “For my younger brother… summoning would also be really nice…” …Mm, this is a happy family, right?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+His talent was forged on the battlefield, but before he could fully develop it, he died. However, when he opened his eyes again, he realized he had been reborn as Dane Sogres, the youngest son of a prestigious count. The talent he now possessed… was not limited to just one field?! A talent in spearmanship, assassination, magic, summoning, and even swordsmanship—which he had not been able to develop fully before! He can finally nurture his endless talent in the embrace of the happy family he had always longed for. “Spearmanship! Dane must absolutely learn spearmanship!” “Are you saying that because you really don’t know how useful learning stealth and assassination skills could be?” “Magic is the future, Father, Mother!” “For my younger brother… summoning would also be really nice…” …Mm, this is a happy family, right?
+</p>
 
       </div>
 
@@ -870,7 +1032,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The handsome Duke Voreoti is the most terrifying man in the empire, with the coldest of demeanors and a gaze that can kill. But one day, he suddenly says that he wants to… adopt a child?! And that child is me?! After finding me at a shady orphanage, he whisked me away to his snowy palace without a second thought. Now I’m learning all the ways of the feared Voreoti family from his knights. However, things get dicey when the Duke becomes suspicious of my origins. With these fangs and jet black hair, perhaps we are more than just kindred spirits…</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+The handsome Duke Voreoti is the most terrifying man in the empire, with the coldest of demeanors and a gaze that can kill. But one day, he suddenly says that he wants to… adopt a child?! And that child is me?! After finding me at a shady orphanage, he whisked me away to his snowy palace without a second thought. Now I’m learning all the ways of the feared Voreoti family from his knights. However, things get dicey when the Duke becomes suspicious of my origins. With these fangs and jet black hair, perhaps we are more than just kindred spirits…
+</p>
 
       </div>
 
@@ -892,7 +1060,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Life as a magic academy mage. Graduate student Lee Han was born as the youngest son in another world's famous family of mages. He swore he would never go to another place with the word "academy" in it. However, the magic academy known as Einrogard completely ignored what he had promised himself. Being self-sufficient is a must; monsters may appear, and the professors are all total nutjobs! This is the beginning of a pitiful academy life that you have never seen before."Will I be able to... graduate safely?"</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Life as a magic academy mage. Graduate student Lee Han was born as the youngest son in another world's famous family of mages. He swore he would never go to another place with the word "academy" in it. However, the magic academy known as Einrogard completely ignored what he had promised himself. Being self-sufficient is a must; monsters may appear, and the professors are all total nutjobs! This is the beginning of a pitiful academy life that you have never seen before."Will I be able to... graduate safely?"
+</p>
 
       </div>
 
@@ -914,7 +1088,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>After suffering from an illness that cut his life short, Royce wakes up to find himself as a character from the story he read until his last moments. As a dragon hatchling, he believes his long life is just beginning. That is, until Royce realizes he's the son of the dragon who goes berserk due to his untimely death! Now, Royce is looking to race against the clock, even if his every move leads to a near-death experience. Will he be able to change his fate, or will he get stopped in his tracks?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+After suffering from an illness that cut his life short, Royce wakes up to find himself as a character from the story he read until his last moments. As a dragon hatchling, he believes his long life is just beginning. That is, until Royce realizes he's the son of the dragon who goes berserk due to his untimely death! Now, Royce is looking to race against the clock, even if his every move leads to a near-death experience. Will he be able to change his fate, or will he get stopped in his tracks?
+</p>
 
       </div>
 
@@ -936,7 +1116,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The child of a black leopard and a snow leopard shapeshifter, 7-year-old Tiel escapes her abusive family to seek refuge with the father she never knew. All she wants is safety, but her father, the feared Duke Asterian, has other plans... to give his long-lost daughter a loving family and a wonderful home! Now, Tiel is set on protecting her family from the evil forces who want to take her away. Can she fight these foes to save her new home? Or will Tiel lose her loved ones once and for all?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+The child of a black leopard and a snow leopard shapeshifter, 7-year-old Tiel escapes her abusive family to seek refuge with the father she never knew. All she wants is safety, but her father, the feared Duke Asterian, has other plans... to give his long-lost daughter a loving family and a wonderful home! Now, Tiel is set on protecting her family from the evil forces who want to take her away. Can she fight these foes to save her new home? Or will Tiel lose her loved ones once and for all?
+</p>
 
       </div>
 
@@ -959,7 +1145,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>In this world, when people turn 15, they are granted a skill from the heavens. I, Hiraku Mattoh, was born into a family of Sword Saints and was hailed as a prodigy from a young age. Everyone was certain I would inherit the same title. However, at my skill appraisal ceremony, I received "Unlocker"—a seemingly worthless ability that could only "open what is closed." Disappointed, my family branded it a trash skill and exiled me. Left adrift, I soon discovered its true power. By unlocking my status window, I could freely acquire skills, obtain item drops, and grow stronger without limit.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+In this world, when people turn 15, they are granted a skill from the heavens. I, Hiraku Mattoh, was born into a family of Sword Saints and was hailed as a prodigy from a young age. Everyone was certain I would inherit the same title. However, at my skill appraisal ceremony, I received "Unlocker"—a seemingly worthless ability that could only "open what is closed." Disappointed, my family branded it a trash skill and exiled me. Left adrift, I soon discovered its true power. By unlocking my status window, I could freely acquire skills, obtain item drops, and grow stronger without limit.
+</p>
 
       </div>
 
@@ -981,7 +1173,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>After traveling through time, I got the weakest little snowball as my pet, which couldn’t even evolve? Do I really have to be a waste for the rest of my life? Ding! The System lights up! What! I actually saw the hidden evolution route! Who said it was the weakest! Evolve! Ice Queen!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+After traveling through time, I got the weakest little snowball as my pet, which couldn’t even evolve? Do I really have to be a waste for the rest of my life? Ding! The System lights up! What! I actually saw the hidden evolution route! Who said it was the weakest! Evolve! Ice Queen!
+</p>
 
       </div>
 
@@ -1003,7 +1201,13 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>As the apocalypse descends, monsters from the game shatter the dimensional barrier and rampage across the world, driving Blue Star’s human civilization to the brink of extinction. Just as the world collapses into chaos, time suddenly rewinds for him—back to the very moment the game first appeared. This time, he’s determined to uncover the mastermind behind it all, protect his home, and ensure the tragedy never repeats. And so begins a race against time… a game of revenge.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+As the apocalypse descends, monsters from the game shatter the dimensional barrier and rampage across the world, driving Blue Star’s human civilization to the brink of extinction. Just as the world collapses into chaos, time suddenly rewinds for him—back to the very moment the game first appeared. This time, he’s determined to uncover the mastermind behind it all, protect his home, and ensure the tragedy never repeats. And so begins a race against time… a game of revenge.
+</p>
 
       </div>
 
@@ -1025,28 +1229,34 @@ Let’s go there and find out why.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>20 years ago, the world flipped on its head.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-The Dark God appeared without warning and unleashed the Death Game known as Prison Day.
-Only a select few across all of humanity were dragged into it. Win, and your life would be reborn in glory. Lose… and you’d be trapped forever, rotting away inside that nightmare.
+        <p class="card-desc sentence-lines">
+<span>20 years ago, the world flipped on its head.</span>
 
-Tokiya Kurosu clawed his way through that hell.
-He became the Strongest Player — the last one standing.
+<span>The Dark God appeared without warning and unleashed the Death Game known as Prison Day.
+Only a select few across all of humanity were dragged into it. Win, and your life would be reborn in glory. Lose… and you’d be trapped forever, rotting away inside that nightmare.</span>
 
-But instead of ascending to godhood, he spat on the offer and chose a different path.
-He turned back time.
+<span>Tokiya Kurosu clawed his way through that hell.
+He became the Strongest Player — the last one standing.</span>
 
-His wish was simple, desperate, human:
+<span>But instead of ascending to godhood, he spat on the offer and chose a different path.
+He turned back time.</span>
+
+<span>His wish was simple, desperate, human:
 to save his mother… his best friend… everyone he failed to protect…
-and to take back the “ordinary life” that was stolen from him.
+and to take back the “ordinary life” that was stolen from him.</span>
 
-Now, armed with every memory of that brutal future, Tokiya returns to the beginning.
-With unmatched experience and absolute knowledge, he bends this merciless Death Game to his own design.
+<span>Now, armed with every memory of that brutal future, Tokiya returns to the beginning.
+With unmatched experience and absolute knowledge, he bends this merciless Death Game to his own design.</span>
 
-He defies fate.
-He rewrites the future.
+<span>He defies fate.
+He rewrites the future.</span>
 
-The second act of the game begins now.</p>
+<span>The second act of the game begins now.</span>
+</p>
 
       </div>
 
@@ -1068,7 +1278,13 @@ The second act of the game begins now.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The apocalypse prophecy has come true. A dark celestial body draws near, turning the entire Blue Star into a doomsday game. All of humanity has been reduced to NPCs—helpless prey for players from beyond the stars. As the world mutates and players run rampant, despair consumes mankind… Until Yun Qi awakens a hidden class, gaining the power to strike back against the players.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+The apocalypse prophecy has come true. A dark celestial body draws near, turning the entire Blue Star into a doomsday game. All of humanity has been reduced to NPCs—helpless prey for players from beyond the stars. As the world mutates and players run rampant, despair consumes mankind… Until Yun Qi awakens a hidden class, gaining the power to strike back against the players.
+</p>
 
       </div>
 
@@ -1090,16 +1306,22 @@ The second act of the game begins now.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>
-『One day, a wyvern took flight. And when I saw it, I decided to retire.』
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Aster—once a Troubleshooter of the prestigious mage family Decolan, despite being born a damned vagrant.
+        <p class="card-desc sentence-lines">
 
-He ran for freedom, but was eventually caught and killed.
+<span>『One day, a wyvern took flight. And when I saw it, I decided to retire.』</span>
 
-Yet when he opened his eyes…
+<span>Aster—once a Troubleshooter of the prestigious mage family Decolan, despite being born a damned vagrant.</span>
 
-He had returned to the days when he was still a street rat in the Gray Zone!</p>
+<span>He ran for freedom, but was eventually caught and killed.</span>
+
+<span>Yet when he opened his eyes…</span>
+
+<span>He had returned to the days when he was still a street rat in the Gray Zone!</span>
+</p>
 
       </div>
 
@@ -1121,7 +1343,13 @@ He had returned to the days when he was still a street rat in the Gray Zone!</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Jun Xiaoyao traversed a fantasy world, becoming the divine scion of an ancient and powerful clan. With an invincible background and astonishing talent, he also acquired a sign-in system. Starting by signing in, he obtained a complete Grand Ancient Divine Body. With the system’s assistance, he embarked on a journey step by step towards the pinnacle of the world!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Jun Xiaoyao traversed a fantasy world, becoming the divine scion of an ancient and powerful clan. With an invincible background and astonishing talent, he also acquired a sign-in system. Starting by signing in, he obtained a complete Grand Ancient Divine Body. With the system’s assistance, he embarked on a journey step by step towards the pinnacle of the world!
+</p>
 
       </div>
 
@@ -1143,13 +1371,16 @@ He had returned to the days when he was still a street rat in the Gray Zone!</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>
-“I, who know all the world’s secrets, will change this doomed future!”
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-In a world where dungeons exist, Yuya Shirasaki, an awakened warrior, risks his life to conquer them, aiming to earn enough for his ailing sister’s medical treatments. Yet, despite his efforts, his sister dies, and Yuya himself falls to the mightiest of monsters—or so it seems. In the instant before his death, Yuya awakens the forbidden skill, Akashic Record, allowing him not only to gain all knowledge but also to return ten years into the past.
+        <p class="card-desc sentence-lines">
+<span>“I, who know all the world’s secrets, will change this doomed future!”</span>
 
-With a second chance at life and armed with the wisdom of both past and future, Yuya sets out to rise at an unstoppable pace in this monster-filled world. “If it’s to save my sister—and this world—then I’ll become the strongest there is!”
+<span>In a world where dungeons exist, Yuya Shirasaki, an awakened warrior, risks his life to conquer them, aiming to earn enough for his ailing sister’s medical treatments. Yet, despite his efforts, his sister dies, and Yuya himself falls to the mightiest of monsters—or so it seems. In the instant before his death, Yuya awakens the forbidden skill, Akashic Record, allowing him not only to gain all knowledge but also to return ten years into the past.</span>
 
+<span>With a second chance at life and armed with the wisdom of both past and future, Yuya sets out to rise at an unstoppable pace in this monster-filled world. “If it’s to save my sister—and this world—then I’ll become the strongest there is!”</span>
 </p>
 
       </div>
@@ -1172,8 +1403,13 @@ With a second chance at life and armed with the wisdom of both past and future, 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>
-He died as a mercenary, held back his entire life by low-born blood. When he opens his eyes again, he finds himself reborn as the third son of a Grand Duke. A noble lineage, a powerful family, and the talent he never had. Everything he once dreamed of is finally his. Determined to rise to the very top, he sets out on a bold new path. The extraordinary noble life of a former mercenary captain turned Grand Duke’s son is about to begin.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+He died as a mercenary, held back his entire life by low-born blood. When he opens his eyes again, he finds himself reborn as the third son of a Grand Duke. A noble lineage, a powerful family, and the talent he never had. Everything he once dreamed of is finally his. Determined to rise to the very top, he sets out on a bold new path. The extraordinary noble life of a former mercenary captain turned Grand Duke’s son is about to begin.
+</p>
 
       </div>
 
@@ -1195,8 +1431,13 @@ He died as a mercenary, held back his entire life by low-born blood. When he ope
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>
-The Catacombs are labyrinths connected to suddenly appearing gates, where only players awakened with special skills can fight the enemies within to protect humanity. Sota Sezaki, born to player parents, fails to awaken and is scorned as a weirdo because he can see spirits. After entering a gate with his childhood friend, he is nearly killed by the strongest boss, the Queen Spider, and finally awakens a unique skill that lets him inherit the abilities of the dead by resolving their lingering regrets. Guided by the wandering soul of his fallen father, a legendary fire mage, Sota challenges the Catacombs to become the strongest player.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+The Catacombs are labyrinths connected to suddenly appearing gates, where only players awakened with special skills can fight the enemies within to protect humanity. Sota Sezaki, born to player parents, fails to awaken and is scorned as a weirdo because he can see spirits. After entering a gate with his childhood friend, he is nearly killed by the strongest boss, the Queen Spider, and finally awakens a unique skill that lets him inherit the abilities of the dead by resolving their lingering regrets. Guided by the wandering soul of his fallen father, a legendary fire mage, Sota challenges the Catacombs to become the strongest player.
+</p>
 
       </div>
 
@@ -1218,7 +1459,13 @@ The Catacombs are labyrinths connected to suddenly appearing gates, where only p
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Ten years after humanity’s fall, Earth lies under demonian rule. After losing his sister and his life, Yoon is offered one last chance by an angel statue. Sent back in time with a leveling system, he must reach Lv. 99 to save her and change Earth’s fate. Yoon fights, not for the world, but for her. One brother’s journey to save his sister may be humanity’s last hope.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Ten years after humanity’s fall, Earth lies under demonian rule. After losing his sister and his life, Yoon is offered one last chance by an angel statue. Sent back in time with a leveling system, he must reach Lv. 99 to save her and change Earth’s fate. Yoon fights, not for the world, but for her. One brother’s journey to save his sister may be humanity’s last hope.
+</p>
 
       </div>
 
@@ -1240,19 +1487,25 @@ The Catacombs are labyrinths connected to suddenly appearing gates, where only p
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The peak of strength in South Korea is the Esteemed Martial Lee Clan. In that martial clan, Lee Cheol was looked down on and chased out because of his status as an illegitimate child.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-In order to survive, he lived in shadows, but he was chased down and killed because of his family's schemes. He was then granted a second chance—regression.
+        <p class="card-desc sentence-lines">
+<span>The peak of strength in South Korea is the Esteemed Martial Lee Clan. In that martial clan, Lee Cheol was looked down on and chased out because of his status as an illegitimate child.</span>
 
-Using his "ability to absorb the memories of a weapon" as a foundation, Lee Cheol would train and go down a path of struggle.
+<span>In order to survive, he lived in shadows, but he was chased down and killed because of his family's schemes. He was then granted a second chance—regression.</span>
 
-Persistent competition and schemes regarding the right to inheritance, attacks from other races and monsters in dangerous, unexplored lands, and even local clashes related to his family's internal struggles...
+<span>Using his "ability to absorb the memories of a weapon" as a foundation, Lee Cheol would train and go down a path of struggle.</span>
 
-His growth would bring about these things, bringing hardship upon Lee Cheol.
+<span>Persistent competition and schemes regarding the right to inheritance, attacks from other races and monsters in dangerous, unexplored lands, and even local clashes related to his family's internal struggles...</span>
 
-Life itself would be a struggle for Lee Cheol, and this is his destiny.
+<span>His growth would bring about these things, bringing hardship upon Lee Cheol.</span>
 
-But in order to protect himself and his surroundings—in order to protect everything—as the fight continues, he'll unravel secrets from his past life, one by one...!</p>
+<span>Life itself would be a struggle for Lee Cheol, and this is his destiny.</span>
+
+<span>But in order to protect himself and his surroundings—in order to protect everything—as the fight continues, he'll unravel secrets from his past life, one by one...!</span>
+</p>
 
       </div>
 
@@ -1274,11 +1527,17 @@ But in order to protect himself and his surroundings—in order to protect every
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>My method in getting stronger is very simple—eating.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-I just need to eat artifacts.
+        <p class="card-desc sentence-lines">
+<span>My method in getting stronger is very simple—eating.</span>
 
-I've regressed, so I'll be able to eat as much as I want now, right?</p>
+<span>I just need to eat artifacts.</span>
+
+<span>I've regressed, so I'll be able to eat as much as I want now, right?</span>
+</p>
 
       </div>
 
@@ -1300,11 +1559,17 @@ I've regressed, so I'll be able to eat as much as I want now, right?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>A young man, Han Sunghyun, loses his family in an indiscriminate attack by superhumans. While living a reclusive life due to the trauma of the incident, one day, he awakens the ability to control avatars in his place!
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-“What?! I can send avatars to hunt in dangerous otherworlds while I stay safely at home, just focusing on strengthening my powers?!”
+        <p class="card-desc sentence-lines">
+<span>A young man, Han Sunghyun, loses his family in an indiscriminate attack by superhumans. While living a reclusive life due to the trauma of the incident, one day, he awakens the ability to control avatars in his place!</span>
 
-As his avatars grow rapidly, crossing dimensions, races, and professions, Han Sunghyun begins to hunt down the superhumans who abuse their powers!</p>
+<span>“What?! I can send avatars to hunt in dangerous otherworlds while I stay safely at home, just focusing on strengthening my powers?!”</span>
+
+<span>As his avatars grow rapidly, crossing dimensions, races, and professions, Han Sunghyun begins to hunt down the superhumans who abuse their powers!</span>
+</p>
 
       </div>
 
@@ -1326,12 +1591,18 @@ As his avatars grow rapidly, crossing dimensions, races, and professions, Han Su
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>"To stay alive… I have no choice but to become a genius. From today, I’ll do my best, so please support me."
-Lee Hyun-woo finds himself possessing Kyle Seltarion, an extra character from a game where he used to reign as the world’s number one player.
-Considering the game’s storyline, he soon faces the imminent death of Kyle, who, on top of being on death's door, can't use magic or aura and has a terrible reputation. How did he end up in the body of such a character?
-However, after discovering a new talent, he learns to harness mana and begins to shift his attributes and reputation with knowledge of hidden routes gained through grinding in the game.
-His immediate goal is to save his own life, but that goal is closely linked to the impending global catastrophe...
-To overcome this situation, he needs to gather allies and boost his reputation! It's time to turn his past, which was a reckless mess, around and move into a new phase!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+<span>"To stay alive… I have no choice but to become a genius. From today, I’ll do my best, so please support me."</span>
+<span>Lee Hyun-woo finds himself possessing Kyle Seltarion, an extra character from a game where he used to reign as the world’s number one player.</span>
+<span>Considering the game’s storyline, he soon faces the imminent death of Kyle, who, on top of being on death's door, can't use magic or aura and has a terrible reputation. How did he end up in the body of such a character?
+However, after discovering a new talent, he learns to harness mana and begins to shift his attributes and reputation with knowledge of hidden routes gained through grinding in the game.</span>
+<span>His immediate goal is to save his own life, but that goal is closely linked to the impending global catastrophe...</span>
+<span>To overcome this situation, he needs to gather allies and boost his reputation! It's time to turn his past, which was a reckless mess, around and move into a new phase!</span>
+</p>
 
       </div>
 
@@ -1353,9 +1624,15 @@ To overcome this situation, he needs to gather allies and boost his reputation! 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>At age 13, the genius wizard Rin embarked on a journey with Lista and the hero party to defeat the great evil known as “the Abyss,” which sought to plunge the world into chaos. But as the battle grew more intense, Rin’s body succumbed to the dark poison of the Abyss, putting his life in grave danger.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-With the words “I’ll come back,” Rin’s soul entered a forced dormancy, only to reawaken 300 years later as a noble boy. Starting his second life in a peaceful world, Rin discovers that on one side of the world, the destined forces of darkness are beginning to stir once more</p>
+        <p class="card-desc sentence-lines">
+<span>At age 13, the genius wizard Rin embarked on a journey with Lista and the hero party to defeat the great evil known as “the Abyss,” which sought to plunge the world into chaos. But as the battle grew more intense, Rin’s body succumbed to the dark poison of the Abyss, putting his life in grave danger.</span>
+
+<span>With the words “I’ll come back,” Rin’s soul entered a forced dormancy, only to reawaken 300 years later as a noble boy. Starting his second life in a peaceful world, Rin discovers that on one side of the world, the destined forces of darkness are beginning to stir once more</span>
+</p>
 
       </div>
 
@@ -1377,7 +1654,13 @@ With the words “I’ll come back,” Rin’s soul entered a forced dormancy, o
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>In a world where hunters, human warriors who possess magical abilities, must battle deadly monsters to protect mankind from certain annihilation, a notoriously weak hunter named Sung Jinwoo finds himself in a seemingly endless struggle for survival. One day, after narrowly surviving an overwhelmingly powerful dungeon that nearly wipes out his entire party, a mysterious program called the System chooses him as its sole player and in turn, gives him the extremely rare ability to level up in strength, possibly beyond any known limits. Follow Jinwoo's journey as he fights against all kinds of enemies, both man and monster, to discover the secrets of the dungeons and the true source of his powers.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+In a world where hunters, human warriors who possess magical abilities, must battle deadly monsters to protect mankind from certain annihilation, a notoriously weak hunter named Sung Jinwoo finds himself in a seemingly endless struggle for survival. One day, after narrowly surviving an overwhelmingly powerful dungeon that nearly wipes out his entire party, a mysterious program called the System chooses him as its sole player and in turn, gives him the extremely rare ability to level up in strength, possibly beyond any known limits. Follow Jinwoo's journey as he fights against all kinds of enemies, both man and monster, to discover the secrets of the dungeons and the true source of his powers.
+</p>
 
       </div>
 
@@ -1400,9 +1683,15 @@ With the words “I’ll come back,” Rin’s soul entered a forced dormancy, o
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>When Seo Junho and his companions sacrificed themselves to defeat the Frost Queen, they thought they were restoring peace to Earth. But after 25 years of being frozen solid, Junho thaws out only to find that nine more floors appeared in his absence, only one of which has been cleared!
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-As the only one who holds the key to clearing the next floor and defrosting his friends, Junho must step up once again. But has this hero been in hibernation too long to take on the world’s fearsome new foes?</p>
+        <p class="card-desc sentence-lines">
+<span>When Seo Junho and his companions sacrificed themselves to defeat the Frost Queen, they thought they were restoring peace to Earth. But after 25 years of being frozen solid, Junho thaws out only to find that nine more floors appeared in his absence, only one of which has been cleared!</span>
+
+<span>As the only one who holds the key to clearing the next floor and defrosting his friends, Junho must step up once again. But has this hero been in hibernation too long to take on the world’s fearsome new foes?</span>
+</p>
 
       </div>
 
@@ -1424,7 +1713,13 @@ As the only one who holds the key to clearing the next floor and defrosting his 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>After 30% of Korea's population was massacred by monsters, Players were the people's last hope. In a battle against those monsters, a Player named Noh Eunha was on the verge of death, but he was miraculously sent back to when he was a baby! Now that he knows what's to come, he's building up the mana he lacked in his past life while trying to convince his parents not to make the same choices that led to their deaths. But how can a 6-year-old Eunha convince his parents that he knows best?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+After 30% of Korea's population was massacred by monsters, Players were the people's last hope. In a battle against those monsters, a Player named Noh Eunha was on the verge of death, but he was miraculously sent back to when he was a baby! Now that he knows what's to come, he's building up the mana he lacked in his past life while trying to convince his parents not to make the same choices that led to their deaths. But how can a 6-year-old Eunha convince his parents that he knows best?
+</p>
 
       </div>
 
@@ -1447,7 +1742,13 @@ As the only one who holds the key to clearing the next floor and defrosting his 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Light was a boy who dreamed of becoming an adventurer. He went to the temple with his childhood friend to get a skill fruit. While his childhood friend got the rare Sword Saint skill, Light obtained the Nut Master skill which only improves farming ability. Light is forced to abandon his dream of becoming an adventurer to start working as a farmer. Although warned to never eat a second skill fruit because he will get poisoned and died, Light's unique skill allows him to eat as many skill fruits as he wants to obtain multiple skills.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Light was a boy who dreamed of becoming an adventurer. He went to the temple with his childhood friend to get a skill fruit. While his childhood friend got the rare Sword Saint skill, Light obtained the Nut Master skill which only improves farming ability. Light is forced to abandon his dream of becoming an adventurer to start working as a farmer. Although warned to never eat a second skill fruit because he will get poisoned and died, Light's unique skill allows him to eat as many skill fruits as he wants to obtain multiple skills.
+</p>
 
       </div>
 
@@ -1470,7 +1771,13 @@ As the only one who holds the key to clearing the next floor and defrosting his 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The man forsaken by the world, the man a slave to money and the man known as the legendary God of War in the highly popular MMORPG Continent of Magic. With the coming of age, he decides to say goodbye, but the feeble attempt to earn a little something for his time and effort ripples into an effect none could ever have imagined. Through a series of coincidences, his legendary avatar is sold for 3 billion 90 million won ($2.7 million), bringing great joy to him, only to plunge him into despair at losing almost all of it to vicious loan sharks. With revelation of money through gaming, he rises from the abyss with new found resolve and steps forward into the new age of games led by the first ever Virtual Reality MMORPG, Royal Road. This is the legend of Lee Hyun on his path to becoming Emperor with only his family loving heart, his boundless desire for money, his unexpected mind, his diligently forged body and the talent of hard work backing him. This is the legend of the lowest becoming the strongest. This is the legend of WEED.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+The man forsaken by the world, the man a slave to money and the man known as the legendary God of War in the highly popular MMORPG Continent of Magic. With the coming of age, he decides to say goodbye, but the feeble attempt to earn a little something for his time and effort ripples into an effect none could ever have imagined. Through a series of coincidences, his legendary avatar is sold for 3 billion 90 million won ($2.7 million), bringing great joy to him, only to plunge him into despair at losing almost all of it to vicious loan sharks. With revelation of money through gaming, he rises from the abyss with new found resolve and steps forward into the new age of games led by the first ever Virtual Reality MMORPG, Royal Road. This is the legend of Lee Hyun on his path to becoming Emperor with only his family loving heart, his boundless desire for money, his unexpected mind, his diligently forged body and the talent of hard work backing him. This is the legend of the lowest becoming the strongest. This is the legend of WEED.
+</p>
 
       </div>
 
@@ -1492,9 +1799,15 @@ As the only one who holds the key to clearing the next floor and defrosting his 
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Cheon Hajin, popularly called as the Iron-Blooded Alliance Leader, wakes up in the body of “Byeok Lidan”—the disgrace of his family! His hobby is gambling, and he has been locked in a dark warehouse for a long time. Overnight, Cheon Hajin went from being the greatest expert of Jianghu to the worst possible trash.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Let's start from the scratch and accomplish everything I could not achieve in my previous life.</p>
+        <p class="card-desc sentence-lines">
+<span>Cheon Hajin, popularly called as the Iron-Blooded Alliance Leader, wakes up in the body of “Byeok Lidan”—the disgrace of his family! His hobby is gambling, and he has been locked in a dark warehouse for a long time. Overnight, Cheon Hajin went from being the greatest expert of Jianghu to the worst possible trash.</span>
+
+<span>Let's start from the scratch and accomplish everything I could not achieve in my previous life.</span>
+</p>
 
       </div>
 
@@ -1516,7 +1829,13 @@ Let's start from the scratch and accomplish everything I could not achieve in my
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>After being unfairly crushed to death, Jiujiu ends up in the underworld, bickering with Yama. In a bid to silence her endless rambling, he reincarnates her into a novel—as a princess. But not just any princess—she’s an exiled royal trapped in the infamous Cold Palace! One day, thanks to the scheming heroine of the novel, Jiujiu’s biological father—the tyrant emperor—flies into a rage and prepares to beat her to death! Burning with fury and injustice, Jiujiu cries out in her heart: “With a cruel, ruthless tyrant completely blind to right and wrong, it’s no wonder the Western Chu Kingdom will fall in ten years! It’s a miracle it could even last that long!” To her surprise, the emperor suddenly freezes—he can hear her thoughts! With her mind exposed, has Jiujiu just sealed her fate—or changed her destiny forever?!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+After being unfairly crushed to death, Jiujiu ends up in the underworld, bickering with Yama. In a bid to silence her endless rambling, he reincarnates her into a novel—as a princess. But not just any princess—she’s an exiled royal trapped in the infamous Cold Palace! One day, thanks to the scheming heroine of the novel, Jiujiu’s biological father—the tyrant emperor—flies into a rage and prepares to beat her to death! Burning with fury and injustice, Jiujiu cries out in her heart: “With a cruel, ruthless tyrant completely blind to right and wrong, it’s no wonder the Western Chu Kingdom will fall in ten years! It’s a miracle it could even last that long!” To her surprise, the emperor suddenly freezes—he can hear her thoughts! With her mind exposed, has Jiujiu just sealed her fate—or changed her destiny forever?!
+</p>
 
       </div>
 
@@ -1538,19 +1857,25 @@ Let's start from the scratch and accomplish everything I could not achieve in my
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The launch of the virtual reality game Warlord in the year 2035 changed the world.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Ahn Jaehyun was one of many who sought to change his fate within it.
+        <p class="card-desc sentence-lines">
+<span>The launch of the virtual reality game Warlord in the year 2035 changed the world.</span>
 
-But the price of devoting his entire life to the game was betrayal by the very comrades he trusted the most.
+<span>Ahn Jaehyun was one of many who sought to change his fate within it.</span>
 
-Having lost everything because of that betrayal, Jaehyun is given one more chance to start over.
+<span>But the price of devoting his entire life to the game was betrayal by the very comrades he trusted the most.</span>
 
-“I’m never playing with others again. Whether I win or lose, I’ll do it all on my own, and show them exactly what that means.”
+<span>Having lost everything because of that betrayal, Jaehyun is given one more chance to start over.</span>
 
-While others roll dice to split the loot, Jaehyun is the one who takes it all for himself.
+<span>“I’m never playing with others again. Whether I win or lose, I’ll do it all on my own, and show them exactly what that means.”</span>
 
-And so begins his thrilling, ruthless, solo-kill gaming life!</p>
+<span>While others roll dice to split the loot, Jaehyun is the one who takes it all for himself.</span>
+
+<span>And so begins his thrilling, ruthless, solo-kill gaming life!</span>
+</p>
 
       </div>
 
@@ -1572,12 +1897,18 @@ And so begins his thrilling, ruthless, solo-kill gaming life!</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Kang Cheol-ho was once the mightiest warrior— summoned to another world, where he fought and defeated the Demon King after decades of war.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Kang Cheol-ho was once the mightiest warrior— summoned to another world, where he fought and defeated the Demon King after decades of war.
 Now, 30 years later, he finally returns to Earth… only to find it in the middle of a new crisis: the age of monster raids.
 But Cheol-ho is tired. He’s had enough of bloodshed, battles, and glory.
 So he hangs up his sword and chooses a different dream: to open a small restaurant— a peaceful place where anyone can stop by, eat, and rest.
 As weary Hunters, broken strangers, and curious visitors walk through his door, Cheol-ho offers them warmth not through strength, but through a good meal and a listening ear.
-A gentle, heartwarming story about food, healing, and second chances.</p>
+A gentle, heartwarming story about food, healing, and second chances.
+</p>
 
       </div>
 
@@ -1599,7 +1930,13 @@ A gentle, heartwarming story about food, healing, and second chances.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Lin Tianhao, who has transmigrated to another world, attends the Job Change Ceremony and ends up taking on a “sewer-tier” job — Summoner. Just as everyone is mocking him, believing his future is doomed, he suddenly awakens a system and gains the skill [Demonic Sacrifice]! Who says the Summoner class is trash? I have the strongest SSS-rank talent</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Lin Tianhao, who has transmigrated to another world, attends the Job Change Ceremony and ends up taking on a “sewer-tier” job — Summoner. Just as everyone is mocking him, believing his future is doomed, he suddenly awakens a system and gains the skill [Demonic Sacrifice]! Who says the Summoner class is trash? I have the strongest SSS-rank talent
+</p>
 
       </div>
 
@@ -1621,7 +1958,12 @@ A gentle, heartwarming story about food, healing, and second chances.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>On a battlefield at the brink of annihilation, unknown soldier Gray Lee had his chest pierced through—and he awaited death.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+On a battlefield at the brink of annihilation, unknown soldier Gray Lee had his chest pierced through—and he awaited death.
 
 Only humanity's strongest heroes—the Sword Saint, the Divine Archer, the Great Sage, and the Ultimate Shield—stood a chance against the "Liquidator," a deadly enemy capable of burning down an entire continent in a single day.
 
@@ -1641,7 +1983,8 @@ The next thing Gray knew, he woke up in his hometown, which should long have bee
 
 "This time, I will survive!"
 
-With the power to transcend time and his memories of the future, Gray sets out to become a warrior even stronger than the heroes.</p>
+With the power to transcend time and his memories of the future, Gray sets out to become a warrior even stronger than the heroes.
+</p>
 
       </div>
 
@@ -1663,7 +2006,13 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The virtual reality game “History of the Archana Continent” became part of reality, and “players” who were synchronized with humans appeared to protect the world. Lee Hoyeol, who was an ordinary salaryman, took over the body of the character he created in middle school, "Grandfell Claudi Arpeus Romeo.” Under normal circumstances, it would have been an absolute failure of a career, but Grandfell, whose occupation is a “demon hunter,” becomes extremely proud in front of demons! The only demon hunter in this world, Grandfell (= Lee Hoyeol) starts to make a move!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+The virtual reality game “History of the Archana Continent” became part of reality, and “players” who were synchronized with humans appeared to protect the world. Lee Hoyeol, who was an ordinary salaryman, took over the body of the character he created in middle school, "Grandfell Claudi Arpeus Romeo.” Under normal circumstances, it would have been an absolute failure of a career, but Grandfell, whose occupation is a “demon hunter,” becomes extremely proud in front of demons! The only demon hunter in this world, Grandfell (= Lee Hoyeol) starts to make a move!
+</p>
 
       </div>
 
@@ -1685,7 +2034,13 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Earth had been invaded by creatures from another dimension, and it has been a few years since peace was restored, thanks to the help of various supernatural humans that revealed themselves during this invasion. Gwangik Yu, our protagonist, was born between two supernatural parents. His father is an immortal while his mother is a transformer with exceptional physical abilities along with the power to transform into beasts. Neither parent, however, is aware of each spouse’s power and both want Gwangik to follow in their footsteps.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Earth had been invaded by creatures from another dimension, and it has been a few years since peace was restored, thanks to the help of various supernatural humans that revealed themselves during this invasion. Gwangik Yu, our protagonist, was born between two supernatural parents. His father is an immortal while his mother is a transformer with exceptional physical abilities along with the power to transform into beasts. Neither parent, however, is aware of each spouse’s power and both want Gwangik to follow in their footsteps.
+</p>
 
       </div>
 
@@ -1707,7 +2062,13 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Yeonseung Choi, the first human ever to become a celestial! He goes off to train in the Abyss to stop other celestials from swallowing Earth whole. Will he be able to protect Earth…?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Yeonseung Choi, the first human ever to become a celestial! He goes off to train in the Abyss to stop other celestials from swallowing Earth whole. Will he be able to protect Earth…?
+</p>
 
       </div>
 
@@ -1729,7 +2090,13 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>An Earth in the 21st century that has fused with another world. An era of "dungeons" teeming with monsters and the "adventurers" that raid them.Also, the most elite educational facility in South Korea that fosters these adventurers: "Warrior High School."Although he was once considered the greatest adventurers in Asia, he has been accused with false chargers and, while dungeon smuggling in order to pay for his sick father's medical treatments, Yoo Jaryong comes across one teen."You there, get in Warrior High School."This is a story about a young man who's lost his dream, hiding his identity, finding himself once again.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+An Earth in the 21st century that has fused with another world. An era of "dungeons" teeming with monsters and the "adventurers" that raid them.Also, the most elite educational facility in South Korea that fosters these adventurers: "Warrior High School."Although he was once considered the greatest adventurers in Asia, he has been accused with false chargers and, while dungeon smuggling in order to pay for his sick father's medical treatments, Yoo Jaryong comes across one teen."You there, get in Warrior High School."This is a story about a young man who's lost his dream, hiding his identity, finding himself once again.
+</p>
 
       </div>
 
@@ -1751,7 +2118,13 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>A talented individual who is respected by many and welcomed anywhere? Not at all! A bloodthirsty battle fanatic who knows no defeat? Couldn’t be further from the truth! In reality, Deon Hardt is a sickly human who coughs up blood from receiving the tiniest bit of stress and gets sunburns from standing in the sun for ten minutes. But due to an unfortunate misunderstanding, he becomes “Demon Arut,” the notorious 0th corps commander of the demon army and the demon king’s joker. Caught in a war between humans and demonkind, Deon must find a way to survive!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+A talented individual who is respected by many and welcomed anywhere? Not at all! A bloodthirsty battle fanatic who knows no defeat? Couldn’t be further from the truth! In reality, Deon Hardt is a sickly human who coughs up blood from receiving the tiniest bit of stress and gets sunburns from standing in the sun for ten minutes. But due to an unfortunate misunderstanding, he becomes “Demon Arut,” the notorious 0th corps commander of the demon army and the demon king’s joker. Caught in a war between humans and demonkind, Deon must find a way to survive!
+</p>
 
       </div>
 
@@ -1773,7 +2146,13 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>One day, after finishing a novel with an apocalyptic theme, Chang Ting found that the world was quietly transforming, as if the events from the novel were unfolding in reality. From the mysterious disappearance of skyscrapers to the appearance of monsters at fixed times and locations, everything was developing according to the script of the novel. Chang Ting realized that in order to survive, he needed to acquire the special abilities mentioned in the novel. Using his advance knowledge of the plot, he waited patiently at the location where the first Abyssal Seeds were supposed to appear. When the time came, he successfully gained the exclusive talents described in the novel, becoming one of the first individuals with the ability to confront the challenges of the world. The apocalypse was inevitable, but Chang Ting, armed with the knowledge from the novels he had read, was ready to face the impending conclusion. As the plot he had encountered in novels approached its climax, the origin of the Abyssal Seeds was about to be revealed, unraveling all the secrets surrounding the impending apocalypse!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+One day, after finishing a novel with an apocalyptic theme, Chang Ting found that the world was quietly transforming, as if the events from the novel were unfolding in reality. From the mysterious disappearance of skyscrapers to the appearance of monsters at fixed times and locations, everything was developing according to the script of the novel. Chang Ting realized that in order to survive, he needed to acquire the special abilities mentioned in the novel. Using his advance knowledge of the plot, he waited patiently at the location where the first Abyssal Seeds were supposed to appear. When the time came, he successfully gained the exclusive talents described in the novel, becoming one of the first individuals with the ability to confront the challenges of the world. The apocalypse was inevitable, but Chang Ting, armed with the knowledge from the novels he had read, was ready to face the impending conclusion. As the plot he had encountered in novels approached its climax, the origin of the Abyssal Seeds was about to be revealed, unraveling all the secrets surrounding the impending apocalypse!
+</p>
 
       </div>
 
@@ -1795,11 +2174,17 @@ With the power to transcend time and his memories of the future, Gray sets out t
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Demons came pouring from a portal that appeared out of nowhere and caused the Cataclysm. But all hope is not lost thanks to the Awakeners, people who can fight these demons.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Lee Jun, a D-rank Awakener, is one of them. He fought demons heroically, but as someone who inherited nothing from his family, he could only go so far.
+        <p class="card-desc sentence-lines">
+<span>Demons came pouring from a portal that appeared out of nowhere and caused the Cataclysm. But all hope is not lost thanks to the Awakeners, people who can fight these demons.</span>
 
-As Jun Lee’s life slowly whittled away, a system message appeared, informing him that a special martial arts route had opened...</p>
+<span>Lee Jun, a D-rank Awakener, is one of them. He fought demons heroically, but as someone who inherited nothing from his family, he could only go so far.</span>
+
+<span>As Jun Lee’s life slowly whittled away, a system message appeared, informing him that a special martial arts route had opened...</span>
+</p>
 
       </div>
 
@@ -1821,7 +2206,13 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Seongwu is a former special forces soldier who has returned to college after completing his national service. His ordinary life as a student is shattered during class one day when he and his fellow students are faced with a mysterious prompt asking them to “select a role.” Seongwu chooses the necromancer, a rare ability that grants him the power to control the undead. With the campus and outside world seemingly on the brink of collapse, Seongwu must use his newfound powers to battle fearsome monsters and help save his fellow students. But will they make it out alive?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Seongwu is a former special forces soldier who has returned to college after completing his national service. His ordinary life as a student is shattered during class one day when he and his fellow students are faced with a mysterious prompt asking them to “select a role.” Seongwu chooses the necromancer, a rare ability that grants him the power to control the undead. With the campus and outside world seemingly on the brink of collapse, Seongwu must use his newfound powers to battle fearsome monsters and help save his fellow students. But will they make it out alive?
+</p>
 
       </div>
 
@@ -1843,7 +2234,13 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>A world where gates open and monsters come out to play— Hyunsoo longs to enter the tower and take on the role a sa hunter. But in reality, he works as a porter and meat shield of E Class Hunters who are worse than gangsters. Moreover, he was taken advantage by this hunters to the point where he was about to meet death. As soon as he thought that he was dead, he was summoned to the tower, was revived back from the dead, and began climbing up the tower to become a hunter that he had been longing to be. Depending on how much coins one has, the tower offers them the chance to challenge it. Hyunsoo looks at the number of coins he has…. [You have an infinite number of coins!] “Then I’ll awaken myself in the 100th floor and go home!!!” Hyunsoo, who is stucked in the tower, begins his conquer!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+A world where gates open and monsters come out to play— Hyunsoo longs to enter the tower and take on the role a sa hunter. But in reality, he works as a porter and meat shield of E Class Hunters who are worse than gangsters. Moreover, he was taken advantage by this hunters to the point where he was about to meet death. As soon as he thought that he was dead, he was summoned to the tower, was revived back from the dead, and began climbing up the tower to become a hunter that he had been longing to be. Depending on how much coins one has, the tower offers them the chance to challenge it. Hyunsoo looks at the number of coins he has…. [You have an infinite number of coins!] “Then I’ll awaken myself in the 100th floor and go home!!!” Hyunsoo, who is stucked in the tower, begins his conquer!
+</p>
 
       </div>
 
@@ -1865,7 +2262,13 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>In the most realistic VR game “Last Savior”. Every player will get a chance to summon a Follower Spirit. The Follower Spirits are ranked from 1 – 9. And Obviously, everyone wants a rank-9 spirit. However, the one that I pulled has an unheard-of rank… [What on earth is going on?] “Yeah…” I don’t get it either. 10-Star Player Strengthened by Drawing Card</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+In the most realistic VR game “Last Savior”. Every player will get a chance to summon a Follower Spirit. The Follower Spirits are ranked from 1 – 9. And Obviously, everyone wants a rank-9 spirit. However, the one that I pulled has an unheard-of rank… [What on earth is going on?] “Yeah…” I don’t get it either. 10-Star Player Strengthened by Drawing Card
+</p>
 
       </div>
 
@@ -1888,7 +2291,13 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The world experienced a cataclysm and monsters are now roaming the Earth. Born out of a necessity to subjugate these monsters, this new era saw the rise of a new profession. Monster Trainers – individuals who conquer, cultivate, and train these monsters. Thus begins the story of Gao Peng. An ambitious young man with dreams of his own, who gets launched right into the golden age of monster cultivation. Gao Peng: “Even if it’s a loach, I’ll be able to evolve it into a dragon that can soar to the heavens!”</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+The world experienced a cataclysm and monsters are now roaming the Earth. Born out of a necessity to subjugate these monsters, this new era saw the rise of a new profession. Monster Trainers – individuals who conquer, cultivate, and train these monsters. Thus begins the story of Gao Peng. An ambitious young man with dreams of his own, who gets launched right into the golden age of monster cultivation. Gao Peng: “Even if it’s a loach, I’ll be able to evolve it into a dragon that can soar to the heavens!”
+</p>
 
       </div>
 
@@ -1910,7 +2319,13 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Dimensional storms have descended and many extradimensional areas have appeared on Earth. All kinds of mysterious extradimensional lives are born in these extradimensional areas. In order to become strong, humans started to enter these dangerous areas to hunt and kill extradimensional creatures. But I, Zhou Wen, have made these extradimensional areas into instance dungeons in my mobile game. By levelling up my game character, I will be levelling up my strength in reality. When others are risking their lives, I’m here getting stronger by gaming.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Dimensional storms have descended and many extradimensional areas have appeared on Earth. All kinds of mysterious extradimensional lives are born in these extradimensional areas. In order to become strong, humans started to enter these dangerous areas to hunt and kill extradimensional creatures. But I, Zhou Wen, have made these extradimensional areas into instance dungeons in my mobile game. By levelling up my game character, I will be levelling up my strength in reality. When others are risking their lives, I’m here getting stronger by gaming.
+</p>
 
       </div>
 
@@ -1932,7 +2347,13 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>After a god screws up and accidentally takes high schooler Shou's life, he offers him reincarnation with a gift to make up for it. Shou asks to retain all his old memories for the new life. Shou is reborn as Will, a noble's son in a world where magic use is common and involves knowledge of kanji characters. With all his memories, he's a brilliant toddler, and when he experiments with magic, he finds that he has an amazing talent for it! What's more, though he was smart but unloved in his old life, in his new life he has a mother and a father who both love him deeply. His future as Will is looking very bright!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+After a god screws up and accidentally takes high schooler Shou's life, he offers him reincarnation with a gift to make up for it. Shou asks to retain all his old memories for the new life. Shou is reborn as Will, a noble's son in a world where magic use is common and involves knowledge of kanji characters. With all his memories, he's a brilliant toddler, and when he experiments with magic, he finds that he has an amazing talent for it! What's more, though he was smart but unloved in his old life, in his new life he has a mother and a father who both love him deeply. His future as Will is looking very bright!
+</p>
 
       </div>
 
@@ -1955,10 +2376,16 @@ As Jun Lee’s life slowly whittled away, a system message appeared, informing h
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The main character, Shiina Kazuya is killed by a stranger while trying to protect his childhood friend’s younger sister. He was reborn as Cain von Silford, the third son of an Aristocrat, in a world of magic and swords.
-Cain will grow up surrounded by Gods who don’t know self-restraint, the nobles of the Kingdom, and young women.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-In order to avoid raising any flags, he tries to hide the incredible amount of stats and protections he received from the Gods. This is the royal road fantasy of a boy who is at times two-faced and at times clumsy.</p>
+        <p class="card-desc sentence-lines">
+<span>The main character, Shiina Kazuya is killed by a stranger while trying to protect his childhood friend’s younger sister. He was reborn as Cain von Silford, the third son of an Aristocrat, in a world of magic and swords.
+Cain will grow up surrounded by Gods who don’t know self-restraint, the nobles of the Kingdom, and young women.</span>
+
+<span>In order to avoid raising any flags, he tries to hide the incredible amount of stats and protections he received from the Gods. This is the royal road fantasy of a boy who is at times two-faced and at times clumsy.</span>
+</p>
 
       </div>
 
@@ -1981,7 +2408,13 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Haruto is an ordinary Japanese student who is tired of constant work and study. After getting hit by truck, he is reincarnated as Phil Graceheart, the youngest child in a royal family. When Phil is three years old, he gets a head injury that causes him to remember his former life. Armed with the knowledge of his past self, he is now on a mission to live a completely relaxing and carefree life.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Haruto is an ordinary Japanese student who is tired of constant work and study. After getting hit by truck, he is reincarnated as Phil Graceheart, the youngest child in a royal family. When Phil is three years old, he gets a head injury that causes him to remember his former life. Armed with the knowledge of his past self, he is now on a mission to live a completely relaxing and carefree life.
+</p>
 
       </div>
 
@@ -2003,7 +2436,13 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>From a thieving child to one who would shake the world. Rising to the title of Immortal Master, one of the Godly Twelve Stars, but ultimately betrayed. Now, he has been given a chance to change that, and create a better future- for both him, and the world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+From a thieving child to one who would shake the world. Rising to the title of Immortal Master, one of the Godly Twelve Stars, but ultimately betrayed. Now, he has been given a chance to change that, and create a better future- for both him, and the world.
+</p>
 
       </div>
 
@@ -2026,7 +2465,13 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>If you max out your level in-game, you can get heaven-defying powers in real life?! Player Ling Ce finally obtained this reward through his hard work but ended up receiving the most useless skills. Just as he was mourning his luck, a mysterious power brought him back to three years in the past. With the experiences and memories of his previous life, how many different wonderful things can he bring to his new life?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+If you max out your level in-game, you can get heaven-defying powers in real life?! Player Ling Ce finally obtained this reward through his hard work but ended up receiving the most useless skills. Just as he was mourning his luck, a mysterious power brought him back to three years in the past. With the experiences and memories of his previous life, how many different wonderful things can he bring to his new life?
+</p>
 
       </div>
 
@@ -2048,13 +2493,19 @@ In order to avoid raising any flags, he tries to hide the incredible amount of s
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Average college student Yoo Ilhan has always gone through life without being noticed by anyone, even God!
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-So when monsters were about to invade Earth and God sent all humans to other dimensions to train with mana... he forgot Ilhan and left him on Earth for 1,000 years!
+        <p class="card-desc sentence-lines">
+<span>Average college student Yoo Ilhan has always gone through life without being noticed by anyone, even God!</span>
 
-Realizing his mistake, God sends the straggler two angels to assist him as he takes on the monsters, eventually turning him into an unstoppable force.
+<span>So when monsters were about to invade Earth and God sent all humans to other dimensions to train with mana... he forgot Ilhan and left him on Earth for 1,000 years!</span>
 
-Now that people have returned to Earth, will Ilhan finally be seen?</p>
+<span>Realizing his mistake, God sends the straggler two angels to assist him as he takes on the monsters, eventually turning him into an unstoppable force.</span>
+
+<span>Now that people have returned to Earth, will Ilhan finally be seen?</span>
+</p>
 
       </div>
 
@@ -2076,36 +2527,42 @@ Now that people have returned to Earth, will Ilhan finally be seen?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Q: Describe your feelings upon discovering your trusted dad isn’t just an extra.
-A: W-what the heck... Give me back my ‘Random Imperial Citizen #1’ life...
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Living in a world of constant war—365 days of chaos—a simple, extra's existence was a blessing.
+        <p class="card-desc sentence-lines">
+<span>Q: Describe your feelings upon discovering your trusted dad isn’t just an extra.</span>
+<span>A: W-what the heck... Give me back my ‘Random Imperial Citizen #1’ life...</span>
+
+<span>Living in a world of constant war—365 days of chaos—a simple, extra's existence was a blessing.
 At least, that's what I thought.
 
 In a small village, I enjoyed a humble life with my loving, ordinary father, James Brown, 27, the epitome of an unremarkable single dad.
 
-Or so I believed.
+Or so I believed.</span>
 
-“Ladies and gentlemen, presenting my father! The quintessential symbol of extras everywhere! Brown hair, brown eyes, plain and simple!”
-“...”
-“This man screams ‘background character,’ living a quiet life chopping wood in a mountain village with his adorable daughter. Right? ...RIGHT?”
+<span>“Ladies and gentlemen, presenting my father! The quintessential symbol of extras everywhere! Brown hair, brown eyes, plain and simple!”</span>
+<span>“...”</span>
+<span>“This man screams ‘background character,’ living a quiet life chopping wood in a mountain village with his adorable daughter. Right? ...RIGHT?”</span>
 
-The knight commander merely stared at me in silence.
+<span>The knight commander merely stared at me in silence.
 
 And then, the unthinkable happened.
 
-Behind me, my father’s worn staff began to glow with a strange, blue aura.
+Behind me, my father’s worn staff began to glow with a strange, blue aura.</span>
 
-“...Dad?”
+<span>“...Dad?”</span>
 
-Before I could process what was happening, his unassuming brown hair and eyes shifted. Slowly but surely, they transformed into...
+<span>Before I could process what was happening, his unassuming brown hair and eyes shifted. Slowly but surely, they transformed into...
 
-Shimmering silver locks and piercing blue eyes—practically shouting “I’m the protagonist!”
+Shimmering silver locks and piercing blue eyes—practically shouting “I’m the protagonist!”</span>
 
-“WHAT?!”
+<span>“WHAT?!”</span>
 
-My simple, extra life shattered into a million pieces as my dad—no, this mysterious powerhouse—gripped his weapon and snarled:
-“Give me back my daughter, you bastard.”</p>
+<span>My simple, extra life shattered into a million pieces as my dad—no, this mysterious powerhouse—gripped his weapon and snarled:</span>
+<span>“Give me back my daughter, you bastard.”</span>
+</p>
 
       </div>
 
@@ -2127,15 +2584,21 @@ My simple, extra life shattered into a million pieces as my dad—no, this myste
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Suhyeok, the greatest martial artist on the continentr, has unified the martial world. He had achieved everything, yet a lingering emptiness in his heart remained unfulfilled by his yearning for family…
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-In the end, he crossed dimensions using the power of sorcery, but what lay before his eyes was...
+        <p class="card-desc sentence-lines">
+<span>Suhyeok, the greatest martial artist on the continentr, has unified the martial world. He had achieved everything, yet a lingering emptiness in his heart remained unfulfilled by his yearning for family…</span>
 
-"I was in a coma for five years in a hospital!? And what’s with this system window floating in front of me!?"
+<span>In the end, he crossed dimensions using the power of sorcery, but what lay before his eyes was...</span>
 
-During the five years he lay unconscious, his family had been struggling to pay his hospital bills. For his family’s sake, he needs to make money - fast and a lot of it.
+<span>"I was in a coma for five years in a hospital!? And what’s with this system window floating in front of me!?"</span>
 
-The strongest Martial God of the Hwan Continent, Suhyeok! Now Awakened, he begins his journey to level up.</p>
+<span>During the five years he lay unconscious, his family had been struggling to pay his hospital bills. For his family’s sake, he needs to make money - fast and a lot of it.</span>
+
+<span>The strongest Martial God of the Hwan Continent, Suhyeok! Now Awakened, he begins his journey to level up.</span>
+</p>
 
       </div>
 
@@ -2157,7 +2620,13 @@ The strongest Martial God of the Hwan Continent, Suhyeok! Now Awakened, he begin
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Zeke Draker was the first of House Draker to fail his Awakening. And for that, he was cast out. Forced to survive in a brutal world, Zeke rose from disgrace and earned the name Phantom of the North. On a mission to stop the emperor from obtaining an ancient relic, Zeke was hunted and killed by imperial forces. But fate had other plans. Zeke awakens as a 12-year-old boy back in the Cradle, House Draker’s elite training ground. Given a second chance, Zeke’s determined to rewrite his fate.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Zeke Draker was the first of House Draker to fail his Awakening. And for that, he was cast out. Forced to survive in a brutal world, Zeke rose from disgrace and earned the name Phantom of the North. On a mission to stop the emperor from obtaining an ancient relic, Zeke was hunted and killed by imperial forces. But fate had other plans. Zeke awakens as a 12-year-old boy back in the Cradle, House Draker’s elite training ground. Given a second chance, Zeke’s determined to rewrite his fate.
+</p>
 
       </div>
 
@@ -2179,7 +2648,13 @@ The strongest Martial God of the Hwan Continent, Suhyeok! Now Awakened, he begin
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The protagonist Chan, who was looking for a part-time job after his previous company went bankrupt, coincidentally discovers a convenience store. Lured by the very high hourly wage, he decides to become a part-timer from that day. But the customers who come in seem a bit strange. Vampires, kobolds, and even succubi??</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+The protagonist Chan, who was looking for a part-time job after his previous company went bankrupt, coincidentally discovers a convenience store. Lured by the very high hourly wage, he decides to become a part-timer from that day. But the customers who come in seem a bit strange. Vampires, kobolds, and even succubi??
+</p>
 
       </div>
 
@@ -2201,14 +2676,20 @@ The strongest Martial God of the Hwan Continent, Suhyeok! Now Awakened, he begin
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The power of Valhalla's warriors is called Saga. It is the mighty, magical power born from their achievements and deeds in their former lives. Thus, the more stories and legends of these warriors spread and linger in the hearts of many, the stronger their Saga becomes.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Tae Ho himself was certainly no warrior. However, he was the world's top professional gamer. In the game world of Dark Age, his character, Dragon Knight Kalsted could rightly be called a legend in his own right.
+        <p class="card-desc sentence-lines">
+<span>The power of Valhalla's warriors is called Saga. It is the mighty, magical power born from their achievements and deeds in their former lives. Thus, the more stories and legends of these warriors spread and linger in the hearts of many, the stronger their Saga becomes.</span>
 
-His achievements, his story.
+<span>Tae Ho himself was certainly no warrior. However, he was the world's top professional gamer. In the game world of Dark Age, his character, Dragon Knight Kalsted could rightly be called a legend in his own right.</span>
 
-All the accomplishments that the Dragon Knight Kalsted had accumulated in the game!
-[Saga: Immortal Warrior] The story of the immortal warrior, Lee Tae Ho, unfolds on the battlefield of the gods, Valhalla. To put an end to Ragnarok, which threatens the world's very existence, a new Saga begins at this very moment.</p>
+<span>His achievements, his story.</span>
+
+<span>All the accomplishments that the Dragon Knight Kalsted had accumulated in the game!</span>
+<span>[Saga: Immortal Warrior] The story of the immortal warrior, Lee Tae Ho, unfolds on the battlefield of the gods, Valhalla. To put an end to Ragnarok, which threatens the world's very existence, a new Saga begins at this very moment.</span>
+</p>
 
       </div>
 
@@ -2230,9 +2711,15 @@ All the accomplishments that the Dragon Knight Kalsted had accumulated in the ga
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Following a momentous battle against giants for the fate of the world, Ronan emerges victorious as the last man standing of the Imperial Army. As he laments this hollow victory with his dying commander, Grand Marshal Adeshan, they quickly learn that the war is far from over and an overwhelming force of giants descends from the heavens.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-<p>Fearing the worst, yet seeing hope in the courageous Ronan, Adeshan uses her last time slip to send him back to the past, so that he can enroll in the prestigious Phileon Academy and become the strongest swordsman the empire has ever seen!</p>
+        <p class="card-desc sentence-lines">
+<span>Following a momentous battle against giants for the fate of the world, Ronan emerges victorious as the last man standing of the Imperial Army. As he laments this hollow victory with his dying commander, Grand Marshal Adeshan, they quickly learn that the war is far from over and an overwhelming force of giants descends from the heavens.</span>
+
+<span>Fearing the worst, yet seeing hope in the courageous Ronan, Adeshan uses her last time slip to send him back to the past, so that he can enroll in the prestigious Phileon Academy and become the strongest swordsman the empire has ever seen!</span>
+</p>
 
       </div>
 
@@ -2254,7 +2741,13 @@ All the accomplishments that the Dragon Knight Kalsted had accumulated in the ga
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Large numbers of monsters come out the gate which is the boundary of the world. After many sacrifices, People won the fight against monsters through their awakening. Jin Taekyung is alive as an 'F class hunter' which is the lowest level. After Jin has a hard time, he gets an old capsule then he goes into the capsule that is the martial heroes' world. And the game system gives him special abilities, he starts growing up to become the best martial hero.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Large numbers of monsters come out the gate which is the boundary of the world. After many sacrifices, People won the fight against monsters through their awakening. Jin Taekyung is alive as an 'F class hunter' which is the lowest level. After Jin has a hard time, he gets an old capsule then he goes into the capsule that is the martial heroes' world. And the game system gives him special abilities, he starts growing up to become the best martial hero.
+</p>
 
       </div>
 
@@ -2276,11 +2769,17 @@ All the accomplishments that the Dragon Knight Kalsted had accumulated in the ga
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>“Is this a mission I was sent on by the gods? Or is this just divine punishment?”</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-<p>Baek Jung-hyeok, the Heavenly Demon of Murim, finds that he’s been reincarnated into the body of Roman Dimitri, the dim-witted son of a baron who’s obsessed with the luxuries of the aristocratic lifestyle. But with his new status, Jung-hyeok is ready to shake things up on the continent of Salamander.</p>
+        <p class="card-desc sentence-lines">
+<span>“Is this a mission I was sent on by the gods? Or is this just divine punishment?”</span>
 
-<p>Will the divine demon accomplish what he’s set out to do? And will he finally get the answers to this mysterious reincarnation?</p>
+<span>Baek Jung-hyeok, the Heavenly Demon of Murim, finds that he’s been reincarnated into the body of Roman Dimitri, the dim-witted son of a baron who’s obsessed with the luxuries of the aristocratic lifestyle. But with his new status, Jung-hyeok is ready to shake things up on the continent of Salamander.</span>
+
+<span>Will the divine demon accomplish what he’s set out to do? And will he finally get the answers to this mysterious reincarnation?</span>
+</p>
 
       </div>
 
@@ -2302,7 +2801,13 @@ All the accomplishments that the Dragon Knight Kalsted had accumulated in the ga
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Evelyn Monstera knows two things. First, she's been reborn as a mean girl in a fantasy novel, and second, if nothing changes, her cruelty to the main characters will be her undoing. So when the male lead of the novel, Casis Urquio, comes to stay at her manor, all she has to do is stay out of his way. Unfortunately, Evelyn not only causes a fight between the protagonists, but also wins the affection of the male lead too! Can Evelyn set the story straight and get the happily ever after she wants?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Evelyn Monstera knows two things. First, she's been reborn as a mean girl in a fantasy novel, and second, if nothing changes, her cruelty to the main characters will be her undoing. So when the male lead of the novel, Casis Urquio, comes to stay at her manor, all she has to do is stay out of his way. Unfortunately, Evelyn not only causes a fight between the protagonists, but also wins the affection of the male lead too! Can Evelyn set the story straight and get the happily ever after she wants?
+</p>
 
       </div>
 
@@ -2324,9 +2829,15 @@ All the accomplishments that the Dragon Knight Kalsted had accumulated in the ga
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Jin Runcandel was destined to become the head of his swordmaster clan. But despite his best efforts, he's banished for his shoddy swordsmanship. Though Jin eventually makes a contract with the god Solderet and is freed from the curse that hindered his abilities, he meets a rather unfortunate end. In the next moment, however, he awakens as a baby, long before his tragedy began.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-<p>Armed with a second chance and some new powers, Jin swears to fulfill his destiny and become the ultimate swordmaster!</p>
+        <p class="card-desc sentence-lines">
+<span>Jin Runcandel was destined to become the head of his swordmaster clan. But despite his best efforts, he's banished for his shoddy swordsmanship. Though Jin eventually makes a contract with the god Solderet and is freed from the curse that hindered his abilities, he meets a rather unfortunate end. In the next moment, however, he awakens as a baby, long before his tragedy began.</span>
+
+<span>Armed with a second chance and some new powers, Jin swears to fulfill his destiny and become the ultimate swordmaster!</span>
+</p>
 
       </div>
 
@@ -2348,9 +2859,14 @@ All the accomplishments that the Dragon Knight Kalsted had accumulated in the ga
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>In a world teetering on destruction, humanity's only hope is becoming stronger in a mysterious tower offering four modes: Easy, Normal, Hard, and the brutal "ALONE MODE."</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-<p>Kang Taesan, despite choosing the easy route, becomes the most skilled player upon conquering the tower. But as doomsday nears, he realizes that he isn't strong enough to save Earth and turns back time, embracing "ALONE MODE" to level up even more. With a second chance, can he amass enough power to prevent the end of the world?</p>
+        <p class="card-desc sentence-lines">
+<span>In a world teetering on destruction, humanity's only hope is becoming stronger in a mysterious tower offering four modes: Easy, Normal, Hard, and the brutal "ALONE MODE."</span>
+
+<span>Kang Taesan, despite choosing the easy route, becomes the most skilled player upon conquering the tower. But as doomsday nears, he realizes that he isn't strong enough to save Earth and turns back time, embracing "ALONE MODE" to level up even more. With a second chance, can he amass enough power to prevent the end of the world?</span>
 
       </div>
 
@@ -2372,15 +2888,21 @@ All the accomplishments that the Dragon Knight Kalsted had accumulated in the ga
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>In year 2088 AD, the Arahan company materialized all five senses
-And released a virtual reality game called ‘Life Cry’.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-<p>At the time Life Cry opened its door,
-One dark gamer knocks on that door.</p>
+        <p class="card-desc sentence-lines">
+<span>In year 2088 AD, the Arahan company materialized all five senses
+And released a virtual reality game called ‘Life Cry’.</span>
 
-<p>A gamer who digs up hidden secrets</p>
+<span>At the time Life Cry opened its door,
+One dark gamer knocks on that door.</span>
 
-<p>Lime’s ‘Life Cry’ begins!</p>
+<span>A gamer who digs up hidden secrets</span>
+
+<span>Lime’s ‘Life Cry’ begins!</span>
+</p>
 
       </div>
 
@@ -2402,9 +2924,15 @@ One dark gamer knocks on that door.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The beautiful Athanasia was killed at the hands of her own biological father, Claude de Alger Obelia, the cold-blooded emperor! It’s just a silly bedtime story… until one woman wakes up to suddenly find she’s become that unfortunate princess! She needs a plan to survive her doomed fate, and time is running out.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-<p>Will she go with Plan A, live as quietly as possible without being noticed by the infamous emperor? Plan B, collect enough money to escape the palace? Or will she be stuck with Plan C, sweet-talking her way into her father’s good graces?!</p>
+        <p class="card-desc sentence-lines">
+<span>The beautiful Athanasia was killed at the hands of her own biological father, Claude de Alger Obelia, the cold-blooded emperor! It’s just a silly bedtime story… until one woman wakes up to suddenly find she’s become that unfortunate princess! She needs a plan to survive her doomed fate, and time is running out.</span>
+
+<span>Will she go with Plan A, live as quietly as possible without being noticed by the infamous emperor? Plan B, collect enough money to escape the palace? Or will she be stuck with Plan C, sweet-talking her way into her father’s good graces?!</span>
+</p>
 
       </div>
 
@@ -2425,7 +2953,12 @@ One dark gamer knocks on that door.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -2446,7 +2979,12 @@ One dark gamer knocks on that door.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -2467,7 +3005,12 @@ One dark gamer knocks on that door.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -2488,7 +3031,12 @@ One dark gamer knocks on that door.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -2509,7 +3057,12 @@ One dark gamer knocks on that door.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -2530,7 +3083,12 @@ One dark gamer knocks on that door.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -2565,12 +3123,18 @@ One dark gamer knocks on that door.</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>[NO. 4212: 'Humanity' has failed the Demotion Match.]
-[NO. 4212: ‘Humanity’ has been deemed useless. Beginning deletion.]
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Earth lost the fight for survival in the BattleNet system and humanity now faces eradication. However, Jihan Seong is given another chance. He has returned three years into the past before BattleNet became a life-or-death game.
+        <p class="card-desc sentence-lines">
+<span>[NO. 4212: 'Humanity' has failed the Demotion Match.]</span>
+<span>[NO. 4212: ‘Humanity’ has been deemed useless. Beginning deletion.]</span>
 
-With his knowledge of the future, he’s determined to become the strongest player. Will Jihan be able to change the fate of humanity? And more importantly, can he protect the ones he loves from those who want him to fail?</p>
+<span>Earth lost the fight for survival in the BattleNet system and humanity now faces eradication. However, Jihan Seong is given another chance. He has returned three years into the past before BattleNet became a life-or-death game.</span>
+
+<span>With his knowledge of the future, he’s determined to become the strongest player. Will Jihan be able to change the fate of humanity? And more importantly, can he protect the ones he loves from those who want him to fail?</span>
+</p>
 
       </div>
 
@@ -2593,22 +3157,28 @@ With his knowledge of the future, he’s determined to become the strongest play
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The Bloody, Murderous Ghoul, the Mad Dog of the Battlefield…
-The countless nicknames of Libertisha, who was driven into war from a young age.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-After the war ended, she received an offer to marry a duke, and her partner was...
+        <p class="card-desc sentence-lines">
+<span>The Bloody, Murderous Ghoul, the Mad Dog of the Battlefield…</span>
+<span>The countless nicknames of Libertisha, who was driven into war from a young age.</span>
 
-"Who the hell are you? Get lost."
+<span>After the war ended, she received an offer to marry a duke, and her partner was...</span>
 
-Little did she know it would be a child!
+<span>"Who the hell are you? Get lost."</span>
 
-They were eventually wed after many trials and tribulations. However, during a mission she became trapped in an unknown space. Once she finally made it out, ten years had passed outside.
+<span>Little did she know it would be a child!</span>
 
-But now...
+<span>They were eventually wed after many trials and tribulations. However, during a mission she became trapped in an unknown space. Once she finally made it out, ten years had passed outside.</span>
 
-"Stay with me, Leti."
+<span>But now...</span>
 
-Where did my little kitten-like husband go? Now my all-grown-up husband is obsessed with me?!</p>
+<span>"Stay with me, Leti."</span>
+
+<span>Where did my little kitten-like husband go? Now my all-grown-up husband is obsessed with me?!</span>
+</p>
 
       </div>
 
@@ -2630,15 +3200,21 @@ Where did my little kitten-like husband go? Now my all-grown-up husband is obses
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>How about a university where you attend classes at the Tower of Babel?
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Ban Yoo-won possesses the extraordinary ability not only to interpret unknown languages but also to see and absorb “concepts” from the things he observes.
+        <p class="card-desc sentence-lines">
+<span>How about a university where you attend classes at the Tower of Babel?</span>
 
-Since childhood, Yoo-won’s grandfather has told him: “Our family descends from the ancestor who led people to build the Tower of Babel with the power to make everyone communicate. With that same inherited power, you will be able to reclaim the lost Tower of Babel.”
+<span>Ban Yoo-won possesses the extraordinary ability not only to interpret unknown languages but also to see and absorb “concepts” from the things he observes.</span>
 
-At first, Yoo-won thought it was just a far-fetched story. But while waiting for his university acceptance results, he is suddenly summoned to an academy from an unknown dimension. There, he witnesses the legendary Tower of Babel, which he had only heard about in stories.
+<span>Since childhood, Yoo-won’s grandfather has told him: “Our family descends from the ancestor who led people to build the Tower of Babel with the power to make everyone communicate. With that same inherited power, you will be able to reclaim the lost Tower of Babel.”</span>
 
-Driven by a somewhat materialistic desire to reclaim his family’s lost building and become its owner, along with a sincere wish to fulfill a long-standing family dream, Yoo-won enters the academy. Finally, he begins his climb up the Tower of Babel—a dungeon filled with dangers and monsters, where the power of constellations and, at its peak, the power of the gods, awaits him!</p>
+<span>At first, Yoo-won thought it was just a far-fetched story. But while waiting for his university acceptance results, he is suddenly summoned to an academy from an unknown dimension. There, he witnesses the legendary Tower of Babel, which he had only heard about in stories.</span>
+
+<span>Driven by a somewhat materialistic desire to reclaim his family’s lost building and become its owner, along with a sincere wish to fulfill a long-standing family dream, Yoo-won enters the academy. Finally, he begins his climb up the Tower of Babel—a dungeon filled with dangers and monsters, where the power of constellations and, at its peak, the power of the gods, awaits him!</span>
+</p>
 
       </div>
 
@@ -2660,7 +3236,13 @@ Driven by a somewhat materialistic desire to reclaim his family’s lost buildin
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Gang-in Na wakes up in the year 2024 in the middle of South Korea with no memory of where or who he is. Upon hearing a voice that sounds strangely familiar, he comes face to face with a robot named ACE (Autonomous Combat Entity), who informs him that he was once part of the Earth Federation Forces in the year 2082 and possesses a wide array of skills. Gang-in decides to join forces with ACE to recover his lost memories and adapt to life on Earth, but the two look to be in for a bumpy ride.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Gang-in Na wakes up in the year 2024 in the middle of South Korea with no memory of where or who he is. Upon hearing a voice that sounds strangely familiar, he comes face to face with a robot named ACE (Autonomous Combat Entity), who informs him that he was once part of the Earth Federation Forces in the year 2082 and possesses a wide array of skills. Gang-in decides to join forces with ACE to recover his lost memories and adapt to life on Earth, but the two look to be in for a bumpy ride.
+</p>
 
       </div>
 
@@ -2682,8 +3264,14 @@ Driven by a somewhat materialistic desire to reclaim his family’s lost buildin
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Fang Yi, transmigrated to this world, has just been dumped by his beautiful schoolmate girlfriend. He initially thought this would be the start of a modern romance, but then the system alerts him that a spiritual energy resurgence will begin in one year, leading to drastic changes in the world and the apocalypse.
-“With a system, what the hell am I afraid of?”</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Fang Yi, transmigrated to this world, has just been dumped by his beautiful schoolmate girlfriend. He initially thought this would be the start of a modern romance, but then the system alerts him that a spiritual energy resurgence will begin in one year, leading to drastic changes in the world and the apocalypse.
+“With a system, what the hell am I afraid of?”
+</p>
 
       </div>
 
@@ -2705,9 +3293,15 @@ Driven by a somewhat materialistic desire to reclaim his family’s lost buildin
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>After being put on trial, the deity once known as The Divine Twilight is offered a job by Thanatos, king of the underworld! Now, the fallen deity is back on Earth as his former self, Lee Changsun, and is tasked with sealing those trying to invade from beyond. With the promise of a fresh start, Changsun is gathering the gear and skills needed to get the job done, but he's feeling some watchful eyes on him...
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Will this Divine Twilight see a new day, or is the sun setting on his second chance?</p>
+        <p class="card-desc sentence-lines">
+<span>After being put on trial, the deity once known as The Divine Twilight is offered a job by Thanatos, king of the underworld! Now, the fallen deity is back on Earth as his former self, Lee Changsun, and is tasked with sealing those trying to invade from beyond. With the promise of a fresh start, Changsun is gathering the gear and skills needed to get the job done, but he's feeling some watchful eyes on him...</span>
+
+<span>Will this Divine Twilight see a new day, or is the sun setting on his second chance?</span>
+</p>
 
       </div>
 
@@ -2729,21 +3323,27 @@ Will this Divine Twilight see a new day, or is the sun setting on his second cha
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>I was the one abandoned, yet I seem to have grown up the most mentally stable!
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-I was ordered to serve my fake counterpart as her maid, so I decided to go undercover. But something's off with my former family. Whatever, it's not my problem! So, I just focused on my task...
+        <p class="card-desc sentence-lines">
+<span>I was the one abandoned, yet I seem to have grown up the most mentally stable!</span>
 
-"Are you really not going to live with us?"
+<span>I was ordered to serve my fake counterpart as her maid, so I decided to go undercover. But something's off with my former family. Whatever, it's not my problem! So, I just focused on my task...</span>
 
-The eldest, who used to show obsessive control over the fake, started acting strangely toward me.
-"I never thought I’d feel such camaraderie and trust with the opposite sex. You’re strangely too comfortable."
+<span>"Are you really not going to live with us?"</span>
 
-The second brother, who was on the brink of falling into darkness, managed to get back on track thanks to me.
-"I didn’t come here to help them film their regret-filled family drama."
+<span>The eldest, who used to show obsessive control over the fake, started acting strangely toward me.</span>
+<span>"I never thought I’d feel such camaraderie and trust with the opposite sex. You’re strangely too comfortable."</span>
 
-I tried to ignore everything and quickly moved on to my next mission… but why do I keep running into people whose lives are completely messed up?
+<span>The second brother, who was on the brink of falling into darkness, managed to get back on track thanks to me.</span>
+<span>"I didn’t come here to help them film their regret-filled family drama."</span>
 
-Why is everyone in perfect need of saving?</p>
+<span>I tried to ignore everything and quickly moved on to my next mission… but why do I keep running into people whose lives are completely messed up?</span>
+
+<span>Why is everyone in perfect need of saving?</span>
+</p>
 
       </div>
 
@@ -2765,11 +3365,17 @@ Why is everyone in perfect need of saving?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Despite coming first in his exams at Raider Academy, Han Jungmin lacked the talent to fulfill his dream of becoming a dungeon raider.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-Crestfallen, he takes a break from school and writes a novel about dungeon raiders instead. But once Jungmin finishes, his story becomes a reality with new dungeons and monsters swarming in his home. Luckily for him, he has been granted a unique class and skills no one has ever heard of.
+        <p class="card-desc sentence-lines">
+<span>Despite coming first in his exams at Raider Academy, Han Jungmin lacked the talent to fulfill his dream of becoming a dungeon raider.</span>
 
-Will Jungmin finally become the raider he's always longed to be?</p>
+<span>Crestfallen, he takes a break from school and writes a novel about dungeon raiders instead. But once Jungmin finishes, his story becomes a reality with new dungeons and monsters swarming in his home. Luckily for him, he has been granted a unique class and skills no one has ever heard of.</span>
+
+<span>Will Jungmin finally become the raider he's always longed to be?</span>
+</p>
 
       </div>
 
@@ -2791,7 +3397,13 @@ Will Jungmin finally become the raider he's always longed to be?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Despite his hard work, Lee Eunho finds himself laid off due to company downsizing. Before he can even consider what's next, ominous messages appear, claiming Earth has been bought out. Now, only survivors of life-or-death missions will make the cut, turning even friends into foes. As all hell breaks loose, humanity must decide between using one another to get ahead or working together as a team. Can Eunho survive Earth's sudden downsizing, or will the pressure to move up leave him in the dust?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Despite his hard work, Lee Eunho finds himself laid off due to company downsizing. Before he can even consider what's next, ominous messages appear, claiming Earth has been bought out. Now, only survivors of life-or-death missions will make the cut, turning even friends into foes. As all hell breaks loose, humanity must decide between using one another to get ahead or working together as a team. Can Eunho survive Earth's sudden downsizing, or will the pressure to move up leave him in the dust?
+</p>
 
       </div>
 
@@ -2813,7 +3425,12 @@ Will Jungmin finally become the raider he's always longed to be?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>One day, as usual, Annabelle remembered the memories of her previous life. It was revealed that she has been reincarnated as the second most popular character in a novel.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+One day, as usual, Annabelle remembered the memories of her previous life. It was revealed that she has been reincarnated as the second most popular character in a novel.
 
 She also did all kinds of bad things to the male lead, and in the end, she is the person who will end up in prison!
 
@@ -2840,7 +3457,8 @@ The male lead, Ian, keeps obsessing over me for some reason.
 
 “Why do you not talk harshly to me these days…? Do it again.”
 
-Everyone just seems to be a little weird!</p>
+Everyone just seems to be a little weird!
+</p>
 
       </div>
 
@@ -2862,15 +3480,21 @@ Everyone just seems to be a little weird!</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>After the appearance of monsters that tear humans apart, society has divided into two parts, “Raiders” and “Non-Raiders.”
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-24-year-old Lee Semin, unable to become a Raider no matter how hard he tries, confines himself to a small room. One day, he stumbles upon a strange website.
+        <p class="card-desc sentence-lines">
+<span>After the appearance of monsters that tear humans apart, society has divided into two parts, “Raiders” and “Non-Raiders.”</span>
 
-｢ Welcome, new member, to the Transcendental Network - a community connecting transcendent beings across dimensions.｣
+<span>24-year-old Lee Semin, unable to become a Raider no matter how hard he tries, confines himself to a small room. One day, he stumbles upon a strange website.</span>
 
-They reveal to him the true world of martial prowess. Amidst the chaos where humans and monsters are indistinguishable, the “True Raider” is about to make their entrance!
+<span>｢ Welcome, new member, to the Transcendental Network - a community connecting transcendent beings across dimensions.｣</span>
 
-“Bring it on, you bastards.”</p>
+<span>They reveal to him the true world of martial prowess. Amidst the chaos where humans and monsters are indistinguishable, the “True Raider” is about to make their entrance!</span>
+
+<span>“Bring it on, you bastards.”</span>
+</p>
 
       </div>
 
@@ -2892,18 +3516,24 @@ They reveal to him the true world of martial prowess. Amidst the chaos where hum
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>The day of the "Attribute" assessment when you turn 10.
-A boy raised in an orphanage, dreaming of becoming an adventurer—Light was granted the rare attribute of Light, which appears once in every 1,000 people.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-However, while it was rare, the Light attribute was called a "failure attribute."
-...Because the light magic learned from the Light attribute had absolutely no offensive power!
+        <p class="card-desc sentence-lines">
+<span>The day of the "Attribute" assessment when you turn 10.
+A boy raised in an orphanage, dreaming of becoming an adventurer—Light was granted the rare attribute of Light, which appears once in every 1,000 people.</span>
 
-──Eventually, Light, who had become the adventurer he had always dreamed of, was mocked as the "specialist in parasitism" and the "walking torch," but he continued to train his Light magic to the extreme.
+<span>However, while it was rare, the Light attribute was called a "failure attribute."
+...Because the light magic learned from the Light attribute had absolutely no offensive power!</span>
 
-Then, when he reached the near-max level of [Light] attribute at Level 9──.
-After his training, with an immense amount of magical power, his childhood friend Saya appeared and requested to accompany him to an AAA difficulty dungeon...
+<span>──Eventually, Light, who had become the adventurer he had always dreamed of, was mocked as the "specialist in parasitism" and the "walking torch," but he continued to train his Light magic to the extreme.</span>
 
-Little did he know, this would turn into the worst expedition of his life...</p>
+<span>Then, when he reached the near-max level of [Light] attribute at Level 9──.
+After his training, with an immense amount of magical power, his childhood friend Saya appeared and requested to accompany him to an AAA difficulty dungeon...</span>
+
+<span>Little did he know, this would turn into the worst expedition of his life...</span>
+</p>
 
       </div>
 
@@ -2925,13 +3555,19 @@ Little did he know, this would turn into the worst expedition of his life...</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Our protagonist has reincarnated as Han Siha, a minor villain in the dark fantasy novel he once loved.
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-To live a peaceful life without getting tangled up with the protagonists, graduating from the academy is a must. But for Han Siha, who has no magical talent and terrible social skills, this is an almost impossible task. Taming, however... it might be possible.
+        <p class="card-desc sentence-lines">
+<span>Our protagonist has reincarnated as Han Siha, a minor villain in the dark fantasy novel he once loved.</span>
 
-Alright, let’s just focus on making it to graduation like this! But then... the protagonists who were supposed to kill him in the original story are now starting to take an interest in him?!
+<span>To live a peaceful life without getting tangled up with the protagonists, graduating from the academy is a must. But for Han Siha, who has no magical talent and terrible social skills, this is an almost impossible task. Taming, however... it might be possible.</span>
 
-Can Han Siha really graduate safely?</p>
+<span>Alright, let’s just focus on making it to graduation like this! But then... the protagonists who were supposed to kill him in the original story are now starting to take an interest in him?!</span>
+
+<span>Can Han Siha really graduate safely?</span>
+</p>
 
       </div>
 
@@ -2953,7 +3589,13 @@ Can Han Siha really graduate safely?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Your sins of past, present, and future, who can you blame but yourself? In the Court of the Underworld, never have a sinner gone unpunished! And now, you are here</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Your sins of past, present, and future, who can you blame but yourself? In the Court of the Underworld, never have a sinner gone unpunished! And now, you are here
+</p>
 
       </div>
 
@@ -2975,11 +3617,17 @@ Can Han Siha really graduate safely?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Three years after monster-infested dungeons start appearing on Earth due to an American experiment gone awry, anonymous researcher Keigo Yoshimara strikes gold when he accidentally kills a creature. This earns him a magical “D-Card” and a mysterious skill that allows him to see RPG-style stats.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-<p>Deciding to quit his job and go into dungeon diving, Keigo seeks the assistance of his highly knowledgeable colleague, Azusa Miyoshi, to help him conquer the dungeon exploration market and make millions. But it’s a face to obtain all the treasure and magic he can before the masses amount of government agencies and like-minded explorers take it first.</p>
+        <p class="card-desc sentence-lines">
+<span>Three years after monster-infested dungeons start appearing on Earth due to an American experiment gone awry, anonymous researcher Keigo Yoshimara strikes gold when he accidentally kills a creature. This earns him a magical “D-Card” and a mysterious skill that allows him to see RPG-style stats.</span>
 
-<p>No one said getting rich would be easy!</p>
+<span>Deciding to quit his job and go into dungeon diving, Keigo seeks the assistance of his highly knowledgeable colleague, Azusa Miyoshi, to help him conquer the dungeon exploration market and make millions. But it’s a face to obtain all the treasure and magic he can before the masses amount of government agencies and like-minded explorers take it first.</span>
+
+<span>No one said getting rich would be easy!</span>
+</p>
 
       </div>
 
@@ -3001,7 +3649,13 @@ Can Han Siha really graduate safely?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Taepung Shin knows every nook and cranny of his favorite MMO video game Paradiso like it was the back of his hand! However, his gaming adventures suffer an abrupt end after his untimely death. But this is not his last hurrah since he’s reincarnated as Jared, a delinquent lord of a frozen province… in Paradiso! Now, he must brave the world he loved and take advantage of all glitches he knows about and turn himself into the main character of his new solo adventure!</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Taepung Shin knows every nook and cranny of his favorite MMO video game Paradiso like it was the back of his hand! However, his gaming adventures suffer an abrupt end after his untimely death. But this is not his last hurrah since he’s reincarnated as Jared, a delinquent lord of a frozen province… in Paradiso! Now, he must brave the world he loved and take advantage of all glitches he knows about and turn himself into the main character of his new solo adventure!
+</p>
 
       </div>
 
@@ -3023,7 +3677,13 @@ Can Han Siha really graduate safely?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Song An, the bottom social animal, is a down-and-out programmer. His daily work is responsible for fixing bugs in a game called [New World]. However, he is more keen to secretly add his own little easter eggs in the game. Turned into a real world, relying on the understanding of the bugs in the game and the easter eggs set by himself, can Song An successfully counterattack?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Song An, the bottom social animal, is a down-and-out programmer. His daily work is responsible for fixing bugs in a game called [New World]. However, he is more keen to secretly add his own little easter eggs in the game. Turned into a real world, relying on the understanding of the bugs in the game and the easter eggs set by himself, can Song An successfully counterattack?
+</p>
 
       </div>
 
@@ -3045,7 +3705,13 @@ Can Han Siha really graduate safely?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Enter the world of Hajun Lee, just your average delivery guy trying to make ends meet. But when he's summoned to Olympus for a special delivery, his life takes an unexpected turn. Suddenly, he's the personal delivery man for the gods, earning big bucks and upgrading his gear with each risky delivery. Follow his daring escapades through dungeons and battles with monsters as he learns to outsmart them all. From one divine job to the next, Hajun faces it all with wit and guts. But can he keep up the hustle of being a regular delivery guy while also serving the mighty gods?</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Enter the world of Hajun Lee, just your average delivery guy trying to make ends meet. But when he's summoned to Olympus for a special delivery, his life takes an unexpected turn. Suddenly, he's the personal delivery man for the gods, earning big bucks and upgrading his gear with each risky delivery. Follow his daring escapades through dungeons and battles with monsters as he learns to outsmart them all. From one divine job to the next, Hajun faces it all with wit and guts. But can he keep up the hustle of being a regular delivery guy while also serving the mighty gods?
+</p>
 
       </div>
 
@@ -3068,11 +3734,17 @@ Can Han Siha really graduate safely?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>After learning 15 miserable years of his life as a failed gamer was one long nightmare, Lee Eojin is glad to be a newbie again! Vowing not to repeat the same mistakes, Eojin starts anew as the hotshot, Stagnant Water.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
 
-<p>He’s conquering monsters, getting sweet gear, and making enough dough to set himself up for life!</p>
+        <p class="card-desc sentence-lines">
+<span>After learning 15 miserable years of his life as a failed gamer was one long nightmare, Lee Eojin is glad to be a newbie again! Vowing not to repeat the same mistakes, Eojin starts anew as the hotshot, Stagnant Water.</span>
 
-<p>Loved by fans and hated by foes, both old and new, will Eojin break the game and triumph, or will the game break him once again?</p>
+<span>He’s conquering monsters, getting sweet gear, and making enough dough to set himself up for life!</span>
+
+<span>Loved by fans and hated by foes, both old and new, will Eojin break the game and triumph, or will the game break him once again?</span>
+</p>
 
       </div>
 
@@ -3094,9 +3766,17 @@ Can Han Siha really graduate safely?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>"Monday? Hate it. Tuesday? Hate it. And what I hate the most? Going to work."</p>
-<p>The civil servant Hae Sunal feels this way. In his previous life, all he wished for was to be able to use magic as normally as anyone else, so he invented a way for it to happen… In his next life. But now that he's in this new life, due to ‘magic’, he’s been living a far noisier life than expected.</p>
-<p>“Hello, I am Hae Sunal, a member of the Special Department for Cross-Species Civil Complaints and Resolution.”</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+<span>"Monday? Hate it. Tuesday? Hate it. And what I hate the most? Going to work."</span>
+
+<span>The civil servant Hae Sunal feels this way. In his previous life, all he wished for was to be able to use magic as normally as anyone else, so he invented a way for it to happen… In his next life. But now that he's in this new life, due to ‘magic’, he’s been living a far noisier life than expected.</span>
+
+<span>“Hello, I am Hae Sunal, a member of the Special Department for Cross-Species Civil Complaints and Resolution.”</span>
+</p>
 
       </div>
 
@@ -3118,20 +3798,23 @@ Can Han Siha really graduate safely?</p>
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>"Don't yearn for a world different from yours, just live a normal life."</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+<span>"Don't yearn for a world different from yours, just live a normal life."</span>
 <p>
-Hunters, dungeons, I'm not interested in any of them.
+<span>Hunters, dungeons, I'm not interested in any of them.
 My life followed one single path that's of cooking.
-But the moment I was about to open my first long-awaited food truck....
-</p>
-<p>
-[Class: You have awakened as a Food Truck Owner (Hidden)!]
-[Item: Dungeon Business Permit (Personal/Non-Transferable)!]
-</p>
+But the moment I was about to open my first long-awaited food truck....</span>
+<span>[Class: You have awakened as a Food Truck Owner (Hidden)!]</span>
+<span>[Item: Dungeon Business Permit (Personal/Non-Transferable)!]</span>
 
- <p>Business is only possible inside the dungeon</p>
+ <span>Business is only possible inside the dungeon</span>
 
-<p>Min Jiun, 21 years old, awakened as the owner of a food truck inside the dungeon.</p>
+<span>Min Jiun, 21 years old, awakened as the owner of a food truck inside the dungeon.</span>
+</p>
 
       </div>
 
@@ -3152,7 +3835,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3173,7 +3861,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3195,7 +3888,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3216,7 +3914,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3237,7 +3940,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3258,7 +3966,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3279,7 +3992,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3300,7 +4018,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3321,7 +4044,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3342,7 +4070,12 @@ But the moment I was about to open my first long-awaited food truck....
     <span onclick="rate(this,10)">★</span>
   </div>
 
-        <p>Reincarnated king in a magic world.</p>
+<button class="toggle-desc" onclick="toggleDesc(this); event.stopPropagation()">
+  Show description
+</button>
+
+        <p class="card-desc sentence-lines">
+Reincarnated king in a magic world.</p>
 
       </div>
 
@@ -3847,6 +4580,17 @@ function toggleClearBtn() {
   btn.style.display = input.length > 0 ? "block" : "none";
 }
 </script>
+
+<script>
+function toggleDesc(btn) {
+  const p = btn.nextElementSibling;
+  p.classList.toggle("show");
+  btn.textContent = p.classList.contains("show")
+    ? "Hide description"
+    : "Show description";
+}
+</script>
+
 
 </body>
 </html>
