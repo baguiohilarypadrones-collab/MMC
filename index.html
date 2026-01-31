@@ -311,6 +311,26 @@ body::before {
   flex-direction: column;
 }
 
+.zoom-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  color: black;
+  border: none;
+  font-size: 23px;
+  font-weight: bold;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.zoom-close:hover {
+  background: #ddd;
+}
+
 #cardZoom img {
   max-height: 50vh;   /* prevents image from pushing content off screen */
   width: 100%;
@@ -484,7 +504,7 @@ html, body {
 <button id="menuBtn" class="top-left-btn">☰ Menu</button>
 
 <div id="sidePanel" class="side-panel">
-  <h3>Navigation</h3>
+  <h3 style="text-align:center;">Navigation</h3>
 <ul>
   <li><a href="#carousel1">My Favorites</a></li>
   <li><a href="#carousel2">My Non-Favorites</a></li>
@@ -3337,6 +3357,7 @@ But the moment I was about to open my first long-awaited food truck....
 <section id="grid"></section>
 
 <div id="cardZoom" onclick="closeZoom()">
+  <button class="zoom-close" onclick="closeCardZoom()">✖</button>
   <div class="zoom-card" onclick="event.stopPropagation()"></div>
 </div>
 
@@ -3582,6 +3603,13 @@ function closeZoom() {
 /* run once on load */
 enableCardZoom();
 </script>
+
+<script>
+function closeCardZoom() {
+  document.getElementById("cardZoom").classList.remove("active");
+}
+</script>
+
 
 <script>
 function loadRatings() {
