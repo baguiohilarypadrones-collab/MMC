@@ -388,7 +388,9 @@ body::before {
 }
 
 .zoom-close {
-  position: absolute;
+  display: flex;       /* always visible */
+  align-items: center; /* centers the ✖ inside */
+  position: absolute;  /* stays fixed in overlay corner */
   top: 20px;
   right: 20px;
   background: white;
@@ -400,7 +402,7 @@ body::before {
   height: 44px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 10001;
+  z-index: 10001;      /* ensures it’s above overlay content */
 }
 
 .zoom-close:hover {
@@ -519,13 +521,6 @@ body::before {
     align-items: center;
     z-index: 10000;
   }
-
-.zoom-close {
-    display: flex;
-    align-items: center;
-    z-index: 10000;
-  }
-
 
  #cardZoom p {
     font-size: 17px;
