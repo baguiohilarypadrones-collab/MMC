@@ -519,6 +519,12 @@ body::before {
     z-index: 10000;
   }
 
+  body {
+    background-attachment: scroll; /* prevent weird movement */
+    background-position: center;
+    background-size: cover;
+  }
+
   html, body {
     overflow-x: hidden; /* prevent sideways scroll */
     max-width: 100%;
