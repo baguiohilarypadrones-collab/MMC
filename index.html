@@ -512,62 +512,66 @@ body::before {
 }
 
 @media (max-width: 650px) {
-
-/* Show mobile menu button */
+  /* Show mobile menu button */
   #menuBtn {
     display: flex;
     align-items: center;
     z-index: 10000;
   }
 
- #cardZoom p {
-    font-size: 17px;
-  }
-
-/* Headings inside card zoom overlay */
-#cardZoom h3 {
-  font-size: 22px;
-  margin: 8px 0;
-  text-align: center;
-}
-
-#cardZoom h4 {
-  font-size: 18px;
-  margin: 6px 0;
-  text-align: center;
-}
-
-#cardZoom h5 {
-  font-size: 16px;
-  margin: 4px 0;
-  text-align: center;
-  opacity: 0.9;
-}
-
-/* Center stars inside overlay */
-#cardZoom .stars {
-  display: flex;
-  justify-content: center;
-  margin: 12px 0;
-}
-
-#cardZoom p {
-    font-size: 17px;
-  }
-
-    /* Prevent phone stretching */
   html, body {
-    overflow-x: hidden;
+    overflow-x: hidden; /* prevent sideways scroll */
     max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
-.arrow.right {
+  .viewport {
+    overflow-x: hidden; /* disables horizontal scroll */
+  }
+
+  .track {
+    flex-wrap: wrap; /* stack cards vertically */
+  }
+
+  #cardZoom p {
+    font-size: 17px;
+  }
+
+  #cardZoom h3 {
+    font-size: 22px;
+    margin: 8px 0;
+    text-align: center;
+  }
+
+  #cardZoom h4 {
+    font-size: 18px;
+    margin: 6px 0;
+    text-align: center;
+  }
+
+  #cardZoom h5 {
+    font-size: 16px;
+    margin: 4px 0;
+    text-align: center;
+    opacity: 0.9;
+  }
+
+  #cardZoom .stars {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0;
+  }
+
+  .arrow.right {
     display: none;
   }
 
-.card-link {
+  .card-link {
     font-size: 20px;
+  }
 }
+
 
 html, body {
   margin: 0;
