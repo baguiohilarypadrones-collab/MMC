@@ -519,10 +519,18 @@ body::before {
     z-index: 10000;
   }
 
-  body {
-    background-attachment: scroll; /* prevent weird movement */
-    background-position: center;
-    background-size: cover;
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("pics/Backgroundpic.jpg") center/cover no-repeat;
+    z-index: -1;
+  }
+
+  /* keep your dark overlay here too */
+  body::before {
+    background-color: rgba(0,0,0,0.45); /* darkness level */
+    background-blend-mode: darken;      /* blend image + overlay */
   }
 
   html, body {
